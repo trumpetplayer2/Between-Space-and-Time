@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
     public float minX = -7;
     public float maxY = 10;
     public float minY = 0;
+    public float distance = -10;
     public Transform playerTracker;
     public float smoothSpeed = 0.125f;
     public Vector3 locationOffset;
@@ -19,6 +20,7 @@ public class CameraFollow : MonoBehaviour
     public float decreaseSpeed = 1.0f;
     public float shakeDuration = 0f;
     public static CameraFollow instance;
+    
 
     public void Awake()
     {
@@ -29,23 +31,23 @@ public class CameraFollow : MonoBehaviour
     {
         if (playerTracker == null) return;
 
-        Vector3 tempTracker = new Vector3(playerTracker.position.x, playerTracker.position.y, playerTracker.position.z);
+        Vector3 tempTracker = new Vector3(playerTracker.position.x, playerTracker.position.y, distance);
 
         if(playerTracker.position.x < minX)
         {
-            tempTracker = new Vector3(minX, playerTracker.position.y, playerTracker.position.z);
+            tempTracker = new Vector3(minX, playerTracker.position.y, distance);
         }else if(playerTracker.position.x > maxX)
         {
-            tempTracker = new Vector3(maxX, playerTracker.position.y, playerTracker.position.z);
+            tempTracker = new Vector3(maxX, playerTracker.position.y, distance);
         }
 
         if (playerTracker.position.y < minY)
         {
-            tempTracker = new Vector3(tempTracker.x, minY, playerTracker.position.z);
+            tempTracker = new Vector3(tempTracker.x, minY, distance);
         }
         else if (playerTracker.position.y > maxY)
         {
-            tempTracker = new Vector3(tempTracker.x, maxY, playerTracker.position.z);
+            tempTracker = new Vector3(tempTracker.x, maxY, distance);
         }
         //Check player relation to camera
         Vector3 desiredPosition = tempTracker + playerTracker.rotation * locationOffset;

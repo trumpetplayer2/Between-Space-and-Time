@@ -18,7 +18,7 @@ public class NetPlayer : NetworkBehaviour
     bool jumping = false;
     float jumpTime = 0f;
     public float maxJumpTime = 0.15f;
-
+    
     //Initalize when loaded
     public override void OnNetworkSpawn()
     {
@@ -48,9 +48,9 @@ public class NetPlayer : NetworkBehaviour
             temp.color = Color.red;
         }
     }
-    //[Rpc(SendTo.Server)]
-    void SubmitPositionRequestRpc(Vector3 Pos//, RpcParams rpcParams = default
-        )
+
+    [Rpc(SendTo.Server)]
+    void SubmitPositionRequestRpc(Vector3 Pos, RpcParams rpcParams = default)
     {
         transform.position = Pos;
         Position.Value = Pos;
@@ -97,7 +97,6 @@ public class NetPlayer : NetworkBehaviour
                 float jumpHeight = (jumpforce - (jumpTime * 6)) * Time.deltaTime * 100;
                 if (jumpHeight < 0) jumpHeight = 0;
                 Player.AddForce(new Vector2(0, jumpHeight));
-                Debug.Log(jumpHeight);
             }
             jumpTime += Time.deltaTime;
         }
@@ -112,9 +111,8 @@ public class NetPlayer : NetworkBehaviour
         }
     }
 
-    //[Rpc(SendTo.NotOwner)]
-    public void UpdateLocationRpc(Vector3 Pos//, RpcParams rpcParams = default
-        )
+    [Rpc(SendTo.NotOwner)]
+    public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
     {
         transform.position = Pos;
         Position.Value = Pos;
