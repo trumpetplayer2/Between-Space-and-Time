@@ -32,21 +32,13 @@ public class NetPlayer : NetworkBehaviour
         //If the player is the owner, give it a rigid body and set up camera follow.
         if (IsOwner)
         {
-            if (temp != null)
-            {
-                temp.color = Color.blue;
-            }
             Player = gameObject.AddComponent<Rigidbody2D>();
             Player.freezeRotation = true;
             Player.gravityScale = gravityScale;
             CameraFollow.instance.playerTracker = this.tracker.transform;
             this.gameObject.layer = 7;
         }
-        else
-        {
-            //If the player is not the owner, change color to signify so. This will be removed later
-            temp.color = Color.red;
-        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     [Rpc(SendTo.Server)]
@@ -111,10 +103,9 @@ public class NetPlayer : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.NotOwner)]
+    [Rpc(SendTo.NotServer)]
     public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
     {
         transform.position = Pos;
-        Position.Value = Pos;
     }
 }
