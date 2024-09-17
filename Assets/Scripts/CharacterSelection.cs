@@ -4,76 +4,130 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelection : NetworkBehaviour
+namespace tp2
 {
-    public static NetworkObject Atlas;
-    public static NetworkObject Chroma;
-    public NetworkObject aPrefab;
-    public NetworkObject cPrefab;
-
-    public void Start()
+    public class CharacterSelection : NetworkBehaviour
     {
-        autoselect();
-    }
+        public static NetworkObject Atlas;
+        public static NetworkObject Chroma;
+        public NetworkObject aPrefab;
+        public NetworkObject cPrefab;
 
-    public void autoselect()
-    {
-        //Check if Host has selected character yet
-        if (Atlas != null || Chroma != null)
+        public void Start()
         {
-            if (Atlas != null)
+            autoselectRpc(this.NetworkManager.LocalClientId);
+        }
+        
+        [Rpc(SendTo.Server)]
+        public void autoselectRpc(ulong owner)
+        {
+            //Check if Host has selected character yet
+            if (Atlas != null || Chroma != null)
             {
-                //Spawn Chroma, since Atlas is already taken
-                selectChromaRpc(this.OwnerClientId);
-            }
-            else if (Chroma != null)
-            {
-                //Spawn Atlas since Chroma is taken
-                selectAtlasRpc(this.OwnerClientId);
-                
-            }
-            else
-            {
-                //Both Players are connected to this server, disconnect.
-                NetworkManager.DisconnectClient(this.OwnerClientId);
-                SceneManager.LoadScene(0);
+                if (Atlas != null)
+                {
+                    //Spawn Chroma, since Atlas is already taken
+                    selectChromaRpc(owner);
+                }
+                else if (Chroma != null)
+                {
+                    //Spawn Atlas since Chroma is taken
+                    selectAtlasRpc(owner);
+
+                }
+                else
+                {
+                    //Both Players are connected to this server, disconnect.
+                    NetworkManager.DisconnectClient(owner, "Too many players");
+                    SceneManager.LoadScene(0);
+                }
             }
         }
-    }
 
-    [Rpc(SendTo.NotMe)]
-    public void informSelectRpc()
-    {
-        //If the owner is neither character, autoselect
-        if(!(Atlas.OwnerClientId == this.OwnerClientId || Chroma.OwnerClientId == this.OwnerClientId))
+        [Rpc(SendTo.Everyone)]
+        public void informSelectRpc()
         {
-            autoselect();
+            if(Chroma != null)
+            {
+                if (Chroma.OwnerClientId == this.NetworkManager.LocalClientId)
+                    return;
+            }
+            if(Atlas != null)
+            {
+                if (Atlas.OwnerClientId == this.NetworkManager.LocalClientId)
+                    return;
+            }
+            autoselectRpc(this.NetworkManager.LocalClientId);
         }
-    }
 
-    public void selectChroma()
-    {
-        selectChromaRpc(this.OwnerClientId);
-    }
+        public void selectChroma()
+        {
+            selectChromaRpc(this.NetworkManager.LocalClientId);
+        }
 
-    public void selectAtlas()
-    {
-        selectAtlasRpc(this.OwnerClientId);
-    }
+        public void selectAtlas()
+        {
+            
+            selectAtlasRpc(this.NetworkManager.LocalClientId);
+        }
+        
+        //THIS SHOULD ONLY BE RUN BY SERVER
+        public bool checkAvailable(PlayerType type)
+        {
+            switch (type)
+            {
+                case PlayerType.Atlas:
+                    if(NetManager.instance.players[0] != null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                case PlayerType.Chroma:
+                    if (NetManager.instance.players[1] != null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+            }
+            return false;
+            
+        }
 
-    [Rpc(SendTo.Server)]
-    public void selectAtlasRpc(ulong owner)
-    {
-        //Spawn Atlas
-        Atlas = NetworkManager.SpawnManager.InstantiateAndSpawn(aPrefab, owner);
-        //If other player isn't spawned, and another client is connected, try to select
-        this.gameObject.SetActive(false);
-    }
-    
-    [Rpc(SendTo.Server)]
-    public void selectChromaRpc(ulong owner)
-    {
-        Chroma = NetworkManager.SpawnManager.InstantiateAndSpawn(cPrefab, owner);
-        this.gameObject.SetActive(false);
+        [Rpc(SendTo.Everyone)]
+        public void hideMenuRpc()
+        {
+            gameObject.SetActive(false);
+        }
+
+        [Rpc(SendTo.Server)]
+        public void selectAtlasRpc(ulong owner)
+        {
+            if (!checkAvailable(PlayerType.Atlas)) return;
+            //Spawn Atlas
+            Atlas = Instantiate(aPrefab);
+            Atlas.SpawnAsPlayerObject(owner);
+            //Hide the menu for all players
+            hideMenuRpc();
+            //Autoselect if other player is connected
+            informSelectRpc();
+        }
+
+        [Rpc(SendTo.Server)]
+        public void selectChromaRpc(ulong owner)
+        {
+            if (!checkAvailable(PlayerType.Chroma)) return;
+            Chroma = Instantiate(cPrefab);
+            Chroma.SpawnAsPlayerObject(owner);
+            //Hide the menu for all players
+            hideMenuRpc();
+            //Autoselect if other player is connected
+            informSelectRpc();
+        }
     }
 }

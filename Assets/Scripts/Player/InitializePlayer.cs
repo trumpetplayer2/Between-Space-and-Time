@@ -7,15 +7,33 @@ namespace tp2
 {
     public enum PlayerType
     {
-        Atlas, Chroma
+        None, Atlas, Chroma
     }
     public class InitializePlayer : NetworkBehaviour
     {
         public PlayerType playerType;
-
+        
         public void OnSceneLoaded()
         {
             spawnPositionsRpc();
+        }
+
+        public void Start()
+        {
+            spawnPositionsRpc();
+        }
+
+        public override void OnDestroy()
+        {
+            switch (playerType)
+            {
+                case PlayerType.Atlas:
+                    NetManager.instance.players[0] = null;
+                    break;
+                case PlayerType.Chroma:
+                    NetManager.instance.players[1] = null;
+                    break;
+            }
         }
 
         [Rpc(SendTo.Server)]
@@ -25,9 +43,11 @@ namespace tp2
             {
                 case PlayerType.Atlas:
                     transform.position = NetManager.aStart.position;
+                    NetManager.instance.players[0] = this;
                     return;
                 case PlayerType.Chroma:
                     transform.position = NetManager.cStart.position;
+                    NetManager.instance.players[1] = this;
                     return;
             }
         }
