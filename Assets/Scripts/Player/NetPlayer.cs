@@ -20,7 +20,9 @@ namespace tp2
         bool jumping = false;
         float jumpTime = 0f;
         public float maxJumpTime = 0.15f;
-
+        public LayerMask AtlasMask;
+        public LayerMask ChromaMask;
+        public static NetworkObject pressedR;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -56,7 +58,20 @@ namespace tp2
             Player.freezeRotation = true;
             Player.gravityScale = gravityScale;
             CameraFollow.instance.playerTracker = this.tracker.transform;
-            this.gameObject.layer = 7;
+            if (IsOwner)
+            {
+                Camera c = Camera.main;
+                PlayerType t = gameObject.GetComponent<InitializePlayer>().playerType;
+                switch (t)
+                {
+                    case PlayerType.Atlas:
+                        c.cullingMask = AtlasMask;
+                        break;
+                    case PlayerType.Chroma:
+                        c.cullingMask = ChromaMask;
+                        break;
+                }
+            }
         }
 
 
@@ -96,6 +111,14 @@ namespace tp2
             if (!IsOwner)
             {
                 return;
+            }
+            if (Input.GetButton("Interact"))
+            {
+                pressedR = this.NetworkObject;
+            }
+            else
+            {
+                pressedR = null;
             }
             if (Player == null) return;
             if (Input.GetButtonDown("Jump") && jumpTime < 0.1)

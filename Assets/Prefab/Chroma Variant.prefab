@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 3216012804
       objectReference: {fileID: 0}
+    - target: {fileID: 948155680495838705, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3855871997618353042, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: m_Color.b
       value: 0.4906105
@@ -68,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.990566
       objectReference: {fileID: 0}
+    - target: {fileID: 7349538532702962084, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7759112166082977944, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: playerType
       value: 2
@@ -75,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 7797721267054019199, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: m_Name
       value: Chroma Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797721267054019199, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

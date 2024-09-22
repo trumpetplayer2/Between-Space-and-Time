@@ -197,6 +197,12 @@ MonoBehaviour:
     m_Bits: 8
   gravityScale: 2
   maxJumpTime: 0.15
+  AtlasMask:
+    serializedVersion: 2
+    m_Bits: 511
+  ChromaMask:
+    serializedVersion: 2
+    m_Bits: 767
 --- !u!61 &-1307843003914596411
 BoxCollider2D:
   m_ObjectHideFlags: 0
