@@ -71,6 +71,7 @@ namespace tp2
                     if (curGrabbed)
                     {
                         //Make sure player who clicked R is the parent
+                        if (NetPlayer.pressedR == null) return;
                         if (!this.gameObject.transform.parent.Equals(NetPlayer.pressedR.gameObject.transform)) return;
                         release();
                     }
