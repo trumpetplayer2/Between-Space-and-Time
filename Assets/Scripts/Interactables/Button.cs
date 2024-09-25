@@ -10,8 +10,9 @@ public class Button : NetworkBehaviour
     SpriteRenderer spriteRenderer;
     public bool onWall = false;
     public float cooldown = 0.5f;
-    int pressCount = 0;
-    bool stateChanged = false;
+    public LayerMask m_LayerMask;
+    public float sizex = 2;
+    public float sizey = 2;
     [SerializeField] private UnityEvent<bool> ButtonUpdated;
 
     private void Start()
@@ -22,46 +23,21 @@ public class Button : NetworkBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!(collision.gameObject.tag.ToLower().Equals("player") || collision.gameObject.tag.ToLower().Equals("box"))) return;
-        stateChanged = true;
-        updatePressCountRpc(1);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!(collision.gameObject.tag.ToLower().Equals("player") || collision.gameObject.tag.ToLower().Equals("box"))) return;
-        updatePressCountRpc(-1);
-        stateChanged = true;
-    }
-
     private void Update()
     {
-        if (!stateChanged) return;
-        if(pressCount < 0)
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, new Vector2(sizex, sizey), 0f, m_LayerMask);
+        if(hitColliders == null)
         {
             Debug.Log("ERROR: Negative button press");
-        }else if(pressCount == 0)
+            toggleRpc(false);
+        }
+        else if(hitColliders.Length == 0)
         {
             toggleRpc(false);
-        }else if(pressCount > 0)
+        }else if(hitColliders.Length > 0)
         {
             toggleRpc(true);
         }
-    }
-
-    [Rpc(SendTo.Server)]
-    void updatePressCountRpc(int i)
-    {
-        pressCount += i;
-        syncPressCountRpc(pressCount);
-    }
-
-    [Rpc(SendTo.NotServer)]
-    void syncPressCountRpc(int p)
-    {
-        pressCount = p;
     }
 
     [Rpc(SendTo.Everyone)]

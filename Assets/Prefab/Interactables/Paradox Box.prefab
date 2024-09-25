@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5250377588540072627, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 1043134752
+      value: 703111021
       objectReference: {fileID: 0}
     - target: {fileID: 5250377588540072627, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6082226242808694332, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: m_Name
-      value: Box Variant
+      value: Paradox Box
       objectReference: {fileID: 0}
     - target: {fileID: 6082226242808694332, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8938990493557755523, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +88,14 @@ PrefabInstance:
     - target: {fileID: 969170704966560146, guid: 7662b0571642c4643905912c57dc29b2, type: 3}
       propertyPath: m_Name
       value: ParadoxEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 969170704966560146, guid: 7662b0571642c4643905912c57dc29b2, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3503119256426072159, guid: 7662b0571642c4643905912c57dc29b2, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5490839565092931759, guid: 7662b0571642c4643905912c57dc29b2, type: 3}
       propertyPath: m_LocalPosition.x
