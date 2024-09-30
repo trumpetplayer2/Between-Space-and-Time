@@ -851,7 +851,7 @@ MonoBehaviour:
   - {fileID: 446556216}
   - {fileID: 879015393}
   timing:
-  - 0
+  - 0.01
   - 4.6
   - 2.3
   - 3
@@ -862,7 +862,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  redirectScene: 
+  redirectScene: 0
   CutsceneEnded:
     m_PersistentCalls:
       m_Calls:

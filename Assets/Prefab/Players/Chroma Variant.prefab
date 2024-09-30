@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.990566
       objectReference: {fileID: 0}
+    - target: {fileID: 4907874789104868204, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 16392
+      objectReference: {fileID: 0}
     - target: {fileID: 7349538532702962084, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: m_Layer
       value: 7

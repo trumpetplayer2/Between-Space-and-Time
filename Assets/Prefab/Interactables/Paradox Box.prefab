@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4615060844898263060, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5250377588540072627, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 703111021
+      value: 308780909
       objectReference: {fileID: 0}
     - target: {fileID: 5250377588540072627, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash

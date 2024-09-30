@@ -26,8 +26,7 @@ namespace tp2
         bool loading = false;
         int currentScene = 0;
         public string[] SceneList;
-        public bool atlasInCutscene = false;
-        public bool chromaInCutscene = false;
+        
          
         void Awake()
         {
@@ -43,12 +42,6 @@ namespace tp2
             }
             m_NetworkManager = GetComponent<NetworkManager>();
             m_UnityTransport = GetComponent<UnityTransport>();
-        }
-
-        [Rpc(SendTo.Everyone)]
-        public void startPositions()
-        {
-
         }
 
         public void startHost()
@@ -125,11 +118,11 @@ namespace tp2
 
         public static void log(string s)
         {
-            logRpc(m_NetworkManager.LocalClientId, s);
+            instance.logRpc(m_NetworkManager.LocalClientId, s);
         }
 
         [Rpc(SendTo.Server)]
-        public static void logRpc(ulong clientID, string s)
+        public void logRpc(ulong clientID, string s)
         {
             Debug.Log(clientID + ": " + s);
         }
@@ -156,10 +149,8 @@ namespace tp2
         [Rpc(SendTo.Server)]
         private void setSceneRpc(string scene)
         {
-            Debug.Log("Test");
             if (!m_NetworkManager.IsServer) return;
             
-            Debug.Log(scene);
             atlasFinish = false;
             chromaFinish = false;
             NetworkManager.Singleton.SceneManager.LoadScene(scene, LoadSceneMode.Single);
@@ -171,23 +162,6 @@ namespace tp2
             if (!(atlasFinish && chromaFinish)) return;
             currentScene += 1;
             setSceneRpc(SceneList[currentScene]);
-        }
-
-        public void finishDialogue(PlayerType player, bool state)
-        {
-            switch (player)
-            {
-                case PlayerType.Atlas:
-                    atlasInCutscene = state;
-                    break;
-                case PlayerType.Chroma:
-                    chromaInCutscene = state;
-                    break;
-                case PlayerType.None:
-                    atlasInCutscene = state;
-                    chromaInCutscene = state;
-                    break;
-            }
         }
     }
 }

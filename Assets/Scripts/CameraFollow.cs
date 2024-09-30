@@ -37,11 +37,14 @@ namespace tp2
 
         public void Start()
         {
-            foreach (InitializePlayer init in NetManager.instance.players)
+            if (NetManager.instance != null)
             {
-                if (init == null) return;
-                //Update spawn positions and camera
-                init.updateCameraRpc();
+                foreach (InitializePlayer init in NetManager.instance.players)
+                {
+                    if (init == null) continue;
+                    //Update spawn positions and camera
+                    init.updateCameraRpc();
+                }
             }
             if (cinematicMode)
             {
@@ -56,19 +59,19 @@ namespace tp2
             time = 0;
             NetPlayer.paused = true;
             startPos = this.transform.position;
-            NetManager.instance.finishDialogue(PlayerType.None, false);
+            GameManager.instance.finishDialogueRpc(PlayerType.None, true);
         }
 
         public void endCutscene()
         {
             cinematicMode = false;
             NetPlayer.paused = false;
+            cutscenes[sceneNumber].cutsceneEnd();
             //Attempt to redirect scenes if the cutscene redirects player
-            if(cutscenes[sceneNumber].redirectScene > 0)
+            if (cutscenes[sceneNumber].redirectScene > 0)
             {
                 NetManager.instance.updateScene(cutscenes[sceneNumber].redirectScene);
             }
-            cutscenes[sceneNumber].cutsceneEnd();
         }
 
         public void FixedUpdate()
@@ -94,25 +97,37 @@ namespace tp2
                 {
                     case 6:
                         //Atlas
-                        NetManager.instance.finishDialogue(PlayerType.Atlas, false);
+                        GameManager.instance.finishDialogueRpc(PlayerType.Atlas, false);
                         break;
                     case 7:
                         //Chroma
-                        NetManager.instance.finishDialogue(PlayerType.Chroma, false);
+                        GameManager.instance.finishDialogueRpc(PlayerType.Chroma, false);
                         break;
                 }
-                if (!(NetManager.instance.atlasInCutscene || NetManager.instance.chromaInCutscene))
+                if (!(GameManager.instance.getAtlasInCutscene() || GameManager.instance.getChromaInCutscene()))
                 {
                     endCutscene();
+                }
+                else
+                {
+                    //Add waiting text
                 }
                 return;
             }
             time += Time.fixedDeltaTime;
             if(cutscene.timing[positionNumber] <= 0)
             {
-                if (cutscene.dialogueBox[positionNumber].complete)
+                try
                 {
-                    positionNumber += 1;
+                    if (cutscene.dialogueBox[positionNumber].complete)
+                    {
+                        positionNumber += 1;
+                        return;
+                    }
+                }
+                catch
+                {
+                    Debug.Log("Dialogue error?");
                     return;
                 }
                 //This is a freeze frame. Return until both players update
@@ -129,7 +144,6 @@ namespace tp2
                 startPos = this.transform.position;
                 if(positionNumber >= cutscene.cameraPositions.Length)
                 {
-                    endCutscene();
                     return;
                 }
 
@@ -155,17 +169,17 @@ namespace tp2
         {
             
             if (playerTracker == null) return;
-            if (NetManager.instance.atlasInCutscene || NetManager.instance.chromaInCutscene)
+            if (GameManager.instance.getAtlasInCutscene() || GameManager.instance.getChromaInCutscene())
             {
                 switch (playerTracker.gameObject.layer)
                 {
                     case 6:
                         //Atlas
-                        NetManager.instance.finishDialogue(PlayerType.Atlas, false);
+                        GameManager.instance.finishDialogueRpc(PlayerType.Atlas, false);
                         break;
                     case 7:
                         //Chroma
-                        NetManager.instance.finishDialogue(PlayerType.Chroma, false);
+                        GameManager.instance.finishDialogueRpc(PlayerType.Chroma, false);
                         break;
                 }
             }
