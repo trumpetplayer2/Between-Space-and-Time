@@ -8,7 +8,7 @@ namespace tp2
     {
         public PlayerType positionPlayer;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             //Remove any dev indicators via deleting sprite renderer
             SpriteRenderer temp = GetComponent<SpriteRenderer>();

@@ -372,6 +372,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   timeout: 1000
+  SceneList:
+  - Main Menu
+  - Lobby
+  - Forest 1
+  - Forest 2
+  atlasInCutscene: 0
+  chromaInCutscene: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +497,9 @@ MonoBehaviour:
   shakeAmount: 0.25
   decreaseSpeed: 1
   shakeDuration: 0
+  cinematicMode: 0
+  cinematicNumber: 0
+  cutscenes: []
 --- !u!1 &826077711
 GameObject:
   m_ObjectHideFlags: 0

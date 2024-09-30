@@ -4,59 +4,78 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Events;
 
-public class Button : NetworkBehaviour
+namespace tp2
 {
-    public bool isToggled;
-    SpriteRenderer spriteRenderer;
-    public bool onWall = false;
-    public float cooldown = 0.5f;
-    public LayerMask m_LayerMask;
-    public float sizex = 2;
-    public float sizey = 2;
-    [SerializeField] private UnityEvent<bool> ButtonUpdated;
-
-    private void Start()
+    public class Button : NetworkBehaviour
     {
-        if(spriteRenderer == null)
-        {
-            spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        }
-    }
+        public bool isToggled;
+        SpriteRenderer spriteRenderer;
+        public bool onWall = false;
+        public float cooldown = 0.5f;
+        public LayerMask m_LayerMask;
+        public float sizex = 2;
+        public float sizey = 2;
+        [SerializeField] private UnityEvent<bool> ButtonUpdated;
+        
 
-    private void Update()
-    {
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, new Vector2(sizex, sizey), 0f, m_LayerMask);
-        if(hitColliders == null)
+        private void Start()
         {
-            Debug.Log("ERROR: Negative button press");
-            toggleRpc(false);
-        }
-        else if(hitColliders.Length == 0)
-        {
-            toggleRpc(false);
-        }else if(hitColliders.Length > 0)
-        {
-            toggleRpc(true);
-        }
-    }
-
-    [Rpc(SendTo.Everyone)]
-    void toggleRpc(bool state)
-    {
-        isToggled = state;
-        if(spriteRenderer != null)
-        {
-            //Modify the look of button.
-            //This will be 2 sprites later on, but for now lets just recolor sprite renderer
-            if (isToggled)
+            if (spriteRenderer == null)
             {
-                spriteRenderer.color = Color.red;
-            }
-            else
-            {
-                spriteRenderer.color = Color.white;
+                spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+                
             }
         }
-        ButtonUpdated.Invoke(isToggled);
+
+        private void Update()
+        {
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, new Vector2(sizex, sizey), 0f, m_LayerMask);
+            try
+            {
+                if (hitColliders == null)
+                {
+                    Debug.Log("ERROR: Negative button press");
+                    toggleRpc(false);
+                }
+                else if (hitColliders.Length == 0)
+                {
+                    toggleRpc(false);
+                }
+                else if (hitColliders.Length > 0)
+                {
+                    toggleRpc(true);
+                }
+            }
+            catch {}
+        }
+
+        [Rpc(SendTo.Everyone)]
+        void toggleRpc(bool state)
+        {
+            isToggled = state;
+            if (spriteRenderer != null)
+            {
+                //Modify the look of button.
+                //This will be 2 sprites later on, but for now lets just recolor sprite renderer
+                if (isToggled)
+                {
+                    spriteRenderer.color = Color.red;
+                }
+                else
+                {
+                    spriteRenderer.color = Color.white;
+                }
+            }
+            ButtonUpdated.Invoke(isToggled);
+        }
+
+        public void updateAtlasFinish(bool state)
+        {
+            NetManager.instance.updateAtlasFinish(state);
+        }
+        public void updateChromaFinish(bool state)
+        {
+            NetManager.instance.updateChromaFinish(state);
+        }
     }
 }

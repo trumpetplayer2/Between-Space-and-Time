@@ -21,7 +21,14 @@ namespace tp2
         public float timeout = 10;
         NetworkTime lastKnownServerTime;
         bool wasConnected = false;
-
+        bool chromaFinish = false;
+        bool atlasFinish = false;
+        bool loading = false;
+        int currentScene = 0;
+        public string[] SceneList;
+        public bool atlasInCutscene = false;
+        public bool chromaInCutscene = false;
+         
         void Awake()
         {
             if(instance != null)
@@ -49,6 +56,7 @@ namespace tp2
             //Start Host
             m_NetworkManager.StartHost();
             NetworkManager.Singleton.SceneManager.LoadScene(lobby, LoadSceneMode.Single);
+            currentScene = 1;
         }
 
         public void connectClient()
@@ -99,13 +107,20 @@ namespace tp2
                 log("Timedout! Ping was " + ping);
                 m_NetworkManager.DisconnectClient(m_NetworkManager.LocalClientId, "Connection Timeout");
             }
+            if(chromaFinish && atlasFinish)
+            {
+                nextScene();
+                chromaFinish = false;
+                atlasFinish = false;
+                loading = true;
+            }
         }
-
 
 
         private void Disconnect()
         {
             SceneManager.LoadScene(0);
+            currentScene = 0;
         }
 
         public static void log(string s)
@@ -117,6 +132,62 @@ namespace tp2
         public static void logRpc(ulong clientID, string s)
         {
             Debug.Log(clientID + ": " + s);
+        }
+
+        public void updateAtlasFinish(bool state)
+        {
+            if (loading) return;
+            atlasFinish = state;
+        }
+
+        public void updateChromaFinish(bool state)
+        {
+            if (loading) return;
+            chromaFinish = state;
+        }
+
+        
+        public void updateScene(int scene)
+        {
+            
+            setSceneRpc(SceneList[scene]);
+        }
+
+        [Rpc(SendTo.Server)]
+        private void setSceneRpc(string scene)
+        {
+            Debug.Log("Test");
+            if (!m_NetworkManager.IsServer) return;
+            
+            Debug.Log(scene);
+            atlasFinish = false;
+            chromaFinish = false;
+            NetworkManager.Singleton.SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            loading = false;
+        }
+
+        public void nextScene()
+        {
+            if (!(atlasFinish && chromaFinish)) return;
+            currentScene += 1;
+            setSceneRpc(SceneList[currentScene]);
+        }
+
+        public void finishDialogue(PlayerType player, bool state)
+        {
+            switch (player)
+            {
+                case PlayerType.Atlas:
+                    atlasInCutscene = state;
+                    break;
+                case PlayerType.Chroma:
+                    chromaInCutscene = state;
+                    break;
+                case PlayerType.None:
+                    atlasInCutscene = state;
+                    chromaInCutscene = state;
+                    break;
+            }
         }
     }
 }

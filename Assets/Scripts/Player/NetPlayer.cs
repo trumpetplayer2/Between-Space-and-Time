@@ -23,6 +23,7 @@ namespace tp2
         public LayerMask AtlasMask;
         public LayerMask ChromaMask;
         public static NetworkObject pressedR;
+        public static bool paused = false;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -47,7 +48,15 @@ namespace tp2
         }
 
         [Rpc(SendTo.Owner)]
-        void initializeRpc()
+        public void updateCameraTrackerRpc(Vector3 pos)
+        {
+            CameraFollow.instance.playerTracker = this.tracker.transform;
+            this.transform.position = pos;
+            SubmitPositionRequestRpc(pos);
+        }
+
+        [Rpc(SendTo.Owner)]
+        public void initializeRpc()
         {
             if (!IsClient) return;
             Player = gameObject.AddComponent<Rigidbody2D>();
@@ -82,11 +91,6 @@ namespace tp2
             Position.Value = Pos;
         }
 
-        static Vector3 GetRandomPositionOnPlane()
-        {
-            return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
-        }
-
         private void FixedUpdate()
         {
             if (!IsClient) return;
@@ -95,12 +99,20 @@ namespace tp2
                 return;
             }
             if (Player == null) return;
+            if(CameraFollow.instance.playerTracker == null)
+            {
+                //Client doesnt correctly connect camera tracker on first frame. Idk the proper way to fix but this should force it to double check
+                CameraFollow.instance.playerTracker = this.transform;
+            }
+            if (paused) return;
             bool isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
             Vector2 move = new Vector2((Input.GetAxis("Horizontal") * speed), Player.velocity.y);
             Player.velocity = move;
             SubmitPositionRequestRpc(transform.position);
         }
+
+
         void Update()
         {
             if (IsServer)
@@ -112,6 +124,7 @@ namespace tp2
             {
                 return;
             }
+            if (paused) return;
             if (Input.GetButton("Interact"))
             {
                 pressedR = this.NetworkObject;
