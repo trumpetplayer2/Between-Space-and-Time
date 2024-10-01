@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445771988062197286, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 3411767800
+      value: 1303430524
       objectReference: {fileID: 0}
     - target: {fileID: 445771988062197286, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -59,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 948155680495838705, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482210368241400527, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3855871997618353042, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: m_Color.b

@@ -5,6 +5,36 @@ using Unity.Netcode;
 
 namespace tp2
 {
+    public static class PlayerTypeExtensions
+    {
+        public static GameObject AtlasObject;
+        public static GameObject ChromaObject;
+        public static GameObject getObject (this PlayerType type)
+        {
+            switch (type)
+            {
+                case PlayerType.Atlas:
+                    return AtlasObject;
+                case PlayerType.Chroma:
+                    return ChromaObject;
+                default: return null;
+            }
+        }
+
+        public static PlayerType getEnumOf(GameObject obj)
+        {
+            if (!obj.tag.ToLower().Equals("player")) return PlayerType.None;
+            switch (obj.layer)
+            {
+                case 6:
+                    return PlayerType.Atlas;
+                case 7:
+                    return PlayerType.Chroma;
+                default:
+                    return PlayerType.None;
+            }
+        }
+    }
     public enum PlayerType
     {
         None, Atlas, Chroma
@@ -29,9 +59,11 @@ namespace tp2
             {
                 case PlayerType.Atlas:
                     NetManager.instance.players[0] = null;
+                    PlayerTypeExtensions.AtlasObject = this.gameObject;
                     break;
                 case PlayerType.Chroma:
                     NetManager.instance.players[1] = null;
+                    PlayerTypeExtensions.ChromaObject = this.gameObject;
                     break;
             }
         }

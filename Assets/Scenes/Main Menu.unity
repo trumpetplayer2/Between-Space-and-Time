@@ -498,6 +498,7 @@ MonoBehaviour:
   cinematicMode: 0
   cinematicNumber: 0
   cutscenes: []
+  Waiting: {fileID: 0}
 --- !u!1 &826077711
 GameObject:
   m_ObjectHideFlags: 0

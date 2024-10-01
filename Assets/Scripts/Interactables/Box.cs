@@ -14,11 +14,13 @@ namespace tp2
         float cooldown = 0f;
         float weight;
         GameObject[] capableGrab = new GameObject[2];
+        int layer = 0;
 
         private void Start()
         {
             body = GetComponent<Rigidbody2D>();
             weight = body.mass;
+            layer = gameObject.layer;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -99,18 +101,19 @@ namespace tp2
         public void grab(NetworkObject grabber, PlayerType type)
         {
             if (held) return;
-            updateHolderRpc(true);
             updateParentRpc(type);
             updateOwnerRpc(grabber.OwnerClientId);
+            updateHolderRpc(true);
             curGrabbed = true;
             rigidBodyStuffRpc(true);
             cooldown = 0.5f;
+
         }
         public void release()
         {
             if (!held) return;
-            updateHolderRpc(false);
             updateParentRpc(PlayerType.None);
+            updateHolderRpc(false);
             curGrabbed = false;
             rigidBodyStuffRpc(false);
         }
@@ -135,6 +138,20 @@ namespace tp2
                     break;
             }
             this.transform.parent = newParent;
+            if (gameObject.transform.parent == null)
+            {
+                updateLayerRpc(layer);
+            }
+            else
+            {
+                updateLayerRpc(this.transform.parent.gameObject.layer);
+            }
+        }
+        [Rpc(SendTo.Everyone)]
+        void updateLayerRpc(int newlayer)
+        {
+            gameObject.layer = newlayer;
+            
         }
 
         [Rpc(SendTo.Everyone)]

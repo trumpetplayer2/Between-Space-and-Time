@@ -52,7 +52,37 @@ namespace tp2
         {
             CameraFollow.instance.playerTracker = this.tracker.transform;
             this.transform.position = pos;
+            if (Player != null)
+            {
+                Player.velocity = new Vector3(0, 0, 0);
+            }
             SubmitPositionRequestRpc(pos);
+            delayCameraUpdate();
+        }
+
+        public void delayCameraUpdate()
+        {
+            Invoke("updateCameraLayerMaskRpc", 1);
+        }
+
+        [Rpc(SendTo.Owner)]
+        private void updateCameraLayerMaskRpc()
+        {
+            Camera c = Camera.main;
+            PlayerType t = gameObject.GetComponent<InitializePlayer>().playerType;
+            Debug.Log(t);
+            switch (t)
+            {
+                case PlayerType.Atlas:
+                    c.gameObject.layer = this.gameObject.layer;
+                    c.cullingMask = AtlasMask;
+                    break;
+                case PlayerType.Chroma:
+                    c.gameObject.layer = this.gameObject.layer;
+                    c.cullingMask = ChromaMask;
+                    break;
+            }
+            Debug.Log(c.cullingMask);
         }
 
         [Rpc(SendTo.Owner)]

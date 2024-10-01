@@ -29,6 +29,7 @@ namespace tp2
         int positionNumber = 0;
         float time = 0;
         Vector3 startPos;
+        public GameObject Waiting;
 
         public void Awake()
         {
@@ -67,8 +68,12 @@ namespace tp2
             cinematicMode = false;
             NetPlayer.paused = false;
             cutscenes[sceneNumber].cutsceneEnd();
-            //Attempt to redirect scenes if the cutscene redirects player
-            if (cutscenes[sceneNumber].redirectScene > 0)
+            if (Waiting != null)
+            {
+                Waiting.SetActive(false);
+            }
+                //Attempt to redirect scenes if the cutscene redirects player
+                if (cutscenes[sceneNumber].redirectScene > 0)
             {
                 NetManager.instance.updateScene(cutscenes[sceneNumber].redirectScene);
             }
@@ -104,13 +109,16 @@ namespace tp2
                         GameManager.instance.finishDialogueRpc(PlayerType.Chroma, false);
                         break;
                 }
+
+                //Add waiting text
+                if (Waiting != null)
+                {
+                    Waiting.SetActive((GameManager.instance.getAtlasInCutscene() || GameManager.instance.getChromaInCutscene()));
+                }
+
                 if (!(GameManager.instance.getAtlasInCutscene() || GameManager.instance.getChromaInCutscene()))
                 {
                     endCutscene();
-                }
-                else
-                {
-                    //Add waiting text
                 }
                 return;
             }
