@@ -24,6 +24,7 @@ namespace tp2
         public LayerMask ChromaMask;
         public static NetworkObject pressedR;
         public static bool paused = false;
+        public float maxVelocity = 20;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -70,7 +71,6 @@ namespace tp2
         {
             Camera c = Camera.main;
             PlayerType t = gameObject.GetComponent<InitializePlayer>().playerType;
-            Debug.Log(t);
             switch (t)
             {
                 case PlayerType.Atlas:
@@ -82,7 +82,6 @@ namespace tp2
                     c.cullingMask = ChromaMask;
                     break;
             }
-            Debug.Log(c.cullingMask);
         }
 
         [Rpc(SendTo.Owner)]
@@ -164,7 +163,8 @@ namespace tp2
                 pressedR = null;
             }
             if (Player == null) return;
-            if (Input.GetButtonDown("Jump") && jumpTime < 0.1)
+            bool isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            if (Input.GetButtonDown("Jump") && jumpTime < 0.1 && isOnGround)
             {
                 jumping = true;
             }
@@ -182,10 +182,16 @@ namespace tp2
             {
                 jumping = false;
             }
-            bool isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
             if (isOnGround && !jumping)
             {
                 jumpTime = 0;
+            }
+            //Cap Velocity
+            float velocity = Mathf.Abs(Player.velocity.x) + Mathf.Abs(Player.velocity.y);
+            if (velocity > maxVelocity)
+            {
+                Vector2 newVelocity = new Vector2(Player.velocity.x / velocity, Player.velocity.y / velocity);
+                Player.velocity = newVelocity;
             }
         }
 

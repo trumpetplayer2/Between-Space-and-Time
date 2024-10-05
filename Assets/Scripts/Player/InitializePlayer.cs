@@ -9,6 +9,7 @@ namespace tp2
     {
         public static GameObject AtlasObject;
         public static GameObject ChromaObject;
+        public static GameObject localPlayer;
         public static GameObject getObject (this PlayerType type)
         {
             switch (type)
@@ -21,8 +22,36 @@ namespace tp2
             }
         }
 
+        public static PlayerType getLocalPlayerType()
+        {
+            return getEnumOf(localPlayer);
+        }
+
+        public static void initializeLocalPlayer()
+        {
+            if (AtlasObject != null)
+            {
+                if (AtlasObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    localPlayer = AtlasObject;
+                }
+            }
+            if (ChromaObject != null)
+            {
+                if (ChromaObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    localPlayer = ChromaObject;
+                }
+            }
+            if(localPlayer == null)
+            {
+                Debug.LogWarning("Error Finding Local Player");
+            }
+        }
+
         public static PlayerType getEnumOf(GameObject obj)
         {
+            if (obj == null) return PlayerType.None;
             if (!obj.tag.ToLower().Equals("player")) return PlayerType.None;
             switch (obj.layer)
             {
@@ -51,6 +80,7 @@ namespace tp2
         public void Start()
         {
             spawnPositionsRpc();
+            updatePlayerList();
         }
 
         public override void OnDestroy()
@@ -59,11 +89,11 @@ namespace tp2
             {
                 case PlayerType.Atlas:
                     NetManager.instance.players[0] = null;
-                    PlayerTypeExtensions.AtlasObject = this.gameObject;
+                    PlayerTypeExtensions.AtlasObject = null;
                     break;
                 case PlayerType.Chroma:
                     NetManager.instance.players[1] = null;
-                    PlayerTypeExtensions.ChromaObject = this.gameObject;
+                    PlayerTypeExtensions.ChromaObject = null;
                     break;
             }
         }
@@ -76,12 +106,29 @@ namespace tp2
                 case PlayerType.Atlas:
                     transform.position = NetManager.aStart.position;
                     NetManager.instance.players[0] = this;
-                    return;
+                    PlayerTypeExtensions.AtlasObject = this.gameObject;
+                    break;
                 case PlayerType.Chroma:
                     transform.position = NetManager.cStart.position;
                     NetManager.instance.players[1] = this;
-                    return;
+                    PlayerTypeExtensions.ChromaObject = this.gameObject;
+                    break;
             }
+        }
+
+        public void updatePlayerList()
+        {
+            switch (playerType)
+            {
+                case PlayerType.Atlas:
+                    PlayerTypeExtensions.AtlasObject = this.gameObject;
+                    break;
+                case PlayerType.Chroma:
+                    PlayerTypeExtensions.ChromaObject = this.gameObject;
+                    break;
+            }
+            //Attempt to initialize local player
+            PlayerTypeExtensions.initializeLocalPlayer();
         }
 
         [Rpc(SendTo.Server)]

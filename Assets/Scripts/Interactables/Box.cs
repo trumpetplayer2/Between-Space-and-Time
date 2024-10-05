@@ -140,7 +140,7 @@ namespace tp2
             this.transform.parent = newParent;
             if (gameObject.transform.parent == null)
             {
-                updateLayerRpc(layer);
+                //updateLayerRpc(layer);
             }
             else
             {
@@ -192,5 +192,7 @@ namespace tp2
         {
             transform.position = Pos;
         }
+
+        
     }
 }

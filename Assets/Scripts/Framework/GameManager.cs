@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 namespace tp2
 {
@@ -20,6 +21,11 @@ namespace tp2
             }
             instance = this;
             DontDestroyOnLoad(this);
+        }
+
+        private void Start()
+        {
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
 
         [Rpc(SendTo.Server)]
@@ -49,6 +55,21 @@ namespace tp2
         public bool getChromaInCutscene()
         {
             return chromaInCutscene.Value;
+        }
+
+        private void OnSceneUnloaded(Scene current)
+        {
+            foreach (InitializePlayer init in NetManager.instance.players)
+            {
+                if (init == null) continue;
+                foreach (Box child in init.gameObject.GetComponentsInChildren<Box>(true))
+                {
+                    if (child != null)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
+            }
         }
     }
 }
