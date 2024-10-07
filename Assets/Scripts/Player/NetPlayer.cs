@@ -43,6 +43,8 @@ namespace tp2
         //    DontDestroyOnLoad(this.gameObject);
         //}
 
+        //TODO: SceneEventType.LoadComplete
+
         public void Start()
         {
             initializeRpc();
@@ -59,6 +61,7 @@ namespace tp2
             }
             SubmitPositionRequestRpc(pos);
             delayCameraUpdate();
+            NetManager.instance.endLoading();
         }
 
         public void delayCameraUpdate()

@@ -66,7 +66,7 @@ public class Lever : NetworkBehaviour
         {
             if (onWall)
             {
-                spriteRenderer.flipY = isToggled;
+                spriteRenderer.flipX = isToggled;
             }
             else
             {

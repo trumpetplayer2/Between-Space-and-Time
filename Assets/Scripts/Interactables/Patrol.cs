@@ -124,7 +124,7 @@ namespace tp2
             if (!status) return;
             reset();
         }
-        
+
         public void reset()
         {
             this.transform.position = initialPos;

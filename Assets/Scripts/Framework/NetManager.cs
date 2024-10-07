@@ -102,10 +102,11 @@ namespace tp2
             }
             if(chromaFinish && atlasFinish)
             {
+                loading = true;
                 nextScene();
                 chromaFinish = false;
                 atlasFinish = false;
-                loading = true;
+                
             }
         }
 
@@ -165,6 +166,11 @@ namespace tp2
             if (!(atlasFinish && chromaFinish)) return;
             currentScene += 1;
             setSceneRpc(SceneList[currentScene]);
+        }
+
+        public void endLoading()
+        {
+            loading = false;
         }
     }
 }

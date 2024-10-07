@@ -74,6 +74,7 @@ namespace tp2
                     {
                         //Make sure player who clicked R is the parent
                         if (NetPlayer.pressedR == null) return;
+                        if(this.transform.parent == null) { release(); return; }
                         if (!this.gameObject.transform.parent.Equals(NetPlayer.pressedR.gameObject.transform)) return;
                         release();
                     }

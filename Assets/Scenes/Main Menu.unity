@@ -378,6 +378,7 @@ MonoBehaviour:
   - Forest 1
   - Forest 2
   - Forest 3
+  - Forest 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

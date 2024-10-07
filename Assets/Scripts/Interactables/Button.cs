@@ -28,6 +28,7 @@ namespace tp2
         private void Update()
         {
             Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, new Vector2(sizex, sizey), 0f, m_LayerMask);
+            bool temp = isToggled;
             try
             {
                 if (hitColliders == null)
@@ -37,11 +38,15 @@ namespace tp2
                 }
                 else if (hitColliders.Length == 0)
                 {
-                    toggleRpc(false);
+                    temp = false;
                 }
                 else if (hitColliders.Length > 0)
                 {
-                    toggleRpc(true);
+                    temp = true;
+                }
+                if (temp != isToggled)
+                {
+                    toggleRpc(temp);
                 }
             }
             catch { }
