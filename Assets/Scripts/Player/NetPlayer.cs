@@ -187,10 +187,13 @@ namespace tp2
                 jumpTime = 0;
             }
             //Cap Velocity
-            float velocity = Mathf.Abs(Player.velocity.x) + Mathf.Abs(Player.velocity.y);
-            if (velocity > maxVelocity)
+            if(Mathf.Abs(Player.velocity.x) > maxVelocity || Mathf.Abs(Player.velocity.y) > maxVelocity)
             {
-                Vector2 newVelocity = new Vector2(Player.velocity.x / velocity, Player.velocity.y / velocity);
+                //Cap Abs(X) to max velocity and Abs(Y) to max velocity. Make sure sign matches by dividing the og value by the abs value of itself
+                Vector2 newVelocity = new Vector2(Mathf.Min(Mathf.Abs(Player.velocity.x), maxVelocity) 
+                    * (Player.velocity.x/Mathf.Abs(Player.velocity.x)), 
+                    Mathf.Min(Mathf.Abs(Player.velocity.y), maxVelocity) 
+                    * (Player.velocity.y / Mathf.Abs(Player.velocity.y)));
                 Player.velocity = newVelocity;
             }
         }

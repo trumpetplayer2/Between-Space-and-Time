@@ -12,6 +12,7 @@ public class Lever : NetworkBehaviour
     public float cooldown = 0.5f;
     float curCooldown = 0;
     bool canToggle = false;
+    bool broken = false;
     [SerializeField] private UnityEvent<bool> LeverFlipped;
 
     private void Start()
@@ -36,6 +37,7 @@ public class Lever : NetworkBehaviour
 
     public void Update()
     {
+        if (broken) return;
         if(curCooldown > 0)
         {
             curCooldown -= Time.deltaTime;
@@ -48,6 +50,12 @@ public class Lever : NetworkBehaviour
         {
             toggleRpc();
         }
+    }
+
+    public void toggleBroken(bool broke)
+    {
+        broken = broke;
+        //TODO: Play breaking Audio Cue if true
     }
 
     [Rpc(SendTo.Everyone)]

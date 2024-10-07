@@ -150,7 +150,10 @@ namespace tp2
         private void setSceneRpc(string scene)
         {
             if (!m_NetworkManager.IsServer) return;
-            
+            for(int i = 0; i < SceneList.Length; i++)
+            {
+                if (SceneList[i].ToLower().Equals(scene.ToLower())) currentScene = i; continue;
+            }
             atlasFinish = false;
             chromaFinish = false;
             NetworkManager.Singleton.SceneManager.LoadScene(scene, LoadSceneMode.Single);

@@ -10,7 +10,6 @@ namespace tp2
     {
         public bool isToggled;
         SpriteRenderer spriteRenderer;
-        public bool onWall = false;
         public float cooldown = 0.5f;
         public LayerMask m_LayerMask;
         public float sizex = 2;
@@ -18,12 +17,11 @@ namespace tp2
         [SerializeField] private UnityEvent<bool> ButtonUpdated;
         
 
-        private void Start()
+        private void Awake()
         {
             if (spriteRenderer == null)
             {
                 spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-                
             }
         }
 
@@ -46,7 +44,7 @@ namespace tp2
                     toggleRpc(true);
                 }
             }
-            catch {}
+            catch { }
         }
 
         [Rpc(SendTo.Everyone)]

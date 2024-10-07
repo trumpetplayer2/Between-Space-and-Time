@@ -29,13 +29,17 @@ namespace tp2
         // Update is called once per frame
         void Update()
         {
-            int max = Mathf.Min(parallaxLayers.Length, parallaxSpeeds.Length);
-            for(int i = 0; i < max; i++)
+            try
             {
-                GameObject bg = parallaxLayers[i];
-                Vector2 speed = parallaxSpeeds[i];
-                bg.transform.localPosition = new Vector3(localPlayer.transform.position.x * speed.x, localPlayer.transform.position.y * speed.y, 0);
+                int max = Mathf.Min(parallaxLayers.Length, parallaxSpeeds.Length);
+                for (int i = 0; i < max; i++)
+                {
+                    GameObject bg = parallaxLayers[i];
+                    Vector2 speed = parallaxSpeeds[i];
+                    bg.transform.localPosition = new Vector3(localPlayer.transform.position.x * speed.x, localPlayer.transform.position.y * speed.y, 0);
+                }
             }
+            catch { }
         }
     }
 }

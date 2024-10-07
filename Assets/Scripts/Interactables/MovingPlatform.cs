@@ -13,10 +13,14 @@ namespace tp2
         float cooldown = 0.2f;
         float timer = 0;
         public int[] layerWhitelist;
+        public GameObject[] blacklist;
 
         private void Start()
         {
-            //initializeParentRpc();
+            if(this.transform.parent != null)
+            {
+                addObjectToBlacklist(this.transform.parent.gameObject);
+            }
         }
 
         private void Update()
@@ -28,6 +32,7 @@ namespace tp2
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            //We only want to check player first time through. This is to prevent glitches with box
             if (!collision.tag.ToLower().Equals("player")) return;
             if (!onWhitelist(collision)) return;
             PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
@@ -36,9 +41,8 @@ namespace tp2
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (!collision.tag.ToLower().Equals("player")) return;
-            if (collision.gameObject.transform.parent == this.transform) return;
-            if (!onWhitelist(collision)) return;
+            if (onBlacklist(collision.gameObject)) return;
+            if (checkParent(collision.gameObject)) return;
             PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
             if (temp == PlayerType.None) return;
             updateParentRpc(temp);
@@ -55,7 +59,7 @@ namespace tp2
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (!collision.tag.ToLower().Equals("player")) return;
+            if (onBlacklist(collision.gameObject)) return;
             if (!onWhitelist(collision)) return;
             PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
             if (temp == PlayerType.None) return;
@@ -75,14 +79,38 @@ namespace tp2
             timer = cooldown;
         }
 
-        [Rpc(SendTo.Server)]
-        void initializeParentRpc()
+        public void addObjectToBlacklist(GameObject item)
         {
-            //if (parent != null)
-            //{
-            //    this.transform.parent = parent.transform;
-            //    this.transform.localPosition = new Vector3(xOffset, yOffset, 0);
-            //}
+            if (onBlacklist(item)) return;
+            GameObject[] temp = new GameObject[blacklist.Length + 1];
+            for(int i = 0; i < blacklist.Length; i++)
+            {
+                temp[i] = blacklist[i];
+            }
+            temp[blacklist.Length] = item;
+            blacklist = temp;
+        }
+
+        public bool onBlacklist(GameObject obj)
+        {
+            foreach(GameObject item in blacklist)
+            {
+                if(item == obj)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool checkParent(GameObject obj)
+        {
+            //If Parent is null, return false. This is highest level
+            if (obj.transform.parent == null) return false;
+            //If Parent is this, return true.
+            if (obj.transform.parent == this.transform) return true;
+            //If parent is not null and not this, check if the parent has a parent.
+            return checkParent(obj.transform.parent.gameObject);
         }
     }
 }
