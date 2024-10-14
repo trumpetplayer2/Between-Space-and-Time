@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 namespace tp2
 {
@@ -15,12 +16,12 @@ namespace tp2
         float weight;
         GameObject[] capableGrab = new GameObject[2];
         int layer = 0;
-
         private void Start()
         {
             body = GetComponent<Rigidbody2D>();
             weight = body.mass;
             layer = gameObject.layer;
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -45,6 +46,7 @@ namespace tp2
             {
                 capableGrab[0] = null;
             }
+
         }
 
         public void Update()
@@ -193,7 +195,13 @@ namespace tp2
         {
             transform.position = Pos;
         }
-
         
+        void OnSceneUnloaded(Scene current)
+        {
+            if (this != null)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

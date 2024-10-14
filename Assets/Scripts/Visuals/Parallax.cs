@@ -12,14 +12,8 @@ namespace tp2
 
         private void Start()
         {
-            if(PlayerTypeExtensions.AtlasObject.GetComponent<Rigidbody2D>() != null)
-            {
-                localPlayer = PlayerTypeExtensions.AtlasObject;
-            }else if (PlayerTypeExtensions.ChromaObject.GetComponent<Rigidbody2D>() != null)
-            {
-                localPlayer = PlayerTypeExtensions.ChromaObject;
-            }
-            else
+            localPlayer = PlayerTypeExtensions.localPlayer;
+            if(localPlayer == null)
             {
                 Debug.LogWarning("Error Finding Local Player");
                 Destroy(this);

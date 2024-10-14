@@ -379,6 +379,7 @@ MonoBehaviour:
   - Forest 2
   - Forest 3
   - Forest 4
+  menu: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

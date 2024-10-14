@@ -63,6 +63,60 @@ namespace tp2
                     return PlayerType.None;
             }
         }
+
+        public static PlayerType getTypeof(GameObject obj)
+        {
+            return getEnumOf(obj);
+        }
+
+        public static PlayerType getTypeof(int val)
+        {
+            return getTypeFromValue(val);
+        }
+
+        public static PlayerType getTypeFromValue(int val)
+        {
+            switch (val)
+            {
+                case 0:
+                    return PlayerType.Atlas;
+                case 1:
+                    return PlayerType.Chroma;
+                default:
+                    return PlayerType.None;
+            }
+        }
+
+        public static GameObject getObject(int val)
+        {
+            switch (val)
+            {
+                case 0:
+                    return AtlasObject;
+                case 1:
+                    return ChromaObject;
+                default:
+                    return null;
+            }
+        }
+
+        public static int getIDof(GameObject obj)
+        {
+            return getIDof(getTypeof(obj));
+        }
+
+        public static int getIDof(PlayerType type)
+        {
+            switch (type)
+            {
+                case PlayerType.Atlas:
+                    return 0;
+                case PlayerType.Chroma:
+                    return 1;
+                default:
+                    return -1;
+            }
+        }
     }
     public enum PlayerType
     {

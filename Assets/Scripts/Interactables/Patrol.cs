@@ -13,7 +13,8 @@ namespace tp2
         public bool moving = true;
         float clock = 0;
         Vector3 initialPos;
-
+        Transform previousTransform;
+        
         private void Start()
         {
             initialPos = this.transform.position;
@@ -29,20 +30,16 @@ namespace tp2
                 speed = 0.000001f;
             }
             if (!moving) return;
-            //Check Current Pos is in bounds
-            if (currentPos >= locations.Length)
+            if(previousTransform == null)
             {
-                currentPos = 0;
-            }
-            //Previous Transform
-            Transform previousTransform;
-            if(currentPos == 0)
-            {
-                previousTransform = locations[locations.Length - 1];
-            }
-            else
-            {
-                previousTransform = locations[currentPos - 1];
+                if (currentPos == 0)
+                {
+                    previousTransform = locations[locations.Length - 1];
+                }
+                else
+                {
+                    previousTransform = locations[currentPos - 1];
+                }
             }
             //Goal Transform
             Transform goal = locations[currentPos];
@@ -65,6 +62,20 @@ namespace tp2
             {
                 currentPos++;
                 clock = 0;
+                //Check Current Pos is in bounds
+                if (currentPos >= locations.Length)
+                {
+                    currentPos = 0;
+                }
+                //Assign Previous Transform
+                if (currentPos == 0)
+                {
+                    previousTransform = locations[locations.Length - 1];
+                }
+                else
+                {
+                    previousTransform = locations[currentPos - 1];
+                }
             }
         }
 

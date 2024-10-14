@@ -26,6 +26,7 @@ namespace tp2
         bool loading = false;
         int currentScene = 0;
         public string[] SceneList;
+        public GameObject menu;
         
          
         void Awake()
@@ -42,6 +43,14 @@ namespace tp2
             }
             m_NetworkManager = GetComponent<NetworkManager>();
             m_UnityTransport = GetComponent<UnityTransport>();
+            SceneManager.sceneLoaded += OnSceneLoad;
+        }
+
+        void OnSceneLoad(Scene scene, LoadSceneMode mode)
+        {
+            atlasFinish = false;
+            chromaFinish = false;
+            loading = false;
         }
 
         public void startHost()
@@ -100,16 +109,27 @@ namespace tp2
                 log("Timedout! Ping was " + ping);
                 m_NetworkManager.DisconnectClient(m_NetworkManager.LocalClientId, "Connection Timeout");
             }
-            if(chromaFinish && atlasFinish)
+            if(chromaFinish && atlasFinish && !loading)
             {
                 loading = true;
-                nextScene();
-                chromaFinish = false;
-                atlasFinish = false;
-                
+                if (menu != null)
+                {
+                    openSelectionMenu();
+                }
+                else
+                {
+                    nextScene();
+                }
             }
         }
 
+        private void openSelectionMenu()
+        {
+            if (!m_NetworkManager.IsHost) return;
+            if (menu == null) return;
+            //Open Menu
+            menu.SetActive(true);
+        }
 
         private void Disconnect()
         {
@@ -143,8 +163,15 @@ namespace tp2
         
         public void updateScene(int scene)
         {
-            
+            if (!m_NetworkManager.IsServer) return;
+            updateCurSceneRpc(scene);
             setSceneRpc(SceneList[scene]);
+        }
+
+        [Rpc(SendTo.NotServer)]
+        void updateCurSceneRpc(int scene)
+        {
+            currentScene = scene;
         }
 
         [Rpc(SendTo.Server)]
@@ -158,7 +185,6 @@ namespace tp2
             atlasFinish = false;
             chromaFinish = false;
             NetworkManager.Singleton.SceneManager.LoadScene(scene, LoadSceneMode.Single);
-            loading = false;
         }
 
         public void nextScene()

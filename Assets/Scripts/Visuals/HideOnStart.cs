@@ -36,6 +36,7 @@ namespace tp2
         {
             foreach (SpriteRenderer r in renderers)
             {
+                if (r.gameObject.tag.ToLower().Equals("fakeplayer")) continue;
                 r.enabled = true;
             }
             Destroy(this);
