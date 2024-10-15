@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 611087073
+  GlobalObjectIdHash: 4282223532
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a2e0a2936efc64f95506eaae4c7ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerWhitelist: 06000000070000000a0000000b0000000c000000
+  layerWhitelist: 06000000070000000a0000000b0000000c0000000f00000010000000
   blacklist: []
   fakePlayers:
   - {fileID: 3422573759500598711}

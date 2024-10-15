@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3715059719
+  GlobalObjectIdHash: 4272931227
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -121,11 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isToggled: 0
-  onWall: 0
   cooldown: 0.5
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 5184
+    m_Bits: 103488
   sizex: 0.8
   sizey: 0.223
   ButtonUpdated:

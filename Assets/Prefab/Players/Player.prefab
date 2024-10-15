@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1672430775
+  GlobalObjectIdHash: 3216012804
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -1230,10 +1230,10 @@ MonoBehaviour:
   maxJumpTime: 0.15
   AtlasMask:
     serializedVersion: 2
-    m_Bits: 5631
+    m_Bits: 103935
   ChromaMask:
     serializedVersion: 2
-    m_Bits: 6911
+    m_Bits: 105215
   maxVelocity: 20
 --- !u!61 &-1307843003914596411
 BoxCollider2D:

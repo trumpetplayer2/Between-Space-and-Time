@@ -147,7 +147,7 @@ namespace tp2
             }
             else
             {
-                updateLayerRpc(this.transform.parent.gameObject.layer);
+                updateLayerRpc(PlayerTypeExtensions.getBoxLayer(PlayerTypeExtensions.getEnumOf(this.transform.parent.gameObject.layer)));
             }
         }
         [Rpc(SendTo.Everyone)]

@@ -64,6 +64,19 @@ namespace tp2
             }
         }
 
+        public static PlayerType getEnumOf(int i)
+        {
+            switch (i)
+            {
+                case 6:
+                    return PlayerType.Atlas;
+                case 7:
+                    return PlayerType.Chroma;
+                default:
+                    return PlayerType.None;
+            }
+        }
+
         public static PlayerType getTypeof(GameObject obj)
         {
             return getEnumOf(obj);
@@ -84,6 +97,19 @@ namespace tp2
                     return PlayerType.Chroma;
                 default:
                     return PlayerType.None;
+            }
+        }
+
+        public static int getBoxLayer(PlayerType t)
+        {
+            switch (t)
+            {
+                case PlayerType.Atlas:
+                    return 15;
+                case PlayerType.Chroma:
+                    return 16;
+                default:
+                    return 12;
             }
         }
 
