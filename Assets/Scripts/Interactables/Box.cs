@@ -59,14 +59,14 @@ namespace tp2
                     cooldown = 0;
                 }
             }
-            if (IsServer)
-            {
-                UpdateLocationRpc(this.transform.position);
-            }
-            if (IsOwner)
-            {
-                SubmitPositionRequestRpc(transform.position);
-            }
+            //if (IsServer)
+            //{
+            //    UpdateLocationRpc(this.transform.position);
+            //}
+            //if (IsOwner)
+            //{
+            //    SubmitPositionRequestRpc(transform.position);
+            //}
             //Watch for input
             if (Input.GetButton("Interact"))
             {
@@ -183,18 +183,18 @@ namespace tp2
             this.held = isHeld;
         }
 
-        [Rpc(SendTo.Server)]
-        void SubmitPositionRequestRpc(Vector3 Pos, RpcParams rpcParams = default)
-        {
-            transform.position = Pos;
-            Position.Value = Pos;
-        }
+        //[Rpc(SendTo.Server)]
+        //void SubmitPositionRequestRpc(Vector3 Pos, RpcParams rpcParams = default)
+        //{
+        //    transform.position = Pos;
+        //    Position.Value = Pos;
+        //}
 
-        [Rpc(SendTo.NotOwner)]
-        public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
-        {
-            transform.position = Pos;
-        }
+        //[Rpc(SendTo.NotOwner)]
+        //public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
+        //{
+        //    transform.position = Pos;
+        //}
         
         void OnSceneUnloaded(Scene current)
         {

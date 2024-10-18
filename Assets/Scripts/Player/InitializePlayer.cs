@@ -22,9 +22,29 @@ namespace tp2
             }
         }
 
+        public static void disconnect(ulong player)
+        {
+            PlayerType temp = getEnumOf(player);
+            switch (temp)
+            {
+                case PlayerType.Atlas:
+                    
+                    AtlasObject = null;
+                    return;
+                case PlayerType.Chroma:
+                    ChromaObject = null;
+                    return;
+            }
+        }
+
         public static PlayerType getLocalPlayerType()
         {
             return getEnumOf(localPlayer);
+        }
+
+        public static GameObject getLocalPlayer()
+        {
+            return localPlayer;
         }
 
         public static void initializeLocalPlayer()
@@ -45,7 +65,7 @@ namespace tp2
             }
             if(localPlayer == null)
             {
-                Debug.LogWarning("Error Finding Local Player");
+                NetManager.instance.logRpc("Error Finding Local Player");
             }
         }
 
@@ -75,6 +95,24 @@ namespace tp2
                 default:
                     return PlayerType.None;
             }
+        }
+
+        public static PlayerType getEnumOf(ulong pid)
+        {
+            return getEnumOf(getObject(pid));
+        }
+
+        public static GameObject getObject(ulong pid)
+        {
+            if (AtlasObject.GetComponent<NetworkObject>().OwnerClientId == pid)
+            {
+                return AtlasObject;
+            }
+            if(ChromaObject.GetComponent<NetworkObject>().OwnerClientId == pid)
+            {
+                return ChromaObject;
+            }
+            return null;
         }
 
         public static PlayerType getTypeof(GameObject obj)

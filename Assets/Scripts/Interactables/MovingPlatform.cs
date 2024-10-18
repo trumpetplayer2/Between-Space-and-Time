@@ -52,6 +52,7 @@ namespace tp2
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
+            if (collision.tag.ToLower().Equals("player")) return;
             if (check > updateCheck)
             {
                 fakePlayer(collision);
@@ -183,8 +184,12 @@ namespace tp2
         [Rpc(SendTo.Server)]
         void removeParentRpc(PlayerType type)
         {
-            PlayerTypeExtensions.getObject(type).transform.parent = null;
-            timer = cooldown;
+            try
+            {
+                PlayerTypeExtensions.getObject(type).transform.parent = null;
+                timer = cooldown;
+            }
+            catch { }
         }
 
         public void addObjectToBlacklist(GameObject item)

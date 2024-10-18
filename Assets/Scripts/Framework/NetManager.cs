@@ -5,6 +5,7 @@ using Unity.Netcode.Transports.UTP;
 using Unity.Netcode;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace tp2
 {
@@ -27,7 +28,6 @@ namespace tp2
         int currentScene = 0;
         public string[] SceneList;
         public GameObject menu;
-        
          
         void Awake()
         {
@@ -44,6 +44,33 @@ namespace tp2
             m_NetworkManager = GetComponent<NetworkManager>();
             m_UnityTransport = GetComponent<UnityTransport>();
             SceneManager.sceneLoaded += OnSceneLoad;
+            m_NetworkManager.OnClientDisconnectCallback += onDisconnect;
+        }
+
+        void onDisconnect(ulong clientID)
+        {
+            //Get Player Object
+            GameObject player = PlayerTypeExtensions.getObject(clientID);
+            if (player == null) return;
+            //Remove player from list
+            PlayerTypeExtensions.disconnect(clientID);
+            //Destroy it
+            Destroy(player);
+            //Someone disconnected from server, send back to lobby
+            setSceneRpc(lobby);
+        }
+
+        public void DisconnectPlayer(NetworkObject player) 
+        {
+            if (player.IsOwnedByServer)
+            {
+                m_NetworkManager.Shutdown();
+                SceneManager.LoadScene(0);
+            }
+            else
+            {
+                m_NetworkManager.DisconnectClient(player.OwnerClientId);
+            }
         }
 
         void OnSceneLoad(Scene scene, LoadSceneMode mode)
@@ -63,7 +90,7 @@ namespace tp2
 
         public void connectClient()
         {
-            Debug.Log("Attempting to connect to " + address);
+            log("Attempting to connect to " + address);
             if (m_UnityTransport != null)
             {
                 try
@@ -104,10 +131,15 @@ namespace tp2
             float ping = (m_NetworkManager.LocalTime - lastKnownServerTime).TimeAsFloat;
             //log("ping: " + ping);
             //If Ping passes timeout threshold, disconnect
-            if(ping >= timeout)
+            //if(ping >= timeout)
+            //{
+            //    log("Timedout! Ping was " + ping);
+            //    m_NetworkManager.DisconnectClient(m_NetworkManager.LocalClientId, "Connection Timeout");
+            //}
+            if(PingTracker.instance != null)
             {
-                log("Timedout! Ping was " + ping);
-                m_NetworkManager.DisconnectClient(m_NetworkManager.LocalClientId, "Connection Timeout");
+                //Send Ping in ms to PingTracker
+                PingTracker.instance.updatePing(ping * 1000);
             }
             if(chromaFinish && atlasFinish && !loading)
             {
@@ -145,7 +177,14 @@ namespace tp2
         [Rpc(SendTo.Server)]
         public void logRpc(ulong clientID, string s)
         {
-            Debug.Log(clientID + ": " + s);
+            logRpc(clientID + ": " + s);
+        }
+
+        [Rpc(SendTo.Server)]
+        public void logRpc(string s)
+        {
+            if (Console.instance == null) return;
+            Console.instance.Log(s);
         }
 
         public void updateAtlasFinish(bool state)

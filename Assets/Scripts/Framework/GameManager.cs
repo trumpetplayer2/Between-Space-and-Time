@@ -44,7 +44,6 @@ namespace tp2
                     chromaInCutscene.Value = state;
                     break;
             }
-            Debug.Log(atlasInCutscene.Value + " " + chromaInCutscene.Value);
         }
 
         public bool getAtlasInCutscene()

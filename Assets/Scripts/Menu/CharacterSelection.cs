@@ -15,7 +15,19 @@ namespace tp2
 
         public void Start()
         {
-            autoselectRpc(this.NetworkManager.LocalClientId);
+            NetworkManager.Singleton.OnClientConnectedCallback += autoselectRpc;
+            if(PlayerTypeExtensions.AtlasObject != null)
+            {
+                Atlas = PlayerTypeExtensions.AtlasObject.GetComponent<NetworkObject>();
+            }
+            if(PlayerTypeExtensions.ChromaObject != null)
+            {
+                Chroma = PlayerTypeExtensions.ChromaObject.GetComponent<NetworkObject>();
+            }
+            if(!(Chroma == null && Atlas == null))
+            {
+                hideMenuRpc();
+            }
         }
         
         [Rpc(SendTo.Server)]
@@ -112,6 +124,7 @@ namespace tp2
             //Spawn Atlas
             Atlas = Instantiate(aPrefab);
             Atlas.SpawnAsPlayerObject(owner);
+            Atlas.GetComponent<InitializePlayer>().spawnPositionsRpc();
             //Hide the menu for all players
             hideMenuRpc();
             //Autoselect if other player is connected
@@ -124,6 +137,7 @@ namespace tp2
             if (!checkAvailable(PlayerType.Chroma)) return;
             Chroma = Instantiate(cPrefab);
             Chroma.SpawnAsPlayerObject(owner);
+            Chroma.GetComponent<InitializePlayer>().spawnPositionsRpc();
             //Hide the menu for all players
             hideMenuRpc();
             //Autoselect if other player is connected

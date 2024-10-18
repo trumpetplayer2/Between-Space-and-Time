@@ -290,8 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ProtocolType: 0
-  m_MaxPacketQueueSize: 128
-  m_MaxPayloadSize: 6144
+  m_MaxPacketQueueSize: 1000
+  m_MaxPayloadSize: 12288
   m_HeartbeatTimeoutMS: 500
   m_ConnectTimeoutMS: 1000
   m_MaxConnectAttempts: 60
@@ -334,7 +334,7 @@ MonoBehaviour:
     ForceSamePrefabs: 1
     RecycleNetworkIds: 1
     NetworkIdRecycleDelay: 120
-    RpcHashSize: 0
+    RpcHashSize: 1
     LoadSceneTimeOut: 120
     SpawnTimeout: 1
     EnableNetworkLogs: 1
@@ -371,7 +371,7 @@ MonoBehaviour:
   players:
   - {fileID: 0}
   - {fileID: 0}
-  timeout: 1000
+  timeout: 100000
   SceneList:
   - Main Menu
   - Lobby

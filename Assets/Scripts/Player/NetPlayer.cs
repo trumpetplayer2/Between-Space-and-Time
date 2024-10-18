@@ -25,6 +25,7 @@ namespace tp2
         public static NetworkObject pressedR;
         public static bool paused = false;
         public float maxVelocity = 20;
+        bool frameUpdate = false;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -119,12 +120,15 @@ namespace tp2
         [Rpc(SendTo.Server)]
         void SubmitPositionRequestRpc(Vector3 Pos, RpcParams rpcParams = default)
         {
+            //Only update pos once per frame
             transform.position = Pos;
             Position.Value = Pos;
+            UpdateLocationRpc(Pos);
         }
 
         private void FixedUpdate()
         {
+            
             if (!IsClient) return;
             if (!IsOwner)
             {
@@ -147,10 +151,6 @@ namespace tp2
 
         void Update()
         {
-            if (IsServer)
-            {
-                UpdateLocationRpc(Position.Value);
-            }
             //Player movement
             if (!IsOwner)
             {
