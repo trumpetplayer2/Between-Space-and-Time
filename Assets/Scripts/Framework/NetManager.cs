@@ -34,7 +34,7 @@ namespace tp2
             if(instance != null)
             {
                 //Refresh instance if it already exists
-                Destroy(instance);
+                Destroy(this.gameObject);
             }
             instance = this;
             for(int i = 0; i < players.Length; i++)
@@ -49,9 +49,19 @@ namespace tp2
 
         void onDisconnect(ulong clientID)
         {
-            //Get Player Object
-            GameObject player = PlayerTypeExtensions.getObject(clientID);
-            if (player == null) return;
+            if (m_NetworkManager == null) return;
+            if (m_NetworkManager.ShutdownInProgress) return;
+            GameObject player;
+            try
+            {
+                //Get Player Object
+                player = PlayerTypeExtensions.getObject(clientID);
+                if (player == null) return;
+            }
+            catch
+            {
+                return;
+            }
             //Remove player from list
             PlayerTypeExtensions.disconnect(clientID);
             //Destroy it
@@ -65,6 +75,8 @@ namespace tp2
             if (player.IsOwnedByServer)
             {
                 m_NetworkManager.Shutdown();
+                Destroy(this.gameObject);
+                instance = null;
                 SceneManager.LoadScene(0);
             }
             else
@@ -84,7 +96,7 @@ namespace tp2
         {
             //Start Host
             m_NetworkManager.StartHost();
-            NetworkManager.Singleton.SceneManager.LoadScene(lobby, LoadSceneMode.Single);
+            m_NetworkManager.SceneManager.LoadScene(lobby, LoadSceneMode.Single);
             currentScene = 1;
         }
 
@@ -171,7 +183,11 @@ namespace tp2
 
         public static void log(string s)
         {
-            instance.logRpc(m_NetworkManager.LocalClientId, s);
+            try
+            {
+                instance.logRpc(m_NetworkManager.LocalClientId, s);
+            }
+            catch {}
         }
 
         [Rpc(SendTo.Server)]
@@ -223,7 +239,14 @@ namespace tp2
             }
             atlasFinish = false;
             chromaFinish = false;
-            NetworkManager.Singleton.SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            try
+            {
+                m_NetworkManager.SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            }
+            catch(Exception e)
+            {
+                log("Failed to change level!" + e.StackTrace);
+            }
         }
 
         public void nextScene()

@@ -203,6 +203,7 @@ namespace tp2
 
         public override void OnDestroy()
         {
+            if (NetManager.instance == null) return;
             switch (playerType)
             {
                 case PlayerType.Atlas:

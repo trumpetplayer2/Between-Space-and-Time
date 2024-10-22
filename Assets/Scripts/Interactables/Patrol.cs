@@ -139,6 +139,9 @@ namespace tp2
         public void reset()
         {
             this.transform.position = initialPos;
+            currentPos = 0;
+            previousTransform = previousTransform = locations[currentPos - 1];
+            clock = 0;
         }
     }
 }

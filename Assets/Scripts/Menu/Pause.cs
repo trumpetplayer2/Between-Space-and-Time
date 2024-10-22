@@ -11,6 +11,8 @@ namespace tp2
         // Update is called once per frame
         void Update()
         {
+            //If no players, Pause wont work
+            if (PlayerTypeExtensions.getObject(PlayerType.Atlas) == null && PlayerTypeExtensions.getObject(PlayerType.Chroma) == null) { return; }
             if (Input.GetButtonDown("Pause"))
             {
                 toggleMenu();
@@ -34,7 +36,11 @@ namespace tp2
 
         public void disconnect()
         {
-            NetManager.instance.DisconnectPlayer(PlayerTypeExtensions.getLocalPlayer().GetComponent<NetworkObject>());
+            try
+            {
+                NetManager.instance.DisconnectPlayer(PlayerTypeExtensions.getLocalPlayer().GetComponent<NetworkObject>());
+            }
+            catch { };
         }
     }
 }

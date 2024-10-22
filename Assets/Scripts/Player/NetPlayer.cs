@@ -25,7 +25,6 @@ namespace tp2
         public static NetworkObject pressedR;
         public static bool paused = false;
         public float maxVelocity = 20;
-        bool frameUpdate = false;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{

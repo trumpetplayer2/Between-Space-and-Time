@@ -17,7 +17,7 @@ namespace tp2
             if (instance != null)
             {
                 //Refresh instance if it already exists
-                Destroy(instance);
+                Destroy(instance.gameObject);
             }
             instance = this;
             DontDestroyOnLoad(this);
@@ -58,6 +58,10 @@ namespace tp2
 
         private void OnSceneUnloaded(Scene current)
         {
+            if (NetManager.instance == null)
+            {
+                return;
+            }
             foreach (InitializePlayer init in NetManager.instance.players)
             {
                 if (init == null) continue;
