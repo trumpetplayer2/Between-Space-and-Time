@@ -35,6 +35,7 @@ namespace tp2
             {
                 //Refresh instance if it already exists
                 Destroy(this.gameObject);
+                return;
             }
             instance = this;
             for(int i = 0; i < players.Length; i++)
@@ -50,6 +51,7 @@ namespace tp2
         void onDisconnect(ulong clientID)
         {
             if (m_NetworkManager == null) return;
+            if(clientID == m_NetworkManager.LocalClientId) { userDisconnect(); };
             if (m_NetworkManager.ShutdownInProgress) return;
             GameObject player;
             try
@@ -70,19 +72,21 @@ namespace tp2
             setSceneRpc(lobby);
         }
 
-        public void DisconnectPlayer(NetworkObject player) 
+        void userDisconnect()
         {
-            if (player.IsOwnedByServer)
-            {
-                m_NetworkManager.Shutdown();
-                Destroy(this.gameObject);
-                instance = null;
-                SceneManager.LoadScene(0);
-            }
-            else
-            {
-                m_NetworkManager.DisconnectClient(player.OwnerClientId);
-            }
+            //Destroy object, reset instance, and load menu
+            m_NetworkManager.Shutdown();
+            SceneManager.LoadScene(0);
+            PlayerTypeExtensions.AtlasObject = null;
+            PlayerTypeExtensions.ChromaObject = null;
+            CharacterSelection.Atlas = null;
+            CharacterSelection.Chroma = null;
+            PlayerTypeExtensions.localPlayer = null;
+        }
+
+        public void DisconnectPlayer() 
+        {
+            userDisconnect();
         }
 
         void OnSceneLoad(Scene scene, LoadSceneMode mode)
@@ -169,10 +173,22 @@ namespace tp2
 
         private void openSelectionMenu()
         {
-            if (!m_NetworkManager.IsHost) return;
             if (menu == null) return;
+            NetPlayer.paused = true;
+            if (!m_NetworkManager.IsHost) { 
+                clientSelectionMenu(); 
+                return; 
+            }
             //Open Menu
             menu.SetActive(true);
+        }
+
+        void clientSelectionMenu()
+        {
+            LevelSelect select = menu.GetComponent<LevelSelect>();
+            if (select == null) return;
+            menu.SetActive(true);
+            select.showClient();
         }
 
         private void Disconnect()
@@ -219,6 +235,7 @@ namespace tp2
         public void updateScene(int scene)
         {
             if (!m_NetworkManager.IsServer) return;
+            NetPlayer.paused = false;
             updateCurSceneRpc(scene);
             setSceneRpc(SceneList[scene]);
         }

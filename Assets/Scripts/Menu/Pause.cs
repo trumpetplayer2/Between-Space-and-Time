@@ -8,6 +8,17 @@ namespace tp2
     public class Pause : MonoBehaviour
     {
         public GameObject menu;
+        public UnityEngine.UI.Button lobbyButton;
+
+        private void Start()
+        {
+            if (lobbyButton == null) return;
+            if (PlayerTypeExtensions.getLocalPlayer() == null) return;
+            NetworkObject temp = PlayerTypeExtensions.getLocalPlayer().GetComponent<NetworkObject>();
+            if (temp == null) return;
+            lobbyButton.interactable = temp.IsOwnedByServer;
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -38,7 +49,8 @@ namespace tp2
         {
             try
             {
-                NetManager.instance.DisconnectPlayer(PlayerTypeExtensions.getLocalPlayer().GetComponent<NetworkObject>());
+                //PlayerTypeExtensions.getLocalPlayer().GetComponent<NetworkObject>()
+                NetManager.instance.DisconnectPlayer();
             }
             catch { };
         }

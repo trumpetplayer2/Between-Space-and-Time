@@ -191,11 +191,20 @@ namespace tp2
             //Cap Velocity
             if(Mathf.Abs(Player.velocity.x) > maxVelocity || Mathf.Abs(Player.velocity.y) > maxVelocity)
             {
-                //Cap Abs(X) to max velocity and Abs(Y) to max velocity. Make sure sign matches by dividing the og value by the abs value of itself
-                Vector2 newVelocity = new Vector2(Mathf.Min(Mathf.Abs(Player.velocity.x), maxVelocity) 
-                    * (Player.velocity.x/Mathf.Abs(Player.velocity.x)), 
-                    Mathf.Min(Mathf.Abs(Player.velocity.y), maxVelocity) 
-                    * (Player.velocity.y / Mathf.Abs(Player.velocity.y)));
+                //Cap Abs(X) to max velocity and Abs(Y) to max velocity. Make sure sign matches
+                Vector2 sign = new Vector2(Mathf.Sign(Player.velocity.x), Mathf.Sign(Player.velocity.y));
+                if(sign.x == float.NaN)
+                {
+                    sign.x = 0;
+                }
+                if(sign.y == float.NaN)
+                {
+                    sign.y = 0;
+                }
+                Vector2 newVelocity = new Vector2(Mathf.Min(Mathf.Abs(Player.velocity.x), maxVelocity)
+                    * sign.x,
+                    Mathf.Min(Mathf.Abs(Player.velocity.y), maxVelocity)
+                    * sign.y); ;
                 Player.velocity = newVelocity;
             }
         }

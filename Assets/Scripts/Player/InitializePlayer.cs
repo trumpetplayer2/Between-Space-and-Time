@@ -28,13 +28,13 @@ namespace tp2
             switch (temp)
             {
                 case PlayerType.Atlas:
-                    
                     AtlasObject = null;
                     return;
                 case PlayerType.Chroma:
                     ChromaObject = null;
                     return;
             }
+            localPlayer = null;
         }
 
         public static PlayerType getLocalPlayerType()
@@ -217,7 +217,7 @@ namespace tp2
             }
         }
 
-        [Rpc(SendTo.Server)]
+        [Rpc(SendTo.Everyone)]
         public void spawnPositionsRpc()
         {
             switch (playerType)

@@ -15,21 +15,42 @@ namespace tp2
 
         public void Start()
         {
-            NetworkManager.Singleton.OnClientConnectedCallback += autoselectRpc;
+            NetworkManager.Singleton.OnClientConnectedCallback += autoselect;
             if(PlayerTypeExtensions.AtlasObject != null)
             {
                 Atlas = PlayerTypeExtensions.AtlasObject.GetComponent<NetworkObject>();
             }
+            else
+            {
+                Atlas = null;
+            }
             if(PlayerTypeExtensions.ChromaObject != null)
             {
                 Chroma = PlayerTypeExtensions.ChromaObject.GetComponent<NetworkObject>();
+            }
+            else
+            {
+                Chroma = null;
             }
             if(!(Chroma == null && Atlas == null))
             {
                 hideMenuRpc();
             }
         }
-        
+
+        void autoselect(ulong owner)
+        {
+            if (this.NetworkObject.IsSpawned)
+            {
+                autoselectRpc(owner);
+            }
+        }
+
+        private new void OnDestroy()
+        {
+            NetworkManager.Singleton.OnClientConnectedCallback -= autoselect;
+        }
+
         [Rpc(SendTo.Server)]
         public void autoselectRpc(ulong owner)
         {

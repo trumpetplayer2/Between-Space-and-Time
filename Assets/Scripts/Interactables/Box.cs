@@ -16,6 +16,11 @@ namespace tp2
         float weight;
         GameObject[] capableGrab = new GameObject[2];
         int layer = 0;
+        public float heldWeight = 1f;
+        public float fastThreshold = 0.5f;
+        public float fastMult = 3;
+        Vector3 alignPos = new Vector3(0,0,0);
+        public float dropDistance = 1f;
         private void Start()
         {
             body = GetComponent<Rigidbody2D>();
@@ -46,7 +51,6 @@ namespace tp2
             {
                 capableGrab[0] = null;
             }
-
         }
 
         public void Update()
@@ -57,6 +61,38 @@ namespace tp2
                 if (cooldown < 0)
                 {
                     cooldown = 0;
+                }
+            }
+            if(body != null)
+            {
+                if (transform.parent != null)
+                {
+                    if (PlayerTypeExtensions.getLocalPlayer() == null) return; 
+                    if (transform.parent != PlayerTypeExtensions.getLocalPlayer().transform) return;
+                    if (alignPos == Vector3.zero && curGrabbed)
+                    {
+                        float sign = Mathf.Sign(transform.parent.InverseTransformPoint(transform.position).x);
+                        if (sign == float.NaN) sign = 0;
+                        Vector3 bSize = transform.localScale;
+                        alignPos = new Vector3((bSize.x / 2 + .6f) * sign, 0.01f, transform.position.z);
+                    }
+                    else
+                    {
+                        //Apply a velocity to try to get to goal location. If object is in the way this wont move
+                        body.velocity = (alignPos - transform.parent.InverseTransformPoint(transform.position))/0.1f;
+                        if(Mathf.Abs(body.velocity.x) + Mathf.Abs(body.velocity.y) > fastThreshold)
+                        {
+                            body.velocity = body.velocity * fastMult;
+                        }
+                    }
+                }
+            }
+            //Distance check
+            if (transform.parent != null)
+            {
+                if (Vector2.Distance(transform.parent.position, transform.position) > dropDistance)
+                {
+                    release();
                 }
             }
             //if (IsServer)
@@ -110,7 +146,6 @@ namespace tp2
             curGrabbed = true;
             rigidBodyStuffRpc(true);
             cooldown = 0.5f;
-
         }
         public void release()
         {
@@ -119,6 +154,8 @@ namespace tp2
             updateHolderRpc(false);
             curGrabbed = false;
             rigidBodyStuffRpc(false);
+            alignPos = new Vector3(0, 0, 0);
+            body.velocity = Vector3.zero;
         }
 
         [Rpc(SendTo.Server)]
@@ -150,6 +187,7 @@ namespace tp2
                 updateLayerRpc(PlayerTypeExtensions.getBoxLayer(PlayerTypeExtensions.getEnumOf(this.transform.parent.gameObject.layer)));
             }
         }
+
         [Rpc(SendTo.Everyone)]
         void updateLayerRpc(int newlayer)
         {
@@ -162,13 +200,11 @@ namespace tp2
         {
             if (destroy)
             {
-                Destroy(body);
-                return;
+                body.mass = heldWeight;
             }
             else
             {
-                body = this.gameObject.AddComponent<Rigidbody2D>();
-                body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+                body.constraints = RigidbodyConstraints2D.FreezeRotation;
                 cooldown = 0.5f;
                 body.mass = weight;
             }

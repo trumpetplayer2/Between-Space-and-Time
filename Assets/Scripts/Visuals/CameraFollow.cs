@@ -231,5 +231,18 @@ namespace tp2
                 shakeDuration -= Time.deltaTime * decreaseSpeed;
             }
         }
+
+        public void shake(float amount = 1f, float time = 1f)
+        {
+            amount = amount * 0.01f;
+            time = time * 0.01f;
+            shakeDuration = Mathf.Max(time, shakeDuration);
+            shakeAmount = Mathf.Max(amount, shakeAmount);
+        }
+
+        public void shake(Vector2 s)
+        {
+            shake(s.x, s.y);
+        }
     }
 }

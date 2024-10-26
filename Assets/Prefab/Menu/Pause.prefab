@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 2461428850917946714}
+  lobbyButton: {fileID: 8986180107010762084}
 --- !u!1 &2461428850917946714
 GameObject:
   m_ObjectHideFlags: 0

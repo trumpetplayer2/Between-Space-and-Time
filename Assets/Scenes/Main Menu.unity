@@ -758,8 +758,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 37026753}
-        m_TargetAssemblyTypeName: NetManager, Assembly-CSharp
+      - m_Target: {fileID: 1385394088}
+        m_TargetAssemblyTypeName: tp2.MenuConnect, Assembly-CSharp
         m_MethodName: manualConnect
         m_Mode: 2
         m_Arguments:
@@ -1140,6 +1140,7 @@ GameObject:
   - component: {fileID: 1385394085}
   - component: {fileID: 1385394087}
   - component: {fileID: 1385394086}
+  - component: {fileID: 1385394088}
   m_Layer: 5
   m_Name: Backdrop
   m_TagString: Untagged
@@ -1208,6 +1209,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385394084}
   m_CullTransparentMesh: 1
+--- !u!114 &1385394088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385394084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7f49810e2757343b06dacd0f8c6145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1411796006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,8 +1717,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 37026753}
-        m_TargetAssemblyTypeName: NetManager, Assembly-CSharp
+      - m_Target: {fileID: 1385394088}
+        m_TargetAssemblyTypeName: tp2.MenuConnect, Assembly-CSharp
         m_MethodName: startHost
         m_Mode: 1
         m_Arguments:
