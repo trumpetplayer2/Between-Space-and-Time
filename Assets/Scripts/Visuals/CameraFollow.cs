@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace tp2
 {
+    [System.Serializable]
+    public class CameraShakeVar
+    {
+        [Tooltip("Maximum possible location in a circle around camera, in 1/100ths of a unit")]
+        public float shakeAmount = 1;
+        [Tooltip("Shake time in ms")]
+        public float shakeTime = 1;
+        public CameraShakeVar(float amount, float time)
+        {
+            shakeAmount = amount;
+            shakeTime = time;
+        }
+    }
+
     public class CameraFollow : MonoBehaviour
     {
         //Camera Follow Variables
@@ -235,7 +249,7 @@ namespace tp2
         public void shake(float amount = 1f, float time = 1f)
         {
             amount = amount * 0.01f;
-            time = time * 0.01f;
+            time = time * 0.001f;
             shakeDuration = Mathf.Max(time, shakeDuration);
             shakeAmount = Mathf.Max(amount, shakeAmount);
         }
@@ -243,6 +257,11 @@ namespace tp2
         public void shake(Vector2 s)
         {
             shake(s.x, s.y);
+        }
+
+        public void shake(CameraShakeVar var)
+        {
+            shake(var.shakeAmount, var.shakeTime);
         }
     }
 }

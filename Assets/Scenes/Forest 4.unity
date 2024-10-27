@@ -3509,6 +3509,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3e893953d006041a54a61575e4af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSettings:
+    sfxVolume: 1
+    sfxPitch: 1
+    sfx:
+    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
+    - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
   locations:
   - {fileID: 1460737942}
   - {fileID: 1916181701}

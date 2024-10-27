@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace tp2
 {
-    public class Pause : MonoBehaviour
+    public class Pause : SfxHandler
     {
         public GameObject menu;
         public UnityEngine.UI.Button lobbyButton;

@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace tp2
 {
-    public class InvertActive : MonoBehaviour
+    public class InvertActive : SfxHandler
     {
-        public float screenShake = 1f;
-        public float shakeDuration = 1f;
+        public CameraShakeVar CameraShake = new CameraShakeVar(1f, 10f);
         public void setInvertActive(bool t)
         {
+            CameraFollow.instance.shake(CameraShake);
+            playClip(!t);
             this.gameObject.SetActive(!t);
-            CameraFollow.instance.shake(screenShake, shakeDuration);
         }
     }
 }

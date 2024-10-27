@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace tp2
 {
-    public class Patrol : MonoBehaviour
+    public class Patrol : SfxHandler
     {
         public Transform[] locations;
         int currentPos = 0;
@@ -127,6 +127,7 @@ namespace tp2
 
         public void toggleMoving(bool m)
         {
+            playClip(m);
             moving = m;
         }
 
