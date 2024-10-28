@@ -8,7 +8,7 @@ namespace tp2
 {
     public class Button : NetworkBehaviour
     {
-        public bool isToggled;
+        public NetworkVariable<bool> isToggled = new NetworkVariable<bool>(false);
         SpriteRenderer spriteRenderer;
         public float cooldown = 0.5f;
         public LayerMask m_LayerMask;
@@ -28,13 +28,13 @@ namespace tp2
         private void Update()
         {
             Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, new Vector2(sizex, sizey), 0f, m_LayerMask);
-            bool temp = isToggled;
+            bool temp = isToggled.Value;
             try
             {
                 if (hitColliders == null)
                 {
                     Debug.Log("ERROR: Negative button press");
-                    toggleRpc(false);
+                    temp = false;
                 }
                 else if (hitColliders.Length == 0)
                 {
@@ -44,23 +44,21 @@ namespace tp2
                 {
                     temp = true;
                 }
-                if (temp != isToggled)
+                if (temp != isToggled.Value)
                 {
-                    toggleRpc(temp);
+                    ButtonUpdated.Invoke(temp);
+                    if (IsServer)
+                    {
+                        isToggled.Value = temp;
+                    }
                 }
             }
             catch { }
-        }
-
-        [Rpc(SendTo.Everyone)]
-        void toggleRpc(bool state)
-        {
-            isToggled = state;
             if (spriteRenderer != null)
             {
                 //Modify the look of button.
                 //This will be 2 sprites later on, but for now lets just recolor sprite renderer
-                if (isToggled)
+                if (isToggled.Value)
                 {
                     spriteRenderer.color = Color.red;
                 }
@@ -69,7 +67,6 @@ namespace tp2
                     spriteRenderer.color = Color.white;
                 }
             }
-            ButtonUpdated.Invoke(isToggled);
         }
 
         public void updateAtlasFinish(bool state)

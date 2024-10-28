@@ -373,7 +373,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.5006, y: -4.8533, z: 5}
-  m_LocalScale: {x: 2.4352, y: 1.0215453, z: 1}
+  m_LocalScale: {x: 2.4352, y: 1.021545, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 199224648}
@@ -1276,6 +1276,9 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
     - {fileID: 8300000, guid: 467b365de4df10a4cbb6d00dec679664, type: 3}
     - {fileID: 8300000, guid: befb15fbb8a7ea9469946c133b3cad58, type: 3}
@@ -1775,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934945593340296259, guid: 6c35c90abbb387149a5b3aaca8f82024, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.7859387
+      value: 6.785939
       objectReference: {fileID: 0}
     - target: {fileID: 934945593340296259, guid: 6c35c90abbb387149a5b3aaca8f82024, type: 3}
       propertyPath: m_LocalScale.y
@@ -2335,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8843578
+      value: 2.0134366
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2343,7 +2346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.94
+      value: -5.8754
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3848,7 +3851,6 @@ MonoBehaviour:
   smoothSpeed: 0.125
   locationOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
-  cameraTransform: {fileID: 0}
   shakeAmount: 0.25
   decreaseSpeed: 1
   shakeDuration: 0
@@ -4455,15 +4457,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalScale.x
-      value: 27.20636
+      value: 27.229704
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8843578
+      value: 1.8843583
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0000001
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2931
+      value: -1.2818565
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5421,9 +5427,12 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
-    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
     - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
+    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
   locations:
   - {fileID: 422636908}
   - {fileID: 1507903172}

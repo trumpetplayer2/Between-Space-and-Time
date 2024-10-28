@@ -21,6 +21,7 @@ namespace tp2
             }
             instance = this;
             DontDestroyOnLoad(this);
+            NetPlayer.paused = false;
         }
 
         private void Start()

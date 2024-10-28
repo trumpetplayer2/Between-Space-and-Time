@@ -30,7 +30,6 @@ namespace tp2
         public Vector3 locationOffset;
         public Vector3 rotationOffset;
         //Camera Shake Variables
-        public Transform cameraTransform;
         public float shakeAmount = 0.25f;
         public float decreaseSpeed = 1.0f;
         public float shakeDuration = 0f;
@@ -240,7 +239,7 @@ namespace tp2
         {
             if (shakeDuration > 0)
             {
-                cameraTransform.localPosition = cameraTransform.position + Random.insideUnitSphere * shakeAmount;
+                transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
 
                 shakeDuration -= Time.deltaTime * decreaseSpeed;
             }

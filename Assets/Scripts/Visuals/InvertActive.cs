@@ -10,7 +10,7 @@ namespace tp2
         public void setInvertActive(bool t)
         {
             CameraFollow.instance.shake(CameraShake);
-            playClip(!t);
+            playClip(!t, !t);
             this.gameObject.SetActive(!t);
         }
     }

@@ -9,7 +9,7 @@ namespace tp2
     public class Box : NetworkBehaviour
     {
         Rigidbody2D body;
-        bool held = false;
+        NetworkVariable<bool> held = new NetworkVariable<bool>(false);
         public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
         bool curGrabbed = false;
         float cooldown = 0f;
@@ -58,35 +58,17 @@ namespace tp2
             if (cooldown > 0)
             {
                 cooldown -= Time.deltaTime;
+                //Box shouldnt fly away
+                if(Vector3.Distance(Vector3.zero, body.velocity) > 10f && !curGrabbed)
+                {
+                    body.velocity = Vector3.zero;
+                }
                 if (cooldown < 0)
                 {
                     cooldown = 0;
                 }
             }
-            if(body != null)
-            {
-                if (transform.parent != null)
-                {
-                    if (PlayerTypeExtensions.getLocalPlayer() == null) return; 
-                    if (transform.parent != PlayerTypeExtensions.getLocalPlayer().transform) return;
-                    if (alignPos == Vector3.zero && curGrabbed)
-                    {
-                        float sign = Mathf.Sign(transform.parent.InverseTransformPoint(transform.position).x);
-                        if (sign == float.NaN) sign = 0;
-                        Vector3 bSize = transform.localScale;
-                        alignPos = new Vector3((bSize.x / 2 + .6f) * sign, 0.01f, transform.position.z);
-                    }
-                    else
-                    {
-                        //Apply a velocity to try to get to goal location. If object is in the way this wont move
-                        body.velocity = (alignPos - transform.parent.InverseTransformPoint(transform.position))/0.1f;
-                        if(Mathf.Abs(body.velocity.x) + Mathf.Abs(body.velocity.y) > fastThreshold)
-                        {
-                            body.velocity = body.velocity * fastMult;
-                        }
-                    }
-                }
-            }
+            bodyUpdate();
             //Distance check
             if (transform.parent != null)
             {
@@ -137,9 +119,61 @@ namespace tp2
             }
         }
 
+        void bodyUpdate()
+        {
+            if (cooldown > 0 && !curGrabbed) return;
+            if (!IsOwner) return;
+            if (body != null)
+            {
+                if (transform.parent != null)
+                {
+                    if (alignPos == Vector3.zero && curGrabbed)
+                    {
+                        float sign = Mathf.Sign(transform.parent.InverseTransformPoint(transform.position).x);
+                        if (sign == float.NaN) sign = 0;
+                        Vector3 bSize = transform.localScale;
+                        alignPos = new Vector3((bSize.x / 2 + .6f) * sign, 0.01f, transform.position.z);
+                    }
+                    else
+                    {
+                        //Apply a velocity to try to get to goal location. If object is in the way this wont move
+                        body.velocity = (alignPos - transform.parent.InverseTransformPoint(transform.position)) / 0.1f;
+                        if (Mathf.Abs(body.velocity.x) + Mathf.Abs(body.velocity.y) > fastThreshold)
+                        {
+                            body.velocity = body.velocity * fastMult;
+                        }
+                    }
+                }
+                else
+                {
+                    //Prevent box from flying at extreme speeds
+                    if (Mathf.Abs(body.velocity.x) + Mathf.Abs(body.velocity.y) > 10)
+                    {
+                        if (body.velocity.x > 0.1)
+                        {
+                            body.velocity = Vector3.zero;
+                        }
+                        else
+                        {
+                            float temp = Mathf.Abs(body.velocity.x) + Mathf.Abs(body.velocity.y);
+                            body.velocity = new Vector3(Mathf.Min(body.velocity.x/temp * 10, 5), Mathf.Min(body.velocity.y/temp * 10, 10));
+                        }
+                    }
+                }
+            }
+            if (IsHost)
+            {
+                UpdateLocationRpc(transform.position);
+            }
+            else
+            {
+                SubmitPositionRequestRpc(transform.position);
+            }
+        }
+
         public void grab(NetworkObject grabber, PlayerType type)
         {
-            if (held) return;
+            if (held.Value) return;
             updateParentRpc(type);
             updateOwnerRpc(grabber.OwnerClientId);
             updateHolderRpc(true);
@@ -149,7 +183,7 @@ namespace tp2
         }
         public void release()
         {
-            if (!held) return;
+            if (!held.Value) return;
             updateParentRpc(PlayerType.None);
             updateHolderRpc(false);
             curGrabbed = false;
@@ -212,26 +246,26 @@ namespace tp2
 
         //If it successfully updated, return true, if isHeld is already the same state, return false
         //This is to prevent potential double grab desync
-        [Rpc(SendTo.Everyone)]
+        [Rpc(SendTo.Server)]
         public void updateHolderRpc(bool isHeld)
         {
-            if (this.held == isHeld) return;
-            this.held = isHeld;
+            if (this.held.Value == isHeld) return;
+            this.held.Value = isHeld;
         }
 
-        //[Rpc(SendTo.Server)]
-        //void SubmitPositionRequestRpc(Vector3 Pos, RpcParams rpcParams = default)
-        //{
-        //    transform.position = Pos;
-        //    Position.Value = Pos;
-        //}
+        [Rpc(SendTo.Server)]
+        void SubmitPositionRequestRpc(Vector3 Pos, RpcParams rpcParams = default)
+        {
+            transform.position = Pos;
+            Position.Value = Pos;
+        }
 
-        //[Rpc(SendTo.NotOwner)]
-        //public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
-        //{
-        //    transform.position = Pos;
-        //}
-        
+        [Rpc(SendTo.NotOwner)]
+        public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
+        {
+            transform.position = Pos;
+        }
+
         void OnSceneUnloaded(Scene current)
         {
             if (this != null)

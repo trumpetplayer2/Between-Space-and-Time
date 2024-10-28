@@ -604,9 +604,12 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
-    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
     - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
+    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
   locations:
   - {fileID: 1366279769}
   - {fileID: 153431367}
@@ -1298,9 +1301,12 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
-    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
     - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
+    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
   locations:
   - {fileID: 796316368}
   - {fileID: 524297116}
@@ -2228,9 +2234,12 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
-    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
     - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
+    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
   locations:
   - {fileID: 1373269934}
   - {fileID: 1660243147}
@@ -4584,7 +4593,6 @@ MonoBehaviour:
   smoothSpeed: 0.125
   locationOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
-  cameraTransform: {fileID: 0}
   shakeAmount: 0.25
   decreaseSpeed: 1
   shakeDuration: 0
@@ -5476,9 +5484,12 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
-    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
     - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
+    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
   locations:
   - {fileID: 342956779}
   - {fileID: 1779149608}

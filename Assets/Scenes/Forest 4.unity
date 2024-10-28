@@ -2833,11 +2833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6764922
+      value: 1.676492
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.2508547
+      value: 2.250855
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2882,6 +2882,10 @@ PrefabInstance:
     - target: {fileID: 4889474668409992840, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_Name
       value: Tree (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889474668409992840, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3512,9 +3516,12 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
-    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
     - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
+    - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
   locations:
   - {fileID: 1460737942}
   - {fileID: 1916181701}
@@ -4261,7 +4268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 16.603111
+      value: 16.60311
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalScale.z
@@ -6545,15 +6552,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.85539716
+      value: 0.8553972
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6764922
+      value: 1.676492
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.2508547
+      value: 2.250855
       objectReference: {fileID: 0}
     - target: {fileID: 3137097808640836917, guid: a4135f3dfa923544393207ec7d279c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7088,7 +7095,6 @@ MonoBehaviour:
   smoothSpeed: 0.125
   locationOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
-  cameraTransform: {fileID: 0}
   shakeAmount: 0.25
   decreaseSpeed: 1
   shakeDuration: 0
