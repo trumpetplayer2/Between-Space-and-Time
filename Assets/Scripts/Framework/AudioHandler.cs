@@ -89,7 +89,10 @@ namespace tp2
                     //If clip is not expired, play it
                     if (!c.getExpired())
                     {
-                        if (PlayerTypeExtensions.getLocalPlayerType() != c.playerType) return;
+                        if (c.playerType != PlayerType.None)
+                        {
+                            if (PlayerTypeExtensions.getLocalPlayerType() != c.playerType) return;
+                        }
                         sfxSource.volume = c.volume;
                         sfxSource.pitch = c.pitch;
                         sfxSource.time = Mathf.Min(c.clip.length, c.startTime);
