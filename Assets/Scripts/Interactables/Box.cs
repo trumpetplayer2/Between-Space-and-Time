@@ -11,7 +11,7 @@ namespace tp2
         Rigidbody2D body;
         NetworkVariable<bool> held = new NetworkVariable<bool>(false);
         public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
-        bool curGrabbed = false;
+        //bool curGrabbed = false;
         float cooldown = 0f;
         float weight;
         GameObject[] capableGrab = new GameObject[2];
@@ -59,7 +59,7 @@ namespace tp2
             {
                 cooldown -= Time.deltaTime;
                 //Box shouldnt fly away
-                if(Vector3.Distance(Vector3.zero, body.velocity) > 10f && !curGrabbed)
+                if(Vector3.Distance(Vector3.zero, body.velocity) > 10f && !localHeld())
                 {
                     body.velocity = Vector3.zero;
                 }
@@ -90,7 +90,7 @@ namespace tp2
             {
                 if (cooldown <= 0)
                 {
-                    if (curGrabbed)
+                    if (localHeld())
                     {
                         //Make sure player who clicked R is the parent
                         if (NetPlayer.pressedR == null) return;
@@ -121,13 +121,13 @@ namespace tp2
 
         void bodyUpdate()
         {
-            if (cooldown > 0 && !curGrabbed) return;
+            if (cooldown > 0 && !localHeld()) return;
             if (!IsOwner) return;
             if (body != null)
             {
                 if (transform.parent != null)
                 {
-                    if (alignPos == Vector3.zero && curGrabbed)
+                    if (alignPos == Vector3.zero && localHeld())
                     {
                         float sign = Mathf.Sign(transform.parent.InverseTransformPoint(transform.position).x);
                         if (sign == float.NaN) sign = 0;
@@ -171,13 +171,19 @@ namespace tp2
             }
         }
 
+        bool localHeld()
+        {
+            if (this.transform.parent == null) return false;
+            return (PlayerTypeExtensions.localPlayer.transform == this.transform.parent);
+        }
+
         public void grab(NetworkObject grabber, PlayerType type)
         {
             if (held.Value) return;
             updateParentRpc(type);
             updateOwnerRpc(grabber.OwnerClientId);
             updateHolderRpc(true);
-            curGrabbed = true;
+            //curGrabbed = true;
             rigidBodyStuffRpc(true);
             cooldown = 0.5f;
         }
@@ -186,7 +192,7 @@ namespace tp2
             if (!held.Value) return;
             updateParentRpc(PlayerType.None);
             updateHolderRpc(false);
-            curGrabbed = false;
+            //curGrabbed = false;
             rigidBodyStuffRpc(false);
             alignPos = new Vector3(0, 0, 0);
             body.velocity = Vector3.zero;

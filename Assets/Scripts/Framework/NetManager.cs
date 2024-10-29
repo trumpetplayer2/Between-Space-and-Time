@@ -70,6 +70,7 @@ namespace tp2
             Destroy(player);
             //Someone disconnected from server, send back to lobby
             setSceneRpc(lobby);
+            NetPlayer.paused = false;
         }
 
         void userDisconnect()

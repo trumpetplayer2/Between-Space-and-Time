@@ -52,7 +52,7 @@ namespace tp2
         public void playClip(AudioClip clip, bool overrideTimer = false)
         {
             if (timer > 0 && !overrideTimer) return;
-            AudioHandler.instance.queueClip(clip, audioSettings.sfxVolume, audioSettings.sfxPitch, audioSettings.timeout, audioSettings.startTime);
+            AudioHandler.instance.queueClip(clip, audioSettings.sfxVolume, audioSettings.sfxPitch, audioSettings.timeout, audioSettings.startTime, PlayerTypeExtensions.getPlayerVisible(this.gameObject.layer));
             timer = audioSettings.cooldown;
         }
 

@@ -15,6 +15,7 @@ namespace tp2
         public float sizex = 2;
         public float sizey = 2;
         [SerializeField] private UnityEvent<bool> ButtonUpdated;
+        bool localPressed = false;
         
 
         private void Awake()
@@ -46,11 +47,15 @@ namespace tp2
                 }
                 if (temp != isToggled.Value)
                 {
-                    ButtonUpdated.Invoke(temp);
                     if (IsServer)
                     {
                         isToggled.Value = temp;
                     }
+                }
+                if(localPressed != isToggled.Value)
+                {
+                    localPressed = isToggled.Value;
+                    ButtonUpdated.Invoke(isToggled.Value);
                 }
             }
             catch { }

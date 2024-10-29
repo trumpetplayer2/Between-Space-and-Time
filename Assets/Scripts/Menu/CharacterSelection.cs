@@ -48,6 +48,7 @@ namespace tp2
 
         private new void OnDestroy()
         {
+            if (NetworkManager.Singleton == null) return;
             NetworkManager.Singleton.OnClientConnectedCallback -= autoselect;
         }
 

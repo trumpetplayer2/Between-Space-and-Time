@@ -14,6 +14,7 @@ namespace tp2
         public float volume;
         public float pitch;
         public float startTime;
+        public PlayerType playerType;
         float time;
 
         /// <summary>
@@ -24,7 +25,8 @@ namespace tp2
         /// <param name="pitch">The pitch to play the clip at</param>
         /// <param name="timeout">Won't play if it takes more than x seconds. -1 to disable</param>
         /// <param name="sTime">Time in seconds to start the AudioClip at</param>
-        public Clip(AudioClip clip, float volume = 1, float pitch = 1, float timeout = 10, float sTime = 0)
+        /// <param name="playerType">Player type that will hear this clip. If None specified, all will hear it</param>
+        public Clip(AudioClip clip, float volume = 1, float pitch = 1, float timeout = 10, float sTime = 0, PlayerType playerType = PlayerType.None)
         {
             this.clip = clip;
             this.timeout = timeout;
@@ -32,6 +34,7 @@ namespace tp2
             this.pitch = pitch;
             startTime = sTime;
             time = Time.time;
+            this.playerType = playerType;
         }
         /// <summary>
         /// Fetches if the Clip has timed out.
@@ -86,6 +89,7 @@ namespace tp2
                     //If clip is not expired, play it
                     if (!c.getExpired())
                     {
+                        if (PlayerTypeExtensions.getLocalPlayerType() != c.playerType) return;
                         sfxSource.volume = c.volume;
                         sfxSource.pitch = c.pitch;
                         sfxSource.time = Mathf.Min(c.clip.length, c.startTime);
@@ -128,7 +132,8 @@ namespace tp2
         /// <param name="pitch">The pitch to play the clip at</param>
         /// <param name="timeout">Won't play if it takes more than x seconds. -1 to disable</param>
         /// <param name="time">Time in seconds to start the AudioClip at</param>
-        public void queueClip(AudioClip clip, float volume = 1, float pitch = 1, float timeout = -1, float time = 0)
+        /// <param name="listener">Who should hear the audio clip? None for everyone</param>
+        public void queueClip(AudioClip clip, float volume = 1, float pitch = 1, float timeout = -1, float time = 0, PlayerType listener = PlayerType.None)
         {
             audioQueue.Enqueue(new Clip(clip, volume, pitch, timeout, time));
         }

@@ -3305,11 +3305,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: f697bf89c8e8f974283acfa1659a77f2, type: 3}
     - {fileID: 8300000, guid: 5b6da8c5fd3a4a74286ffd4e2e7c9d38, type: 3}
   locations:
-  - {fileID: 1225775419}
   - {fileID: 2098509527}
+  - {fileID: 1225775419}
   speed: 1
   error: 0.01
   moving: 0
+  inversion: 0
+  endBehavior: 0
 --- !u!1001 &561503214
 PrefabInstance:
   m_ObjectHideFlags: 0

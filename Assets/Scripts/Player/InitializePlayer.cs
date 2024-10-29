@@ -181,6 +181,19 @@ namespace tp2
                     return -1;
             }
         }
+
+        public static PlayerType getPlayerVisible(int Layer)
+        {
+            switch (Layer)
+            {
+                case 8: case 10: case 13:
+                        return PlayerType.Atlas;
+                case 9: case 11: case 14:
+                    return PlayerType.Chroma;
+                default:
+                    return PlayerType.None;
+            }
+        }
     }
     public enum PlayerType
     {
