@@ -4145,7 +4145,6 @@ MonoBehaviour:
   smoothSpeed: 0.125
   locationOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
-  cameraTransform: {fileID: 963355144}
   shakeAmount: 0.25
   decreaseSpeed: 1
   shakeDuration: 0
@@ -4440,10 +4439,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 10
   m_fontSizeMax: 28
   m_fontStyle: 0
@@ -6142,9 +6141,16 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
     sfx:
     - {fileID: 8300000, guid: 467b365de4df10a4cbb6d00dec679664, type: 3}
     - {fileID: 8300000, guid: befb15fbb8a7ea9469946c133b3cad58, type: 3}
+  CameraShake:
+    shakeAmount: 1
+    shakeTime: 10
+    playerType: 0
 --- !u!1 &1774129514
 GameObject:
   m_ObjectHideFlags: 0
@@ -6900,10 +6906,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.15
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

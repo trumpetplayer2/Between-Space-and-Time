@@ -29,7 +29,8 @@ namespace tp2
             {
                 temp[i - 1] = entries[i];
             }
-            temp[entries.Length - 1] = Time.time + ": " + newLog;
+            temp[entries.Length - 1] = System.DateTime.Now.Hour + ":" + System.DateTime.Now.Minute + ": " + newLog;
+            entries = temp;
             updateConsole();
         }
 

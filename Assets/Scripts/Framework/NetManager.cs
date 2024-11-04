@@ -28,6 +28,7 @@ namespace tp2
         int currentScene = 0;
         public string[] SceneList;
         public GameObject menu;
+        public static bool debug = true;
          
         void Awake()
         {
@@ -200,6 +201,10 @@ namespace tp2
 
         public static void log(string s)
         {
+            if(!debug)
+            {
+                return;
+            }
             try
             {
                 instance.logRpc(m_NetworkManager.LocalClientId, s);
@@ -210,7 +215,7 @@ namespace tp2
         [Rpc(SendTo.Server)]
         public void logRpc(ulong clientID, string s)
         {
-            logRpc(clientID + ": " + s);
+            logRpc("[Client " + clientID + "] " + s);
         }
 
         [Rpc(SendTo.Server)]

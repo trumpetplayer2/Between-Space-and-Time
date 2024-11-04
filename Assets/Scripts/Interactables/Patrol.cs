@@ -40,7 +40,6 @@ namespace tp2
             {
                 updateTransformGoal(true);
             }
-            Debug.Log("Current Pos: " + currentPos);
             //Goal Transform
             Transform goal = locations[currentPos];
             //Prevent breaking on Null

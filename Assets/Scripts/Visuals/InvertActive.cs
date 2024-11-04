@@ -7,6 +7,13 @@ namespace tp2
     public class InvertActive : SfxHandler
     {
         public CameraShakeVar CameraShake = new CameraShakeVar(1f, 10f);
+        private void Start()
+        {
+            if(CameraShake == null)
+            {
+                CameraShake = new CameraShakeVar(1f, 10f, PlayerTypeExtensions.getPlayerVisible(gameObject.layer));
+            }
+        }
         public void setInvertActive(bool t)
         {
             CameraFollow.instance.shake(CameraShake);

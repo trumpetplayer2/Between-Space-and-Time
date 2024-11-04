@@ -323,9 +323,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
+  objLayer:
+    m_InternalValue: 0
   heldWeight: 1
   fastThreshold: 0.3
   fastMult: 4.5
+  speedCap: {x: 100, y: 100}
+  dropDistance: 1.5
+  miny: -100
 --- !u!1 &6318619870161139332
 GameObject:
   m_ObjectHideFlags: 0

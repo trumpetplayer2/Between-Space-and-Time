@@ -10,7 +10,7 @@ namespace tp2
         //public NetworkObject parent;
         //public float xOffset;
         //public float yOffset;
-        float cooldown = 0.2f;
+        float cooldown = 0.15f;
         float timer = 0;
         public int[] layerWhitelist;
         public GameObject[] blacklist;
@@ -18,6 +18,8 @@ namespace tp2
         Vector3[] prevContacts = new Vector3[2];
         float check = 0f;
         float updateCheck = 0.2f;
+        Rigidbody2D body;
+        
 
         private void Start()
         {
@@ -52,7 +54,10 @@ namespace tp2
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.tag.ToLower().Equals("player")) return;
+            if (collision.tag.ToLower().Equals("player"))
+            {
+                return;
+            }
             if (check > updateCheck)
             {
                 fakePlayer(collision);
@@ -63,7 +68,6 @@ namespace tp2
             if (temp == PlayerType.None) return;
             updateParentRpc(temp);
         }
-
 
         private void fakePlayer(Collider2D collision)
         {

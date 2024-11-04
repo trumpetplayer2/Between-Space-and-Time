@@ -55,18 +55,23 @@ namespace tp2
         [Rpc(SendTo.Server)]
         public void autoselectRpc(ulong owner)
         {
+            if (Atlas != null && Chroma != null)
+            {
+                Debug.Log("Neither player was null");
+                return;
+            }
             //Check if Host has selected character yet
             if (Atlas != null || Chroma != null)
             {
                 if (Atlas != null)
                 {
                     //Spawn Chroma, since Atlas is already taken
-                    selectChromaRpc(owner);
+                    selectChroma(owner); 
                 }
                 else if (Chroma != null)
                 {
                     //Spawn Atlas since Chroma is taken
-                    selectAtlasRpc(owner);
+                    selectAtlas(owner);
 
                 }
                 else
@@ -96,13 +101,13 @@ namespace tp2
 
         public void selectChroma()
         {
-            selectChromaRpc(this.NetworkManager.LocalClientId);
+            selectCharacterRpc(this.NetworkManager.LocalClientId, PlayerType.Chroma);
         }
 
         public void selectAtlas()
         {
             
-            selectAtlasRpc(this.NetworkManager.LocalClientId);
+            selectCharacterRpc(this.NetworkManager.LocalClientId, PlayerType.Atlas);
         }
         
         //THIS SHOULD ONLY BE RUN BY SERVER
@@ -140,8 +145,26 @@ namespace tp2
         }
 
         [Rpc(SendTo.Server)]
-        public void selectAtlasRpc(ulong owner)
+        public void selectCharacterRpc(ulong owner, PlayerType player)
         {
+            switch (player)
+            {
+                case PlayerType.Atlas:
+                    selectAtlas(owner);
+                    return;
+                case PlayerType.Chroma:
+                    selectChroma(owner);
+                    return;
+            }
+        }
+
+        void selectAtlas(ulong owner)
+        {
+            if (!IsServer)
+            {
+                selectCharacterRpc(owner, PlayerType.Atlas);
+                return;
+            }
             if (!checkAvailable(PlayerType.Atlas)) return;
             //Spawn Atlas
             Atlas = Instantiate(aPrefab);
@@ -150,12 +173,18 @@ namespace tp2
             //Hide the menu for all players
             hideMenuRpc();
             //Autoselect if other player is connected
-            informSelectRpc();
+            if (Chroma == null){
+                informSelectRpc();
+            }
         }
 
-        [Rpc(SendTo.Server)]
-        public void selectChromaRpc(ulong owner)
+        public void selectChroma(ulong owner)
         {
+            if (!IsServer)
+            {
+                selectCharacterRpc(owner, PlayerType.Chroma);
+                return;
+            }
             if (!checkAvailable(PlayerType.Chroma)) return;
             Chroma = Instantiate(cPrefab);
             Chroma.SpawnAsPlayerObject(owner);
@@ -163,7 +192,10 @@ namespace tp2
             //Hide the menu for all players
             hideMenuRpc();
             //Autoselect if other player is connected
-            informSelectRpc();
+            if (Atlas == null)
+            {
+                informSelectRpc();
+            }
         }
     }
 }

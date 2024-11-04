@@ -10,8 +10,11 @@ namespace tp2
         public float shakeAmount = 1;
         [Tooltip("Shake time in ms")]
         public float shakeTime = 1;
-        public CameraShakeVar(float amount, float time)
+        [Tooltip("Player to display shake to. None for both")]
+        public PlayerType playerType = PlayerType.None;
+        public CameraShakeVar(float amount, float time, PlayerType pType = PlayerType.None)
         {
+            playerType = pType;
             shakeAmount = amount;
             shakeTime = time;
         }
@@ -245,22 +248,23 @@ namespace tp2
             }
         }
 
-        public void shake(float amount = 1f, float time = 1f)
+        public void shake(float amount = 1f, float time = 1f, PlayerType type = PlayerType.None)
         {
+            if (type != PlayerTypeExtensions.getLocalPlayerType() && type != PlayerType.None) return;
             amount = amount * 0.01f;
             time = time * 0.001f;
             shakeDuration = Mathf.Max(time, shakeDuration);
             shakeAmount = Mathf.Max(amount, shakeAmount);
         }
 
-        public void shake(Vector2 s)
+        public void shake(Vector2 s, PlayerType type = PlayerType.None)
         {
-            shake(s.x, s.y);
+            shake(s.x, s.y, type);
         }
 
         public void shake(CameraShakeVar var)
         {
-            shake(var.shakeAmount, var.shakeTime);
+            shake(var.shakeAmount, var.shakeTime, var.playerType);
         }
     }
 }
