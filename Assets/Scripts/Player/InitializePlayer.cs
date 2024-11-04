@@ -315,6 +315,22 @@ namespace tp2
             if (inChromaMask && !inAtlasMask) return PlayerType.Chroma;
             return PlayerType.None;
         }
+
+        public static bool isBoxLayer(GameObject obj)
+        {
+            return isBoxLayer(obj.layer);
+        }
+
+        public static bool isBoxLayer(int layer)
+        {
+            switch (layer)
+            {
+                case 10: case 11: case 12: case 15: case 16:
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
     public enum PlayerType
     {

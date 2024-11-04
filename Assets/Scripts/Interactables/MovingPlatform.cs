@@ -18,7 +18,6 @@ namespace tp2
         Vector3[] prevContacts = new Vector3[2];
         float check = 0f;
         float updateCheck = 0.2f;
-        Rigidbody2D body;
         
 
         private void Start()
@@ -52,10 +51,22 @@ namespace tp2
             if (temp == PlayerType.None) return;
             updateParentRpc(temp);
         }
+
+        void playerCheck(Collider2D collision)
+        {
+            if (!collision.tag.ToLower().Equals("player")) return;
+            if (!onWhitelist(collision)) return;
+            if (collision.gameObject.transform.parent != null) return;
+            PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
+            if (temp == PlayerType.None) return;
+            updateParentRpc(temp);
+        }
+
         private void OnTriggerStay2D(Collider2D collision)
         {
             if (collision.tag.ToLower().Equals("player"))
             {
+                playerCheck(collision);
                 return;
             }
             if (check > updateCheck)
@@ -64,9 +75,8 @@ namespace tp2
             }
             if (onBlacklist(collision.gameObject)) return;
             if (checkParent(collision.gameObject)) return;
-            PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
-            if (temp == PlayerType.None) return;
-            updateParentRpc(temp);
+            if (PlayerTypeExtensions.getPlayerVisible(collision.gameObject.layer) == PlayerType.None && !PlayerTypeExtensions.isBoxLayer(collision.gameObject)) return;
+            collision.transform.parent = this.transform;
         }
 
         private void fakePlayer(Collider2D collision)

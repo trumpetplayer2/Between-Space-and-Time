@@ -99,7 +99,6 @@ namespace tp2
             }
             if (held.Value && transform.parent == null)
             {
-                NetManager.log("Held was true, Parent was null");
                 switch (PlayerTypeExtensions.getFromBoxLayer(gameObject.layer))
                 {
                     case PlayerType.Atlas:
@@ -264,7 +263,6 @@ namespace tp2
             rigidBodyStuffRpc(false);
             alignPos = new Vector3(0, 0, 0);
             body.velocity = Vector3.zero;
-            NetManager.log("Box Dropped - " + reason);
         }
 
         [Rpc(SendTo.Server)]

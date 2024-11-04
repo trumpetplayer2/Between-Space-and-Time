@@ -247,7 +247,7 @@ namespace tp2
         {
             this.transform.position = initialPos;
             currentPos = 0;
-            previousTransform = previousTransform = locations[locations.Length - 1];
+            overridePreviousGoal();
             clock = 0;
         }
     }

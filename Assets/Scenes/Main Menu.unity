@@ -497,7 +497,6 @@ MonoBehaviour:
   smoothSpeed: 0.125
   locationOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
-  cameraTransform: {fileID: 0}
   shakeAmount: 0.25
   decreaseSpeed: 1
   shakeDuration: 0
