@@ -74,6 +74,7 @@ namespace tp2
                 fakePlayer(collision);
             }
             if (onBlacklist(collision.gameObject)) return;
+            if (!onWhitelist(collision)) return;
             if (checkParent(collision.gameObject)) return;
             if (PlayerTypeExtensions.getPlayerVisible(collision.gameObject.layer) == PlayerType.None && !PlayerTypeExtensions.isBoxLayer(collision.gameObject)) return;
             collision.transform.parent = this.transform;

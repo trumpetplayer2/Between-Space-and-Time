@@ -10,6 +10,14 @@ namespace tp2
         public LineRenderer line;
         public int[] layerCheck;
         public ContactFilter2D filter;
+        public NetworkVariable<bool> linePos = new NetworkVariable<bool>(false);
+        bool sendLine = true;
+
+        private void Start()
+        {
+            linePos.OnValueChanged += refreshLine;
+        }
+
         private void OnTriggerStay2D(Collider2D collision)
         {
             if (!onWhitelist(collision)) return;
@@ -22,6 +30,7 @@ namespace tp2
             {
                 line.SetPosition(i, contacts[i].point);
             }
+            NetManager.networkUpdate.AddListener(NetworkUpdate);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -31,12 +40,19 @@ namespace tp2
             line.positionCount = 0;
         }
 
-        private void Update()
+        void refreshLine(bool prior, bool current)
+        {
+            sendLine = true;
+        }
+
+        private void NetworkUpdate()
         {
             if (!IsOwner) return;
-            Vector3[] temp = new Vector3[100];
+            if (!sendLine) return;
+            Vector3[] temp = new Vector3[2];
             line.GetPositions(temp);
             updateLineRpc(line.positionCount, temp);
+            sendLine = false;
         }
 
         [Rpc(SendTo.NotOwner)]
@@ -44,6 +60,7 @@ namespace tp2
         {
             line.positionCount = count;
             line.SetPositions(pos);
+            linePos.Value = !linePos.Value;
         }
 
         bool onWhitelist(Collider2D collision)

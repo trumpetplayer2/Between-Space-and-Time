@@ -97,22 +97,38 @@ namespace tp2
                 }
                 release("Reset Location");
             }
-            if (held.Value && transform.parent == null)
+            //if (held.Value && transform.parent == null)
+            //{
+            //    switch (PlayerTypeExtensions.getFromBoxLayer(gameObject.layer))
+            //    {
+            //        case PlayerType.Atlas:
+            //            if (PlayerTypeExtensions.AtlasObject == null) return;
+            //            updateServerRpc(PlayerType.Atlas, true);
+            //            return;
+            //        case PlayerType.Chroma:
+            //            if (PlayerTypeExtensions.ChromaObject == null) return;
+            //            updateServerRpc(PlayerType.Chroma, true);
+            //            return;
+            //        default:
+            //            release("Conflicting Parent and Held Bool - Held was True");
+            //            return;
+            //    }
+            //}
+            //if(!held.Value && transform.parent != null)
+            //{
+            //    PlayerType temp = PlayerTypeExtensions.getLocalPlayerType();
+            //    PlayerType parentTemp = PlayerTypeExtensions.getEnumOf(transform.parent.gameObject);
+            //    if(temp == parentTemp)
+            //    {
+            //        transform.parent = null;
+            //        Debug.Log("Parent set to null");
+            //    }
+            //}
+            //If held.value is true, and transform.parent == null or if held.value is false, and transform.parent exists, return. Network delay is occuring, and will cause problems
+            if(!(held.Value ^ transform.parent == null))
             {
-                switch (PlayerTypeExtensions.getFromBoxLayer(gameObject.layer))
-                {
-                    case PlayerType.Atlas:
-                        if (PlayerTypeExtensions.AtlasObject == null) return;
-                        updateServerRpc(PlayerType.Atlas, true);
-                        return;
-                    case PlayerType.Chroma:
-                        if (PlayerTypeExtensions.ChromaObject == null) return;
-                        updateServerRpc(PlayerType.Chroma, true);
-                        return;
-                    default:
-                        release("Conflicting Parent and Held Bool");
-                        return;
-                }
+                Debug.Log(held.Value + ":" + (transform.parent == null));
+                return;
             }
             //Distance check
             if (transform.parent != null)

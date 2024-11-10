@@ -241,7 +241,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &3640155833177653049
 BoxCollider2D:
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a2e0a2936efc64f95506eaae4c7ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerWhitelist: 080000000a0000000c000000
+  layerWhitelist: 0a0000000c000000
   blacklist: []
   fakePlayers:
   - {fileID: 1911085113982912315}

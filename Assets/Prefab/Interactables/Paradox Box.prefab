@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3162185514987312686, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: layerWhitelist.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3162185514987312686, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: layerWhitelist.Array.data[0]
@@ -35,6 +35,14 @@ PrefabInstance:
     - target: {fileID: 3162185514987312686, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: layerWhitelist.Array.data[4]
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162185514987312686, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
+      propertyPath: layerWhitelist.Array.data[5]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162185514987312686, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
+      propertyPath: layerWhitelist.Array.data[6]
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4615060844898263060, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: m_Layer

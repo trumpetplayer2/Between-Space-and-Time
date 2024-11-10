@@ -25,6 +25,9 @@ namespace tp2
         public static NetworkObject pressedR;
         public static bool paused = false;
         public float maxVelocity = 20;
+        public Vector2 maxAccel = new Vector2(20, 20);
+        Vector2 priorVel = Vector3.zero;
+        bool m_paused = false;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -48,6 +51,7 @@ namespace tp2
         public void Start()
         {
             initializeRpc();
+            //NetManager.networkUpdate.AddListener(NetworkUpdate);
         }
 
         [Rpc(SendTo.Owner)]
@@ -139,12 +143,32 @@ namespace tp2
                 //Client doesnt correctly connect camera tracker on first frame. Idk the proper way to fix but this should force it to double check
                 CameraFollow.instance.playerTracker = this.transform;
             }
-            if (paused) return;
-            bool isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            if(m_paused != paused)
+            {
+                pauseChanged();
+            }
+            if (paused)
+            {
+                SubmitPositionRequestRpc(transform.position);
+                return;
+            }
 
             Vector2 move = new Vector2((Input.GetAxis("Horizontal") * speed), Player.velocity.y);
+
+            Vector2 accel = new Vector2(move.x - priorVel.x, move.y - priorVel.x);
+            //Cap Acceleration. This prevents random geometry flinging
+            if(maxAccel.x < Mathf.Abs(accel.x) && !(move.x == 0))
+            {
+                move.x = priorVel.x;
+            }
+            if (maxAccel.y < Mathf.Abs(accel.y) && !(move.y == 0))
+            {
+                move.y = priorVel.y;
+            }
+
             Player.velocity = move;
             SubmitPositionRequestRpc(transform.position);
+            priorVel = Player.velocity;
         }
 
 
@@ -207,6 +231,15 @@ namespace tp2
                     * sign.y); ;
                 Player.velocity = newVelocity;
             }
+        }
+
+        public void pauseChanged()
+        {
+            if(Player != null)
+            {
+                Player.velocity = Vector3.zero;
+            }
+            m_paused = paused;
         }
 
         [Rpc(SendTo.NotOwner)]

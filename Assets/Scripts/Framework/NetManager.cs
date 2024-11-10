@@ -6,6 +6,7 @@ using Unity.Netcode;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Events;
 
 namespace tp2
 {
@@ -29,6 +30,9 @@ namespace tp2
         public string[] SceneList;
         public GameObject menu;
         public static bool debug = true;
+        public static UnityEvent networkUpdate = new UnityEvent();
+        float networkUpdateMS = 50;
+        float timeSinceLastUpdate = 0;
          
         void Awake()
         {
@@ -74,6 +78,15 @@ namespace tp2
             NetPlayer.paused = false;
         }
 
+        private void FixedUpdate()
+        {
+            timeSinceLastUpdate += Time.fixedDeltaTime;
+            if (timeSinceLastUpdate * 1000 >= networkUpdateMS)
+            {
+                networkUpdate.Invoke();
+                timeSinceLastUpdate = 0;
+            }
+        }
         void userDisconnect()
         {
             //Destroy object, reset instance, and load menu
@@ -132,7 +145,7 @@ namespace tp2
             connectClient();
         }
 
-        public void FixedUpdate()
+        public void Update()
         {
             if (!m_NetworkManager.IsConnectedClient)
             {
