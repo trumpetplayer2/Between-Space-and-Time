@@ -128,6 +128,7 @@ namespace tp2
             if(!(held.Value ^ transform.parent == null))
             {
                 Debug.Log(held.Value + ":" + (transform.parent == null));
+                release("ERROR: Held and Parent dont match");
                 return;
             }
             //Distance check

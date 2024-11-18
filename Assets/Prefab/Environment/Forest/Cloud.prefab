@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 169844192036669031, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
       propertyPath: m_Name
-      value: Ground Variant
+      value: Cloud
       objectReference: {fileID: 0}
     - target: {fileID: 212550525309021908, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
       propertyPath: m_Color.b
@@ -72,8 +72,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8331596854214234042, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 169844192036669031, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -928258038054483125}
   m_SourcePrefab: {fileID: 100100000, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+--- !u!1 &6869882589965316312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 169844192036669031, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+  m_PrefabInstance: {fileID: 6705245998530672319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!251 &-928258038054483125
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869882589965316312}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

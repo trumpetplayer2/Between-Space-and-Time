@@ -459,6 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 109795901}
   - component: {fileID: 109795902}
+  - component: {fileID: 109795903}
   m_Layer: 9
   m_Name: Invisible Wall
   m_TagString: Untagged
@@ -511,7 +512,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 67.01933}
   m_SpriteTilingProperty:
@@ -526,6 +527,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 135.03867}
   m_EdgeRadius: 0
+--- !u!251 &109795903
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109795900}
+  m_Enabled: 1
+  m_UseColliderMask: 0
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &142265759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4662,6 +4682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027721187}
   - component: {fileID: 1027721186}
+  - component: {fileID: 1027721188}
   m_Layer: 9
   m_Name: Invisible Wall (1)
   m_TagString: Untagged
@@ -4699,7 +4720,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 65.16275}
   m_SpriteTilingProperty:
@@ -4729,6 +4750,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 619984507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &1027721188
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027721185}
+  m_Enabled: 1
+  m_UseColliderMask: 0
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1045481226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7978,6 +8018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881076223}
   - component: {fileID: 1881076224}
+  - component: {fileID: 1881076225}
   m_Layer: 8
   m_Name: Invisible Wall (1)
   m_TagString: Untagged
@@ -8030,7 +8071,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 65.16275}
   m_SpriteTilingProperty:
@@ -8045,6 +8086,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 138.75183}
   m_EdgeRadius: 0
+--- !u!251 &1881076225
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881076222}
+  m_Enabled: 1
+  m_UseColliderMask: 0
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1890547423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8207,6 +8267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1909810506}
   - component: {fileID: 1909810507}
+  - component: {fileID: 1909810508}
   m_Layer: 8
   m_Name: Invisible Wall
   m_TagString: Untagged
@@ -8259,7 +8320,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 65.16275}
   m_SpriteTilingProperty:
@@ -8274,6 +8335,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 138.75183}
   m_EdgeRadius: 0
+--- !u!251 &1909810508
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909810505}
+  m_Enabled: 1
+  m_UseColliderMask: 0
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1916181700
 GameObject:
   m_ObjectHideFlags: 0

@@ -221,6 +221,11 @@ namespace tp2
             reset();
         }
 
+        public void toggleInversionMove()
+        {
+            toggleDirection(!inversion);
+        }
+
         public void toggleDirection(bool inv)
         {
             inversion = inv;

@@ -60,6 +60,12 @@ namespace tp2
         {
             line.positionCount = count;
             line.SetPositions(pos);
+            roundTripDelayRpc();
+        }
+
+        [Rpc(SendTo.Server)]
+        void roundTripDelayRpc()
+        {
             linePos.Value = !linePos.Value;
         }
 
