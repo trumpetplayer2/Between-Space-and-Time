@@ -5634,6 +5634,10 @@ PrefabInstance:
       propertyPath: display
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5932734763706750981, guid: a154d834adfa8f74fb9d5c0ef2dd5a50, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7198428683422360308, guid: a154d834adfa8f74fb9d5c0ef2dd5a50, type: 3}
       propertyPath: m_Layer
       value: 14

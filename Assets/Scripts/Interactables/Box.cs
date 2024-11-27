@@ -73,6 +73,12 @@ namespace tp2
             //targetUpdate();
         }
 
+        public void grabAppearance()
+        {
+            //TODO: Grab appearance
+            
+        }
+
         public void Update()
         {
             if (cooldown > 0)

@@ -3585,6 +3585,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8001675101929546372, guid: 050e657bb94ace04ab8bef0f4501200c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9908545
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001675101929546372, guid: 050e657bb94ace04ab8bef0f4501200c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.50248414
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001675101929546372, guid: 050e657bb94ace04ab8bef0f4501200c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0006532669
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001675101929546372, guid: 050e657bb94ace04ab8bef0f4501200c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.24875791
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3837,7 +3853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &619984507
 Transform:
   m_ObjectHideFlags: 0
@@ -6369,6 +6385,10 @@ PrefabInstance:
     - target: {fileID: 4889474668409992840, guid: cc5ca4e5c07a1ab4f8d0c23bbca642a2, type: 3}
       propertyPath: m_Name
       value: DeadTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889474668409992840, guid: cc5ca4e5c07a1ab4f8d0c23bbca642a2, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
