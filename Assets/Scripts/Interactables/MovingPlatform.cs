@@ -77,7 +77,20 @@ namespace tp2
             if (!onWhitelist(collision)) return;
             if (checkParent(collision.gameObject)) return;
             if (PlayerTypeExtensions.getPlayerVisible(collision.gameObject.layer) == PlayerType.None && !PlayerTypeExtensions.isBoxLayer(collision.gameObject)) return;
-            collision.transform.parent = this.transform;
+            NetworkObject netObj = collision.GetComponent<NetworkObject>();
+            if(netObj == null)
+            {
+                collision.transform.parent = this.transform;
+            }
+            else
+            {
+                //Only Server is allowed to update net objects. Luckily the server should also run this code so we don't need to worry
+                if (IsServer)
+                {
+                    collision.transform.parent = this.transform;
+                }
+            }
+
         }
 
         private void fakePlayer(Collider2D collision)
@@ -236,9 +249,11 @@ namespace tp2
             //If Parent is null, return false. This is highest level
             if (obj.transform.parent == null) return false;
             //If Parent is this, return true.
-            if (obj.transform.parent == this.transform) return true;
+            //if (obj.transform.parent == this.transform) return true;
             //If parent is not null and not this, check if the parent has a parent.
-            return checkParent(obj.transform.parent.gameObject);
+            //return checkParent(obj.transform.parent.gameObject);
+            //Reparenting objects causes issues, lets just not
+            return true;
         }
 
         private new void OnDestroy()

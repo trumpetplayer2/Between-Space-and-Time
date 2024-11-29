@@ -168,6 +168,9 @@ MonoBehaviour:
   isToggled: 0
   onWall: 0
   cooldown: 0.5
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 192
   LeverFlipped:
     m_PersistentCalls:
       m_Calls: []

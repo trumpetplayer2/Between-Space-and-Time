@@ -3,77 +3,86 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Events;
-
-public class Lever : NetworkBehaviour
-{
-    public bool isToggled;
-    SpriteRenderer spriteRenderer;
-    public bool onWall = false;
-    public float cooldown = 0.5f;
-    float curCooldown = 0;
-    bool canToggle = false;
-    bool broken = false;
-    [SerializeField] private UnityEvent<bool> LeverFlipped;
-
-    private void Start()
+namespace tp2 {
+    public class Lever : NetworkBehaviour
     {
-        if(spriteRenderer == null)
+        public bool isToggled;
+        SpriteRenderer spriteRenderer;
+        public bool onWall = false;
+        public float cooldown = 0.5f;
+        float curCooldown = 0;
+        float pullRadius = .5f;
+        public LayerMask playerLayers;
+        bool broken = false;
+        [SerializeField] private UnityEvent<bool> LeverFlipped;
+
+        private void Start()
         {
-            spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.gameObject.tag.ToLower().Equals("player")) return;
-        canToggle = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!collision.gameObject.tag.ToLower().Equals("player")) return;
-        canToggle = false;
-    }
-
-    public void Update()
-    {
-        if (broken) return;
-        if(curCooldown > 0)
-        {
-            curCooldown -= Time.deltaTime;
-            if(curCooldown < 0)
+            if (spriteRenderer == null)
             {
-                curCooldown = 0;
+                spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
             }
         }
-        if (Input.GetButton("Interact") && curCooldown <= 0 && canToggle)
-        {
-            toggleRpc();
-        }
-    }
 
-    public void toggleBroken(bool broke)
-    {
-        broken = broke;
-        //TODO: Play breaking Audio Cue if true
-    }
-
-    [Rpc(SendTo.Everyone)]
-    void toggleRpc()
-    {
-        isToggled = !isToggled;
-        if(spriteRenderer != null)
+        public void Update()
         {
-            if (onWall)
+            if (broken) return;
+            if (curCooldown > 0)
             {
-                spriteRenderer.flipX = isToggled;
+                curCooldown -= Time.deltaTime;
+                if (curCooldown < 0)
+                {
+                    curCooldown = 0;
+                }
             }
-            else
+            //TODO: Switch to an Area detection rather than trigger that fetches the player and makes sure the player is "Pressed R" since that check is not here
+            if (Input.GetButton("Interact") && curCooldown <= 0)
             {
-                spriteRenderer.flipX = isToggled;
+                Collider2D[] puller = null;
+                puller = Physics2D.OverlapCircleAll(transform.position, pullRadius, playerLayers);
+                if (puller != null)
+                {
+                    bool playerConfirm = false;
+                    foreach (Collider2D collider in puller)
+                    {
+                        if (NetPlayer.pressedR == null) break;
+                        if (collider.gameObject == NetPlayer.pressedR.gameObject)
+                        {
+                            playerConfirm = true;
+                            break;
+                        }
+                    }
+                    if (playerConfirm)
+                    {
+                        toggleRpc();
+                    }
+                }
             }
         }
-        curCooldown = cooldown;
-        LeverFlipped.Invoke(isToggled);
+
+        public void toggleBroken(bool broke)
+        {
+            broken = broke;
+            //TODO: Play breaking Audio Cue if true
+        }
+
+        [Rpc(SendTo.Everyone)]
+        void toggleRpc()
+        {
+            isToggled = !isToggled;
+            if (spriteRenderer != null)
+            {
+                if (onWall)
+                {
+                    spriteRenderer.flipX = isToggled;
+                }
+                else
+                {
+                    spriteRenderer.flipX = isToggled;
+                }
+            }
+            curCooldown = cooldown;
+            LeverFlipped.Invoke(isToggled);
+        }
     }
 }

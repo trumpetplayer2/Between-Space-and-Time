@@ -133,9 +133,21 @@ namespace tp2
             //If held.value is true, and transform.parent == null or if held.value is false, and transform.parent exists, return. Network delay is occuring, and will cause problems
             if(!(held.Value ^ transform.parent == null))
             {
-                Debug.Log(held.Value + ":" + (transform.parent == null));
-                release("ERROR: Held and Parent dont match");
-                return;
+                if (transform.parent == null)
+                {
+                    Debug.Log(held.Value + ":" + (transform.parent == null));
+                    release("ERROR: Held and Parent dont match");
+                    return;
+                }
+                else
+                {
+                    if (transform.parent.tag.ToLower().Equals("player"))
+                    {
+                        Debug.Log(held.Value + ":" + (transform.parent == null));
+                        release("ERROR: Held and Parent dont match");
+                        return;
+                    }
+                }
             }
             //Distance check
             if (transform.parent != null)
@@ -174,6 +186,16 @@ namespace tp2
                     {
                         //Prevent player from grabbing a box next to another player
                         if (NetPlayer.pressedR == null) return;
+                        bool capable = false;
+                        foreach(GameObject obj in capableGrab)
+                        {
+                            if (obj == null) continue;
+                            if(obj == NetPlayer.pressedR.gameObject)
+                            {
+                                capable = true;
+                            }
+                        }
+                        if (!capable) return;
                         grab(PlayerTypeExtensions.getTypeof(NetPlayer.pressedR.gameObject));
                     }
                 }
@@ -211,6 +233,7 @@ namespace tp2
             {
                 if (transform.parent != null)
                 {
+                    if (!transform.parent.tag.ToLower().Equals("player")) return;
                     if (alignPos == Vector3.zero && localHeld())
                     {
                         float sign = Mathf.Sign(transform.parent.InverseTransformPoint(transform.position).x);
@@ -269,7 +292,7 @@ namespace tp2
             if (this.transform.parent == null) return false;
             return (PlayerTypeExtensions.localPlayer.transform == this.transform.parent);
         }
-
+        
         public void grab(PlayerType type)
         {
             if (held.Value) return;
