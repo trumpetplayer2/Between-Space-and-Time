@@ -21,11 +21,15 @@ namespace tp2
         public float fastThreshold = 0.5f;
         public float fastMult = 5;
         public Vector2 speedCap = new Vector2(6f, 6f);
+        SpriteRenderer sprite;
         Vector3 alignPos = new Vector3(0,0,0);
         public float dropDistance = 1f;
+        public bool isParadox = false;
         public float miny = -100;
         Transform startLocation;
         Rigidbody2D parentBody = null;
+        public Color heldColor;
+        Color baseColor;
         //TargetJoint2D joint = null;
         private void Start()
         {
@@ -41,6 +45,11 @@ namespace tp2
             GameObject temp = new GameObject("BoxStart");
             temp.transform.position = this.transform.position;
             startLocation = temp.transform;
+            sprite = GetComponent<SpriteRenderer>();
+            if(sprite != null)
+            {
+                baseColor = sprite.color;
+            }
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -73,10 +82,18 @@ namespace tp2
             //targetUpdate();
         }
 
-        public void grabAppearance()
+        public void grabAppearance(bool isHeld)
         {
-            //TODO: Grab appearance
-            
+            //Grab appearance
+            if (sprite == null) return;
+            if (isHeld)
+            {
+                sprite.color = heldColor;
+            }
+            else
+            {
+                sprite.color = baseColor;
+            }
         }
 
         public void Update()
@@ -336,6 +353,7 @@ namespace tp2
                 temp = PlayerTypeExtensions.getObject(type).transform;
             }
             this.transform.parent = temp;
+            if (!isParadox) return;
             if (gameObject.transform.parent != null)
             {
                 objLayer.Value = (PlayerTypeExtensions.getBoxLayer(PlayerTypeExtensions.getEnumOf(this.transform.parent.gameObject.layer)));
@@ -345,13 +363,12 @@ namespace tp2
         void updateLayer(int prev, int newlayer)
         {
             gameObject.layer = newlayer;
-            
         }
 
         [Rpc(SendTo.Everyone)]
-        public void rigidBodyStuffRpc(bool destroy)
+        public void rigidBodyStuffRpc(bool isHeld)
         {
-            if (destroy)
+            if (isHeld)
             {
                 body.mass = heldWeight;
                 //joint = gameObject.AddComponent<TargetJoint2D>();
@@ -371,6 +388,7 @@ namespace tp2
                 //joint = null;
                 parentBody = null;
             }
+            grabAppearance(isHeld);
         }
 
         [Rpc(SendTo.Server)]

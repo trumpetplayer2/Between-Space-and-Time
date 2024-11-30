@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1469127855229428065, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 308780909
+      value: 3929521765
       objectReference: {fileID: 0}
     - target: {fileID: 3162185514987312686, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: layerWhitelist.Array.size
@@ -50,11 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250377588540072627, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 308780909
+      value: 703111021
       objectReference: {fileID: 0}
     - target: {fileID: 5250377588540072627, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1287249753
+      objectReference: {fileID: 0}
+    - target: {fileID: 5547441433546158406, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
+      propertyPath: isParadox
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6082226242808694332, guid: d4c8e77700529c94bbcbb2cf50a8e0eb, type: 3}
       propertyPath: m_Name

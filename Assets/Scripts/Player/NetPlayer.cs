@@ -28,6 +28,8 @@ namespace tp2
         public Vector2 maxAccel = new Vector2(20, 20);
         Vector2 priorVel = Vector3.zero;
         bool m_paused = false;
+        public float minimumY = -100;
+        float lastGroundedY = 0;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -190,6 +192,10 @@ namespace tp2
             }
             if (Player == null) return;
             bool isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            if (isOnGround)
+            {
+                lastGroundedY = transform.position.y + 1;
+            }
             if (Input.GetButtonDown("Jump") && jumpTime < 0.1 && isOnGround)
             {
                 jumping = true;
@@ -230,6 +236,11 @@ namespace tp2
                     Mathf.Min(Mathf.Abs(Player.velocity.y), maxVelocity)
                     * sign.y); ;
                 Player.velocity = newVelocity;
+            }
+            if(transform.position.y < minimumY)
+            {
+                transform.position = new Vector3(transform.position.x, minimumY, transform.position.z);
+                Player.velocity = Vector3.zero;
             }
         }
 

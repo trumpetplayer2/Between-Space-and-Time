@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2463780302
+  GlobalObjectIdHash: 1287249753
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -331,6 +331,7 @@ MonoBehaviour:
   speedCap: {x: 100, y: 100}
   dropDistance: 1.5
   miny: -100
+  heldColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
 --- !u!1 &6318619870161139332
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2463780302
+  GlobalObjectIdHash: 1933485903
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -399,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a2e0a2936efc64f95506eaae4c7ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerWhitelist: 0a0000000c000000
+  layerWhitelist: 0a0000000c000000060000000f000000
   blacklist: []
   fakePlayers:
   - {fileID: 1911085113982912315}

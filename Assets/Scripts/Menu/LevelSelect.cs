@@ -30,6 +30,11 @@ namespace tp2
             NetManager.instance.updateScene(level);
         }
 
+        public void selectTutorial()
+        {
+            NetManager.instance.startTutorial();
+        }
+
         public void showClient()
         {
             disableButtons();

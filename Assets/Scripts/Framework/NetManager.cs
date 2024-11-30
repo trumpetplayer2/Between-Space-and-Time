@@ -250,13 +250,20 @@ namespace tp2
             chromaFinish = state;
         }
 
-        
         public void updateScene(int scene)
         {
             if (!m_NetworkManager.IsServer) return;
             NetPlayer.paused = false;
             updateCurSceneRpc(scene);
             setSceneRpc(SceneList[scene]);
+        }
+
+        public void startTutorial()
+        {
+            if (!m_NetworkManager.IsServer) return;
+            NetPlayer.paused = false;
+            
+            setSceneRpc("Tutorial");
         }
 
         [Rpc(SendTo.NotServer)]
