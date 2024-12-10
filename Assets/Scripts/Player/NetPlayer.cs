@@ -239,7 +239,7 @@ namespace tp2
             }
             if(transform.position.y < minimumY)
             {
-                transform.position = new Vector3(transform.position.x, minimumY, transform.position.z);
+                transform.position = new Vector3(transform.position.x, lastGroundedY, transform.position.z);
                 Player.velocity = Vector3.zero;
             }
         }

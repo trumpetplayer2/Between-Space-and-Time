@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: layerCheck.Array.data[2]
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 7535589138099207041, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 662622092
+      objectReference: {fileID: 0}
     - target: {fileID: 7759112166082977944, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: playerType
       value: 2
@@ -209,6 +213,7 @@ PrefabInstance:
     - {fileID: 948155680495838705, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
     - {fileID: 7349538532702962084, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
     - {fileID: 2482210368241400527, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+    - {fileID: 3116650569675631716, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}

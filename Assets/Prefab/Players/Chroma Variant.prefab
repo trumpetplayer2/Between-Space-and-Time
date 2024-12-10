@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445771988062197286, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2827237424
+      value: 266769420
       objectReference: {fileID: 0}
     - target: {fileID: 445771988062197286, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: SynchronizeTransform
@@ -192,6 +192,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6274350587288046798, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: layerWhitelist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7349538532702962084, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -219,6 +223,10 @@ PrefabInstance:
     - target: {fileID: 7419824188684802550, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: layerCheck.layerMask.m_Bits
       value: 18944
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535589138099207041, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 266769420
       objectReference: {fileID: 0}
     - target: {fileID: 7759112166082977944, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: playerType

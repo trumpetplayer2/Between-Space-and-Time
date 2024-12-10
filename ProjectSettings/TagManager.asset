@@ -25,9 +25,9 @@ TagManager:
   - AtlasParabox
   - ChromaParabox
   - NoBoxes
-  - 
-  - 
-  - 
+  - AtlasOnlyTrigger
+  - ChromaOnlyTrigger
+  - PlayerTrigger
   - 
   - 
   - 

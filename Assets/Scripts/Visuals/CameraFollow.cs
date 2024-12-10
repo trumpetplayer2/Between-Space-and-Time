@@ -67,6 +67,10 @@ namespace tp2
             {
                 startCutscene(0);
             }
+            else
+            {
+                NetPlayer.paused = false;
+            }
         }
 
         public void startCutscene(int number)

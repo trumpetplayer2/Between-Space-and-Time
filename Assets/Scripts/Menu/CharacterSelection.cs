@@ -35,6 +35,7 @@ namespace tp2
             if(!(Chroma == null && Atlas == null))
             {
                 hideMenuRpc();
+                NetPlayer.paused = false;
             }
         }
 
