@@ -694,7 +694,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 1321669728}
-  redirectScene: 1
+  redirectScene: 11
   CutsceneEnded:
     m_PersistentCalls:
       m_Calls: []
