@@ -317,10 +317,20 @@ namespace tp2
             //curGrabbed = true;
             rigidBodyStuffRpc(true);
             cooldown = 0.5f;
+            try
+            {
+                this.gameObject.transform.parent.GetComponent<NetPlayer>().updateAnimationRpc(animationState.Box, true);
+            }
+            catch { }
         }
         public void release(string reason)
         {
             if (!held.Value) return;
+            try
+            {
+                this.gameObject.transform.parent.GetComponent<NetPlayer>().updateAnimationRpc(animationState.Box, false);
+            }
+            catch { }
             updateServerRpc(PlayerType.None, false);
             //curGrabbed = false;
             rigidBodyStuffRpc(false);

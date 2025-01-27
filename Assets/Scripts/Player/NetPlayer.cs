@@ -5,6 +5,11 @@ using Unity.Netcode;
 
 namespace tp2
 {
+    public enum animationState
+    {
+        Walk, Fall, Box
+    }
+
     public class NetPlayer : NetworkBehaviour
     {
         //Create variables we will need later
@@ -30,6 +35,11 @@ namespace tp2
         bool m_paused = false;
         public float minimumY = -100;
         float lastGroundedY = 0;
+        Animator animator;
+        bool falling;
+        bool walking;
+        bool holdingBox;
+        SpriteRenderer sprite;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -53,6 +63,8 @@ namespace tp2
         public void Start()
         {
             initializeRpc();
+            animator = GetComponent<Animator>();
+            sprite = GetComponent<SpriteRenderer>();
             //NetManager.networkUpdate.AddListener(NetworkUpdate);
         }
 
@@ -156,7 +168,31 @@ namespace tp2
             }
 
             Vector2 move = new Vector2((Input.GetAxis("Horizontal") * speed), Player.velocity.y);
-
+            if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
+            {
+                if (!walking)
+                {
+                    updateAnimationRpc(animationState.Walk, true);
+                }
+                if (!holdingBox)
+                {
+                    if (Input.GetAxis("Horizontal") > 0)
+                    {
+                        sprite.flipX = false;
+                    }
+                    else if (Input.GetAxis("Horizontal") < 0)
+                    {
+                        sprite.flipX = true;
+                    }
+                }
+            }
+            else
+            {
+                if (walking)
+                {
+                    updateAnimationRpc(animationState.Walk, false);
+                }
+            }
             Vector2 accel = new Vector2(move.x - priorVel.x, move.y - priorVel.x);
             //Cap Acceleration. This prevents random geometry flinging
             if(maxAccel.x < Mathf.Abs(accel.x) && !(move.x == 0))
@@ -173,6 +209,7 @@ namespace tp2
             priorVel = Player.velocity;
         }
 
+        
 
         void Update()
         {
@@ -195,6 +232,17 @@ namespace tp2
             if (isOnGround)
             {
                 lastGroundedY = transform.position.y + 1;
+                if (falling)
+                {
+                    updateAnimationRpc(animationState.Fall, false);
+                }
+            }
+            if (!isOnGround)
+            {
+                if (!falling)
+                {
+                    updateAnimationRpc(animationState.Fall, true);
+                }
             }
             if (Input.GetButtonDown("Jump") && jumpTime < 0.1 && isOnGround)
             {
@@ -244,6 +292,35 @@ namespace tp2
             }
         }
 
+        [Rpc(SendTo.Everyone)]
+        public void updateAnimationRpc(animationState state, bool value)
+        {
+            if (animator == null) return;
+            switch (state)
+            {
+                case animationState.Walk:
+                    animator.SetBool("Walking", value);
+                    if (IsOwner)
+                    {
+                        walking = value;
+                    }
+                    return;
+                case animationState.Fall:
+                    animator.SetBool("Falling", value);
+                    if (IsOwner)
+                    {
+                        falling = value;
+                    }
+                    return;
+                case animationState.Box:
+                    animator.SetBool("HoldingBox", value);
+                    if (IsOwner)
+                    {
+                        holdingBox = value;
+                    }
+                    return;
+            }
+        }
         public void pauseChanged()
         {
             if(Player != null)

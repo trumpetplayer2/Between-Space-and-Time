@@ -2085,15 +2085,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textbox: {fileID: 1173338244}
   text:
-  - This is Test Dialogue
-  - Say Hello
-  - Now I should be a box
-  - End
+  - This is a Mic Test
+  - Recieved
+  - Good
+  - Dialogue To Be Written
   image:
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
-  - {fileID: 21300000, guid: 551a09bf5e794184789d24052ace64a1, type: 3}
-  - {fileID: 21300000, guid: 551a09bf5e794184789d24052ace64a1, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
   complete: 0
   pic: {fileID: 1052829345}
 --- !u!1001 &1747572628
