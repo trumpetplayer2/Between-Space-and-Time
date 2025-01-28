@@ -178,11 +178,11 @@ namespace tp2
                 {
                     if (Input.GetAxis("Horizontal") > 0)
                     {
-                        sprite.flipX = false;
+                        flipSpriteRpc(false);
                     }
                     else if (Input.GetAxis("Horizontal") < 0)
                     {
-                        sprite.flipX = true;
+                        flipSpriteRpc(true);
                     }
                 }
             }
@@ -209,7 +209,11 @@ namespace tp2
             priorVel = Player.velocity;
         }
 
-        
+        [Rpc(SendTo.Everyone)]
+        void flipSpriteRpc(bool left)
+        {
+            sprite.flipX = left;
+        }
 
         void Update()
         {

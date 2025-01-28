@@ -319,7 +319,7 @@ namespace tp2
             cooldown = 0.5f;
             try
             {
-                this.gameObject.transform.parent.GetComponent<NetPlayer>().updateAnimationRpc(animationState.Box, true);
+                PlayerTypeExtensions.getObject(type).GetComponent<NetPlayer>().updateAnimationRpc(animationState.Box, true);
             }
             catch { }
         }
