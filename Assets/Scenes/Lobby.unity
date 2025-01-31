@@ -5368,7 +5368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6293949236858705722, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.027292
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 6293949236858705722, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7573,6 +7573,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3865845986619152642, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
+      propertyPath: m_text
+      value: This is an example sign. Press 'e' to interact with Boxes and levers.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865845986619152642, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
+      propertyPath: m_fontSize
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6013906791711893229, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_Name
       value: Sign
@@ -7583,7 +7591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6293949236858705722, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.027292
+      value: -4.139
       objectReference: {fileID: 0}
     - target: {fileID: 6293949236858705722, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_LocalPosition.z

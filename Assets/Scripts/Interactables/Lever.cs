@@ -7,7 +7,7 @@ namespace tp2 {
     public class Lever : NetworkBehaviour
     {
         public bool isToggled;
-        SpriteRenderer spriteRenderer;
+        public SpriteRenderer lever;
         public bool onWall = false;
         public float cooldown = 0.5f;
         float curCooldown = 0;
@@ -15,14 +15,6 @@ namespace tp2 {
         public LayerMask playerLayers;
         bool broken = false;
         [SerializeField] private UnityEvent<bool> LeverFlipped;
-
-        private void Start()
-        {
-            if (spriteRenderer == null)
-            {
-                spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-            }
-        }
 
         public void Update()
         {
@@ -70,15 +62,15 @@ namespace tp2 {
         void toggleRpc()
         {
             isToggled = !isToggled;
-            if (spriteRenderer != null)
+            if (lever != null)
             {
                 if (onWall)
                 {
-                    spriteRenderer.flipX = isToggled;
+                    lever.flipX = isToggled;
                 }
                 else
                 {
-                    spriteRenderer.flipX = isToggled;
+                    lever.flipX = isToggled;
                 }
             }
             curCooldown = cooldown;

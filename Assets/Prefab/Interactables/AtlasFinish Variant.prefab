@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1863398319211986469, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 521c0d2b776afe54080aa23feb5a367f, type: 3}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: m_LayerMask.m_Bits
       value: 64
@@ -110,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3825187037546881984, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2596835133
+      value: 3072974330
       objectReference: {fileID: 0}
     - target: {fileID: 3825187037546881984, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -135,6 +139,10 @@ PrefabInstance:
     - target: {fileID: 4918180799336856141, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: m_Name
       value: AtlasFinish Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918180799336856141, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

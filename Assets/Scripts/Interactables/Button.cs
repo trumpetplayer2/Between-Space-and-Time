@@ -9,22 +9,16 @@ namespace tp2
     public class Button : NetworkBehaviour
     {
         public NetworkVariable<bool> isToggled = new NetworkVariable<bool>(false);
-        SpriteRenderer spriteRenderer;
+        public SpriteRenderer button;
         public float cooldown = 0.5f;
         public LayerMask m_LayerMask;
         public float sizex = 2;
         public float sizey = 2;
+        public Sprite unpressed;
+        public Sprite pressed;
         [SerializeField] private UnityEvent<bool> ButtonUpdated;
         bool localPressed = false;
         
-
-        private void Awake()
-        {
-            if (spriteRenderer == null)
-            {
-                spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-            }
-        }
 
         private void Update()
         {
@@ -59,17 +53,17 @@ namespace tp2
                 }
             }
             catch { }
-            if (spriteRenderer != null)
+            if (button != null)
             {
                 //Modify the look of button.
                 //This will be 2 sprites later on, but for now lets just recolor sprite renderer
                 if (isToggled.Value)
                 {
-                    spriteRenderer.color = Color.red;
+                    button.sprite = pressed;
                 }
                 else
                 {
-                    spriteRenderer.color = Color.white;
+                    button.sprite = unpressed;
                 }
             }
         }
