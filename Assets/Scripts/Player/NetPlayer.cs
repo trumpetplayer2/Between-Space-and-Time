@@ -40,6 +40,7 @@ namespace tp2
         bool walking;
         bool holdingBox;
         SpriteRenderer sprite;
+        public SpriteRenderer maskSprite;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -213,16 +214,25 @@ namespace tp2
         void flipSpriteRpc(bool left)
         {
             sprite.flipX = left;
+            maskSprite.flipX = left;
         }
 
         void Update()
         {
+            if (paused)
+            {
+                animator.speed = 0;
+                return;
+            }
+            if(animator.speed == 0)
+            {
+                animator.speed = 1;
+            }
             //Player movement
             if (!IsOwner)
             {
                 return;
             }
-            if (paused) return;
             if (Input.GetButton("Interact"))
             {
                 pressedR = this.NetworkObject;

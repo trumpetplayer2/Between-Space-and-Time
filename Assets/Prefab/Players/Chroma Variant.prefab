@@ -129,6 +129,10 @@ PrefabInstance:
       value: 18944
       objectReference: {fileID: 0}
     - target: {fileID: 4907874789104868204, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: maskSprite
+      value: 
+      objectReference: {fileID: 6144338384689129958}
+    - target: {fileID: 4907874789104868204, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 16392
       objectReference: {fileID: 0}
@@ -264,6 +268,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2155851891502552797}
   m_SourcePrefab: {fileID: 100100000, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+--- !u!212 &6144338384689129958 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6244718240285007056, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+  m_PrefabInstance: {fileID: 282777982775751990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8060233037413480265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7797721267054019199, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}

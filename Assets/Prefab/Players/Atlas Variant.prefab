@@ -133,6 +133,10 @@ PrefabInstance:
       value: 9472
       objectReference: {fileID: 0}
     - target: {fileID: 4907874789104868204, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+      propertyPath: maskSprite
+      value: 
+      objectReference: {fileID: 3044408010583930410}
+    - target: {fileID: 4907874789104868204, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 8200
       objectReference: {fileID: 0}
@@ -290,3 +294,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &3044408010583930410 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6244718240285007056, guid: eb503c9a5ec3a72478fc6561a0f9d080, type: 3}
+  m_PrefabInstance: {fileID: 8977462773598546682}
+  m_PrefabAsset: {fileID: 0}
