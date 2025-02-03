@@ -13,6 +13,10 @@ PrefabInstance:
       value: Cloud
       objectReference: {fileID: 0}
     - target: {fileID: 212550525309021908, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 212550525309021908, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -75,6 +79,22 @@ PrefabInstance:
     - target: {fileID: 8331596854214234042, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
       propertyPath: m_UsedByEffector
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331596854214234042, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331596854214234042, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331596854214234042, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331596854214234042, guid: 7d6e37257a297de4486713ca70302fc2, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
