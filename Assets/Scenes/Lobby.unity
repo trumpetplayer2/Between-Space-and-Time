@@ -4464,8 +4464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d4e50f792be784da3a64e3039d15b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxX: -1.1
-  minX: 1.2
+  maxX: 1.2
+  minX: -1.1
   maxY: 2
   minY: 0
   distance: -10
