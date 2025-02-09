@@ -12,17 +12,23 @@ namespace tp2
 
         private void Start()
         {
-            localPlayer = PlayerTypeExtensions.localPlayer;
-            if(localPlayer == null)
+            fetchLocalPlayer();
+        }
+
+        void fetchLocalPlayer()
+        {
+            localPlayer = Camera.main.gameObject;
+            if (localPlayer == null)
             {
-                Debug.LogWarning("Error Finding Local Player");
-                Destroy(this);
+                //If local player not found, try again in a second
+                Invoke("fetchLocalPlayer", 1);
             }
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (localPlayer == null) return;
             try
             {
                 int max = Mathf.Min(parallaxLayers.Length, parallaxSpeeds.Length);
