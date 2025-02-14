@@ -33,6 +33,7 @@ namespace tp2
         public static UnityEvent networkUpdate = new UnityEvent();
         float networkUpdateMS = 50;
         float timeSinceLastUpdate = 0;
+        public string joinCode;
          
         void Awake()
         {
@@ -114,9 +115,10 @@ namespace tp2
         public void startHost()
         {
             //Start Host
-            m_NetworkManager.StartHost();
+            //m_NetworkManager.StartHost();
             m_NetworkManager.SceneManager.LoadScene(lobby, LoadSceneMode.Single);
             currentScene = 1;
+            logRpc("Join Code: " + joinCode);
         }
 
         public void connectClient()
