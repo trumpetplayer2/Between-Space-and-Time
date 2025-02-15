@@ -15,5 +15,10 @@ namespace tp2
         {
             NetManager.instance.manualConnect(input);
         }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 }
