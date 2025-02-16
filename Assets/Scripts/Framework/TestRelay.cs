@@ -18,6 +18,7 @@ namespace tp2
         async void Start()
         {
             await UnityServices.InitializeAsync();
+            if (AuthenticationService.Instance.IsSignedIn) return;
             AuthenticationService.Instance.SignedIn += () =>
             {
                 Debug.Log("Signed In as " + AuthenticationService.Instance.PlayerId);
