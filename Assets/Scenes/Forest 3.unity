@@ -5411,14 +5411,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 560160890}
+    - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 560160890}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
@@ -5426,15 +5434,31 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: reset
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: toggleMoving
       objectReference: {fileID: 0}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: tp2.Patrol, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: tp2.Patrol, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
       propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190334393718001780, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
+      propertyPath: ButtonUpdated.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3079110590955211456, guid: bdf1205f5f350e24883f4052017433b5, type: 3}
@@ -8801,6 +8825,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1121937905}
     m_Modifications:
+    - target: {fileID: 608727276055259739, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 963887926072133262, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 337771326
@@ -8916,6 +8944,10 @@ PrefabInstance:
     - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: LeverFlipped.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745173239881310584, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
