@@ -30,10 +30,15 @@ namespace tp2
         Rigidbody2D parentBody = null;
         public Color heldColor;
         Color baseColor;
+        public float speedToSound = 3f;
+        float lastPosy = 0;
+        bool makeNoise = false;
         //TargetJoint2D joint = null;
+        SfxHandler sfx;
         private void Start()
         {
             body = GetComponent<Rigidbody2D>();
+            sfx = GetComponent<SfxHandler>();
             weight = body.mass;
             layer = gameObject.layer;
             SceneManager.sceneUnloaded += OnSceneUnloaded;
@@ -80,6 +85,22 @@ namespace tp2
         {
             bodyUpdate();
             //targetUpdate();
+            lastPosy = transform.position.y;
+            if (!held.Value)
+            {
+                if(speedToSound < Mathf.Abs(lastPosy - transform.position.y))
+                {
+                    makeNoise = true;
+                }
+                if(lastPosy - transform.position.y < 0.01)
+                {
+                    if (makeNoise)
+                    {
+                        sfxRpc(1);
+                        makeNoise = false;
+                    }
+                }
+            }
         }
 
         public void grabAppearance(bool isHeld)
@@ -178,14 +199,6 @@ namespace tp2
                     }
                 }
             }
-            //if (IsServer)
-            //{
-            //    UpdateLocationRpc(this.transform.position);
-            //}
-            //if (IsOwner)
-            //{
-            //    SubmitPositionRequestRpc(transform.position);
-            //}
             //Watch for input
             if (Input.GetButton("Interact"))
             {
@@ -219,29 +232,6 @@ namespace tp2
             }
         }
 
-        //void targetUpdate()
-        //{
-        //    if (cooldown > 0 && !localHeld()) return;
-        //    if (joint != null)
-        //    {
-        //        if (transform.parent != null)
-        //        {
-        //            if (alignPos == Vector3.zero && localHeld())
-        //            {
-        //                float sign = Mathf.Sign(transform.parent.InverseTransformPoint(transform.position).x);
-        //                if (sign == float.NaN) sign = 0;
-        //                Vector3 bSize = transform.localScale;
-        //                alignPos = new Vector3((bSize.x / 2 + .6f) * sign, 0.01f, transform.position.z);
-        //            }
-        //            else
-        //            {
-        //                //Apply a velocity to try to get to goal location. If object is in the way this wont move
-        //                joint.target = transform.parent.TransformPoint(alignPos);
-        //            }
-        //        }
-        //    }
-        //}
-
         void bodyUpdate()
         {
             if (cooldown > 0 && !localHeld()) return;
@@ -266,15 +256,6 @@ namespace tp2
                         {
                             body.velocity = body.velocity * fastMult;
                         }
-                        //if(parentBody != null)
-                        //{
-                        //    //If parent is moving faster than the body, then move as fast as parent. This should stop parent from colliding with child
-                        //    if(body.velocity.magnitude < parentBody.velocity.magnitude)
-                        //    {
-                        //        body.velocity = parentBody.velocity;
-                        //    }
-                        //}
-                        //body.velocity = parentBody.velocity;
                     }
                 }
                 else
@@ -322,6 +303,12 @@ namespace tp2
                 PlayerTypeExtensions.getObject(type).GetComponent<NetPlayer>().updateAnimationRpc(animationState.Box, true);
             }
             catch { }
+            sfxRpc(0);
+        }
+        [Rpc(SendTo.Everyone)]
+        public void sfxRpc(int clip)
+        {
+            sfx?.playClip(clip);
         }
         public void release(string reason)
         {

@@ -13,7 +13,8 @@ namespace tp2
 {
     public class TestRelay : MonoBehaviour
     {
-
+        public Subgroup mainMenu;
+        public Subgroup group;
         // Start is called before the first frame update
         async void Start()
         {
@@ -47,6 +48,7 @@ namespace tp2
             }catch(RelayServiceException e)
             {
                 Debug.Log(e);
+                returnToMenu();
             }
         }
 
@@ -74,7 +76,16 @@ namespace tp2
             }catch(RelayServiceException e)
             {
                 Debug.Log(e);
+                returnToMenu();
             }
+        }
+
+        public void returnToMenu()
+        {
+            Debug.Log(group);
+            Debug.Log(mainMenu);
+            group.toggleGroup(mainMenu);
+            group.attemptDisconnect();
         }
     }
 }

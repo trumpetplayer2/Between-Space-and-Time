@@ -37,6 +37,11 @@ namespace tp2
             }
         }
 
+        public void playClip(bool b)
+        {
+
+        }
+
         public void playClip(bool b, bool overrideTimer = false)
         {
             if (b)

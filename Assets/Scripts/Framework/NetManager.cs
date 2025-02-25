@@ -141,6 +141,15 @@ namespace tp2
 
         }
 
+        public void attemptDisconnect()
+        {
+            try
+            {
+                m_NetworkManager.Shutdown();
+            }
+            catch (Exception e) { Debug.Log(e); }
+        }
+
         public void manualConnect(TMP_InputField input)
         {
             address = input.text.Trim();

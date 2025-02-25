@@ -11,5 +11,10 @@ namespace tp2
             obj.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
         }
+
+        public void attemptDisconnect()
+        {
+            NetManager.instance.attemptDisconnect();
+        }
     }
 }

@@ -56,8 +56,8 @@ MonoBehaviour:
     timeout: -1
     cooldown: 0.1
     sfx:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 8300000, guid: 43cba46dff8ba1a40ab1429299370e36, type: 3}
+    - {fileID: 8300000, guid: 36fa816d7ecc30a4bb5fa22bcbe6ff20, type: 3}
   menu: {fileID: 2461428850917946714}
   lobbyButton: {fileID: 8986180107010762084}
 --- !u!1 &2461428850917946714
@@ -260,6 +260,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2709741813615937644}
+        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
+        m_MethodName: playClip
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2709741813615937644}
         m_TargetAssemblyTypeName: tp2.Pause, Assembly-CSharp
         m_MethodName: switchScenes
         m_Mode: 3
@@ -393,6 +405,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2709741813615937644}
+        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
+        m_MethodName: playClip
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2709741813615937644}
         m_TargetAssemblyTypeName: tp2.Pause, Assembly-CSharp
         m_MethodName: toggleMenu
         m_Mode: 6
@@ -525,6 +549,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2709741813615937644}
+        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
+        m_MethodName: playClip
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2709741813615937644}
         m_TargetAssemblyTypeName: tp2.Pause, Assembly-CSharp
         m_MethodName: disconnect

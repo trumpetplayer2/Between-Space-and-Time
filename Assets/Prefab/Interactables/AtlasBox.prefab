@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 5547441433546158406}
   - component: {fileID: 4564830970229827172}
   - component: {fileID: 1856966499556871620}
+  - component: {fileID: 9182802372921584512}
   m_Layer: 10
   m_Name: AtlasBox
   m_TagString: Box
@@ -477,6 +478,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9182802372921584512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082226242808694332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9a42f605a6a3049b44a82f637e8e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSettings:
+    sfxVolume: 1
+    sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
+    sfx:
+    - {fileID: 8300000, guid: f6404a2c78c971142a76ed99fef50a8d, type: 3}
+    - {fileID: 8300000, guid: 660805bbee5fdbb4d9f47f3fda3e3e4f, type: 3}
 --- !u!1 &6318619870161139332
 GameObject:
   m_ObjectHideFlags: 0

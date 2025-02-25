@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 7768860088458745504}
   - component: {fileID: 963887926072133262}
   - component: {fileID: 5991722901783053033}
+  - component: {fileID: 941230715853428050}
   m_Layer: 8
   m_Name: Lever
   m_TagString: Untagged
@@ -261,6 +262,26 @@ MonoBehaviour:
   LeverFlipped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &941230715853428050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473775094928607054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9a42f605a6a3049b44a82f637e8e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSettings:
+    sfxVolume: 1
+    sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
+    sfx:
+    - {fileID: 8300000, guid: 0bb3a796029f3f744a24cbe4f2615596, type: 3}
 --- !u!1 &7745173239881310584
 GameObject:
   m_ObjectHideFlags: 0

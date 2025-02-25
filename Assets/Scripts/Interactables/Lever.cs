@@ -12,9 +12,20 @@ namespace tp2 {
         public float cooldown = 0.5f;
         float curCooldown = 0;
         float pullRadius = .5f;
+        SfxHandler sfx;
         public LayerMask playerLayers;
         bool broken = false;
         [SerializeField] private UnityEvent<bool> LeverFlipped;
+
+        private void Start()
+        {
+            sfx = this.GetComponent<SfxHandler>();
+            LeverFlipped.AddListener((bool call) => playClip(call));
+        }
+        void playClip(bool t = false)
+        {
+            sfx?.playClip(0);
+        }
 
         public void Update()
         {

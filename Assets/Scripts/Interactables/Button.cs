@@ -16,9 +16,20 @@ namespace tp2
         public float sizey = 2;
         public Sprite unpressed;
         public Sprite pressed;
+        SfxHandler sfx;
         [SerializeField] private UnityEvent<bool> ButtonUpdated;
         bool localPressed = false;
-        
+
+        private void Start()
+        {
+            sfx = this.GetComponent<SfxHandler>();
+            ButtonUpdated.AddListener((bool call) => playClip(call));
+        }
+
+        void playClip(bool t = false)
+        {
+            sfx?.playClip(0);
+        }
 
         private void Update()
         {

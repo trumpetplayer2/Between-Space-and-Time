@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3825187037546881984}
   - component: {fileID: 2190334393718001780}
   - component: {fileID: 1019721720889912226}
+  - component: {fileID: 4346709271491996852}
   m_Layer: 8
   m_Name: Button
   m_TagString: Untagged
@@ -247,6 +248,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4346709271491996852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918180799336856141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9a42f605a6a3049b44a82f637e8e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSettings:
+    sfxVolume: 1
+    sfxPitch: 1
+    startTime: 0
+    timeout: -1
+    cooldown: 0.1
+    sfx:
+    - {fileID: 8300000, guid: 8a9d09535fcce4640be293f02a2134e5, type: 3}
+    - {fileID: 8300000, guid: 8a9d09535fcce4640be293f02a2134e5, type: 3}
 --- !u!1 &8935209237950490037
 GameObject:
   m_ObjectHideFlags: 0

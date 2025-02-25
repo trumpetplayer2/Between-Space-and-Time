@@ -39,6 +39,7 @@ namespace tp2
         bool falling;
         bool walking;
         bool holdingBox;
+        SfxHandler sfx;
         SpriteRenderer sprite;
         public SpriteRenderer maskSprite;
         //Initalize when loaded
@@ -67,6 +68,7 @@ namespace tp2
             animator = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
             //NetManager.networkUpdate.AddListener(NetworkUpdate);
+            sfx = GetComponent<SfxHandler>();
         }
 
         [Rpc(SendTo.Owner)]
@@ -261,6 +263,7 @@ namespace tp2
             if (Input.GetButtonDown("Jump") && jumpTime < 0.1 && isOnGround)
             {
                 jumping = true;
+                sfxRpc(0);
             }
             if (Input.GetButton("Jump") && jumping)
             {
@@ -304,6 +307,12 @@ namespace tp2
                 transform.position = new Vector3(transform.position.x, lastGroundedY, transform.position.z);
                 Player.velocity = Vector3.zero;
             }
+        }
+
+        [Rpc(SendTo.Everyone)]
+        public void sfxRpc(int id)
+        {
+            sfx?.playClip(id);
         }
 
         [Rpc(SendTo.Everyone)]
