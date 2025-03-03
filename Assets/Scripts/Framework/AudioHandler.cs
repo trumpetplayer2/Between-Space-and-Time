@@ -59,6 +59,7 @@ namespace tp2
     public class AudioHandler : MonoBehaviour
     {
         public static AudioHandler instance;
+        public float masterVolume = .5f;
         AudioSource musicTrack;
         AudioSource[] sfxTracks = new AudioSource[16];
         Queue<Clip> audioQueue = new Queue<Clip>();
@@ -93,7 +94,7 @@ namespace tp2
                         {
                             if (PlayerTypeExtensions.getLocalPlayerType() != c.playerType) return;
                         }
-                        sfxSource.volume = c.volume;
+                        sfxSource.volume = c.volume * masterVolume;
                         sfxSource.pitch = c.pitch;
                         sfxSource.time = Mathf.Min(c.clip.length, c.startTime);
                         sfxSource.PlayOneShot(c.clip);

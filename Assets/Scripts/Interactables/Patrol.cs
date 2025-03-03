@@ -211,7 +211,7 @@ namespace tp2
 
         public void toggleMoving(bool m)
         {
-            playClip(m);
+            playButtonClip(m);
             moving = m;
         }
 

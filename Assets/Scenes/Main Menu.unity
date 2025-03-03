@@ -1198,10 +1198,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1385394088}
-        m_TargetAssemblyTypeName: tp2.MenuConnect, Assembly-CSharp
-        m_MethodName: Quit
-        m_Mode: 1
+      - m_Target: {fileID: 854635097}
+        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
+        m_MethodName: playButtonClip
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1210,10 +1210,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 854635097}
-        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
-        m_MethodName: playClip
-        m_Mode: 6
+      - m_Target: {fileID: 1385394088}
+        m_TargetAssemblyTypeName: tp2.MenuConnect, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1616,6 +1616,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 854635097}
+        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
+        m_MethodName: playButtonClip
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 854635096}
         m_TargetAssemblyTypeName: tp2.TestRelay, Assembly-CSharp
         m_MethodName: JoinRelay
@@ -1639,18 +1651,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 854635097}
-        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
-        m_MethodName: playClip
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &888449093
 MonoBehaviour:
@@ -1908,6 +1908,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1081580190}
+        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
+        m_MethodName: playButtonClip
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 624050374}
         m_TargetAssemblyTypeName: tp2.Subgroup, Assembly-CSharp
         m_MethodName: attemptDisconnect
@@ -1927,18 +1939,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1385394090}
           m_ObjectArgumentAssemblyTypeName: tp2.Subgroup, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081580190}
-        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
-        m_MethodName: playClip
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2254,7 +2254,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: Join Code
+  m_Text: Enter Join Code
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -2286,7 +2286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c696267594e6bbe4d9e34d4cc821ec76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd8d9d77ff96f4d4899eb856667fef02, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2692,6 +2692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a76288bb0834de4db71f1be00e871d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 0.25
 --- !u!1 &1440472177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,6 +3174,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 854635097}
+        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
+        m_MethodName: playButtonClip
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 854635096}
         m_TargetAssemblyTypeName: tp2.TestRelay, Assembly-CSharp
         m_MethodName: CreateRelay
@@ -3196,18 +3209,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 854635097}
-        m_TargetAssemblyTypeName: tp2.SfxHandler, Assembly-CSharp
-        m_MethodName: playClip
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1517129654
 MonoBehaviour:
@@ -3304,7 +3305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Join Code\u200B"
+  m_text: "Enter Join Code\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3313,8 +3314,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -37,9 +37,9 @@ namespace tp2
             }
         }
 
-        public void playClip(bool b)
+        public void playButtonClip(bool b)
         {
-
+            playClip(b);
         }
 
         public void playClip(bool b, bool overrideTimer = false)

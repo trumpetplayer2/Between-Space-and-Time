@@ -6,7 +6,7 @@ namespace tp2
 {
     public class MusicManager : MonoBehaviour
     {
-        float volume = .1f;
+        public float volume = .1f;
         public AudioSource current;
         public AudioSource blend;
         public AudioClip pastMusic;

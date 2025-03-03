@@ -8486,7 +8486,7 @@ MonoBehaviour:
   cinematicNumber: 0
   cutscenes:
   - {fileID: 251042861}
-  Waiting: {fileID: 0}
+  Waiting: {fileID: 122566148359577232}
 --- !u!81 &1358483173
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12348,6 +12348,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff6b5be240938224c813d62c3fe5ca31, type: 3}
+--- !u!1 &122566148359577232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8165353073315460970, guid: ff6b5be240938224c813d62c3fe5ca31, type: 3}
+  m_PrefabInstance: {fileID: 122566148359577231}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6864128085010233522
 PrefabInstance:
   m_ObjectHideFlags: 0
