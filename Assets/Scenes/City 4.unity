@@ -1861,15 +1861,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textbox: {fileID: 799544513}
   text:
-  - Ugh it stinks in here
-  - Insert dialogue here
-  - Why are we here anyways?
-  - Because this is the safest way to the mountain
+  - Are you still hanging in there?
+  - "Yeah, but I\u2019m getting a bit tired"
+  - "It\u2019s just a bit further\u2026 Come on!"
+  - "Where are we going? Wait\u2026 I just need a little break\u2026"
+  - "Here? Let\u2019s at least get out of the sewers before you take a break. There
+    should be a bench up ahead."
   image:
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
-  - {fileID: 21300000, guid: 551a09bf5e794184789d24052ace64a1, type: 3}
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
-  - {fileID: 21300000, guid: 551a09bf5e794184789d24052ace64a1, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
   complete: 0
   pic: {fileID: 1482577506}
 --- !u!114 &1321669729

@@ -4968,11 +4968,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textbox: {fileID: 799544513}
   text:
-  - So this is the city...
-  - '*Insert Dialogue*'
+  - "Wait\u2026 What is this?"
+  - "It\u2019s the city, though it does look a bit different than usual."
+  - "A bit? It looks nothing like the city I\u2019m used to\u2026"
+  - Have you ever heard about the legend of the comet?
+  - The one that supposedly makes different times mix with different places?
+  - "Yeah\u2026 It was supposed to pass by recently, wasn\u2019t it?"
+  - "But it is just a legend\u2026 Isn\u2019t it?"
+  - If it was, then how do you explain this?
+  - "You have a good point\u2026"
+  - "Well, the sun seems to be setting, I think it\u2019s best if we keep going.
+    There\u2019s something I want to show you."
+  - "Wait\u2026 So we weren\u2019t just going through the forest?"
+  - "That was just the start, come on, let\u2019s go!"
   image:
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
   complete: 0
   pic: {fileID: 1482577506}
 --- !u!114 &1321669729
