@@ -49,7 +49,9 @@ namespace tp2
             if (!onWhitelist(collision)) return;
             PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
             if (temp == PlayerType.None) return;
-            updateParentRpc(temp);
+            if (!collision.TryGetComponent<NetPlayer>(out NetPlayer p)) return;
+            //updateParentRpc(new NetworkObjectReference(p.NetworkObject));
+            p.updateParentRpc(new NetworkObjectReference(this.NetworkObject));
         }
 
         void playerCheck(Collider2D collision)
@@ -59,7 +61,9 @@ namespace tp2
             if (collision.gameObject.transform.parent != null) return;
             PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
             if (temp == PlayerType.None) return;
-            updateParentRpc(temp);
+            if (!collision.TryGetComponent<NetPlayer>(out NetPlayer p)) return;
+            //updateParentRpc(new NetworkObjectReference(p.NetworkObject));
+            p.updateParentRpc(new NetworkObjectReference(this.NetworkObject));
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -153,9 +157,9 @@ namespace tp2
             if (onBlacklist(collision.gameObject)) return;
             if (!onWhitelist(collision)) return;
             PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
+            removeParentRpc(temp);
             if (temp == PlayerType.None) return;
             toggleFakeRpc(false, PlayerTypeExtensions.getIDof(temp), this.transform.position);
-            removeParentRpc(temp);
         }
 
         [Rpc(SendTo.NotMe)]
@@ -203,11 +207,16 @@ namespace tp2
             }
         }
 
-        [Rpc(SendTo.Server)]
-        void updateParentRpc(PlayerType type)
+        [Rpc(SendTo.Owner)]
+        void updateParentRpc(NetworkObjectReference playerRef)
         {
             if (timer > 0) return;
-            PlayerTypeExtensions.getObject(type).transform.parent = this.transform;
+            if (!playerRef.TryGet(out NetworkObject player)) return;
+            //player.TrySetParent(this.transform);
+            if(player.TryGetComponent<NetPlayer>(out NetPlayer p))
+            {
+                p.updateParentRpc(new NetworkObjectReference(this.NetworkObject));
+            }
         }
         [Rpc(SendTo.Server)]
         void removeParentRpc(PlayerType type)

@@ -42,6 +42,8 @@ namespace tp2
         SfxHandler sfx;
         SpriteRenderer sprite;
         public SpriteRenderer maskSprite;
+        float parentUpdateCooldown = 0.2f;
+        float parentUpdateTimer = 0;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -62,6 +64,43 @@ namespace tp2
 
         //TODO: SceneEventType.LoadComplete
 
+        [Rpc(SendTo.Server)]
+        public void updateParentRpc(NetworkObjectReference newParent)
+        {
+            if (parentUpdateTimer > 0) return;
+            if(!newParent.TryGet(out NetworkObject netObj)) { NetManager.log("Error getting parent object"); }
+            if (!this.NetworkObject.TrySetParent(netObj.transform))
+            {
+                Debug.Log("Could not set " + this.name + "'s Parent to " + netObj.name);
+            }
+            parentUpdateTimer = parentUpdateCooldown;
+        }
+
+        void SceneEvent(SceneEvent e)
+        {
+            switch (e.SceneEventType)
+            {
+                case SceneEventType.LoadComplete:
+
+                    return;
+            }
+        }
+
+        void onLoad()
+        {
+            Vector3 temp = transform.position;
+            switch (PlayerTypeExtensions.getLocalPlayerType())
+            {
+                case PlayerType.Atlas:
+                    temp = NetManager.aStart.position;
+                    break;
+                case PlayerType.Chroma:
+                    temp = NetManager.cStart.position;
+                    break;
+            }
+            SubmitPositionRequestRpc(temp);
+        }
+
         public void Start()
         {
             initializeRpc();
@@ -69,6 +108,8 @@ namespace tp2
             sprite = GetComponent<SpriteRenderer>();
             //NetManager.networkUpdate.AddListener(NetworkUpdate);
             sfx = GetComponent<SfxHandler>();
+            updateAnimationRpc(animationState.Box, false);
+            NetworkManager.Singleton.SceneManager.OnSceneEvent += SceneEvent;
         }
 
         [Rpc(SendTo.Owner)]
@@ -148,7 +189,7 @@ namespace tp2
 
         private void FixedUpdate()
         {
-            
+            parentUpdateTimer -= Time.fixedDeltaTime;
             if (!IsClient) return;
             if (!IsOwner)
             {
