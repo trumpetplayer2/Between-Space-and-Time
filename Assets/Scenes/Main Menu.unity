@@ -518,6 +518,7 @@ MonoBehaviour:
   - City 4
   - Mountain 1
   - Mountain 2
+  - Mountain 3
   menu: {fileID: 0}
   joinCode: 
 --- !u!1 &319179572
@@ -1528,6 +1529,7 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    sfxRange: 0.1
     startTime: 0
     timeout: -1
     cooldown: 0.1
@@ -1998,6 +2000,7 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    sfxRange: 0.1
     startTime: 0
     timeout: -1
     cooldown: 0.1

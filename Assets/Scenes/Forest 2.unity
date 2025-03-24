@@ -12287,6 +12287,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 17857252634531605, guid: ff6b5be240938224c813d62c3fe5ca31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5881791261651332320, guid: ff6b5be240938224c813d62c3fe5ca31, type: 3}
       propertyPath: m_LocalPosition.x
       value: 960

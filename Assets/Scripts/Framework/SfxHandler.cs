@@ -9,6 +9,7 @@ namespace tp2
     {
         public float sfxVolume = 1f;
         public float sfxPitch = 1f;
+        public float sfxRange = 0.1f;
         public float startTime = 0f;
         public float timeout = -1f;
         public float cooldown = 0.1f;
@@ -57,7 +58,7 @@ namespace tp2
         public void playClip(AudioClip clip, bool overrideTimer = false)
         {
             if (timer > 0 && !overrideTimer) return;
-            AudioHandler.instance.queueClip(clip, audioSettings.sfxVolume, audioSettings.sfxPitch, audioSettings.timeout, audioSettings.startTime, PlayerTypeExtensions.getPlayerVisible(this.gameObject.layer));
+            AudioHandler.instance.queueClip(clip, audioSettings.sfxVolume, Random.Range(audioSettings.sfxPitch - audioSettings.sfxRange, audioSettings.sfxPitch + audioSettings.sfxRange), audioSettings.timeout, audioSettings.startTime, PlayerTypeExtensions.getPlayerVisible(this.gameObject.layer));
             timer = audioSettings.cooldown;
         }
 

@@ -86,9 +86,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 608727276055259739, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 963887926072133262, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 3288824773
+      value: 3540063555
       objectReference: {fileID: 0}
     - target: {fileID: 963887926072133262, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -140,6 +144,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829326907606108388, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: playerLayers.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745173239881310584, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

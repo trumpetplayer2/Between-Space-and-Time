@@ -67,6 +67,7 @@ namespace tp2 {
         {
             broken = broke;
             //TODO: Play breaking Audio Cue if true
+            sfx?.playClip(1);
         }
 
         [Rpc(SendTo.Everyone)]
