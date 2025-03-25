@@ -12343,6 +12343,14 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7664960955831364533, guid: ff6b5be240938224c813d62c3fe5ca31, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 205
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664960955831364533, guid: ff6b5be240938224c813d62c3fe5ca31, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 205
+      objectReference: {fileID: 0}
     - target: {fileID: 9182304067635054775, guid: ff6b5be240938224c813d62c3fe5ca31, type: 3}
       propertyPath: m_Name
       value: LevelMenus

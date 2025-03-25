@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5618151e83321d144a529192fb75bcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume: 0.1
   current: {fileID: 4333087062137478609}
   blend: {fileID: 4851926196286088862}
   pastMusic: {fileID: 8300000, guid: 1e60a6367f19a6c44844331055912a1a, type: 3}
