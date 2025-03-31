@@ -5135,7 +5135,7 @@ PrefabInstance:
     - target: {fileID: 212550525309021908, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: be7dc0bb7be2ca24f966d9d209c6f036, type: 3}
+      objectReference: {fileID: 21300000, guid: b39f9a63186cf4d418ebe8234f032630, type: 3}
     - target: {fileID: 212550525309021908, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_Color.b
       value: 0.4039216
@@ -7137,7 +7137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1862000011}
   - component: {fileID: 1862000012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trough
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8277,19 +8277,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7128966017707052785, guid: 964f143908a81eb478fdd4909f0d8aeb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1191876
+      value: 3.4091372
       objectReference: {fileID: 0}
     - target: {fileID: 7128966017707052785, guid: 964f143908a81eb478fdd4909f0d8aeb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7013484
+      value: 1.1282592
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128966017707052785, guid: 964f143908a81eb478fdd4909f0d8aeb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6087
       objectReference: {fileID: 0}
     - target: {fileID: 7128966017707052785, guid: 964f143908a81eb478fdd4909f0d8aeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.2734
+      value: 10.61
       objectReference: {fileID: 0}
     - target: {fileID: 7128966017707052785, guid: 964f143908a81eb478fdd4909f0d8aeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.9958
+      value: -3.7823
       objectReference: {fileID: 0}
     - target: {fileID: 7128966017707052785, guid: 964f143908a81eb478fdd4909f0d8aeb, type: 3}
       propertyPath: m_LocalPosition.z

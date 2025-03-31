@@ -2373,6 +2373,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1812937655642507842, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.590625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167670494534002238, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.590625
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719999589535405388, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.590625
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9125,6 +9137,10 @@ PrefabInstance:
     - target: {fileID: 1829326907606108388, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: playerLayers.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: LeverFlipped.m_PersistentCalls.m_Calls.Array.size

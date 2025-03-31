@@ -12373,6 +12373,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1358483175}
     m_Modifications:
+    - target: {fileID: 489110158605666943, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1789982758687481718, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
       propertyPath: m_Name
       value: ForestParallax
@@ -12416,6 +12420,26 @@ PrefabInstance:
     - target: {fileID: 1795333894423241133, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812937655642507842, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.590625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778077464941774452, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167670494534002238, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.590625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805640116320545062, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719999589535405388, guid: 3fcbcfb8f422eae4dad864fa63efcb74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.590625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

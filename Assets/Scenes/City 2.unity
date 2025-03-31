@@ -2127,6 +2127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1358483175}
     m_Modifications:
+    - target: {fileID: 1565504621555925208, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6099997
+      objectReference: {fileID: 0}
     - target: {fileID: 1789982758687481718, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_Name
       value: CityParallax
@@ -2137,7 +2141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795333894423241133, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: -0.43
       objectReference: {fileID: 0}
     - target: {fileID: 1795333894423241133, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2170,6 +2174,14 @@ PrefabInstance:
     - target: {fileID: 1795333894423241133, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462099180625194591, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525885451019173288, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6099997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4138,6 +4150,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: playerLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: LeverFlipped.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5940,6 +5956,10 @@ PrefabInstance:
     - target: {fileID: 1829326907606108388, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: playerLayers.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: LeverFlipped.m_PersistentCalls.m_Calls.Array.size
@@ -8019,6 +8039,10 @@ PrefabInstance:
     - target: {fileID: 1829326907606108388, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
+      propertyPath: playerLayers.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 5991722901783053033, guid: c010e4e61f29a2044a864c9e528b398b, type: 3}
       propertyPath: LeverFlipped.m_PersistentCalls.m_Calls.Array.size
@@ -11714,7 +11738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934945593340296259, guid: 6c35c90abbb387149a5b3aaca8f82024, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4106
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 934945593340296259, guid: 6c35c90abbb387149a5b3aaca8f82024, type: 3}
       propertyPath: m_LocalPosition.z

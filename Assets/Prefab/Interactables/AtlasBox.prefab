@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.06568381}
+  m_Size: {x: 1.03, y: 0.06568381}
   m_EdgeRadius: 0
 --- !u!1 &5382097088169937292
 GameObject:
@@ -414,6 +414,7 @@ MonoBehaviour:
   isParadox: 0
   miny: -100
   heldColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
+  speedToSound: 3
 --- !u!251 &4564830970229827172
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -493,6 +494,7 @@ MonoBehaviour:
   audioSettings:
     sfxVolume: 1
     sfxPitch: 1
+    sfxRange: 0.1
     startTime: 0
     timeout: -1
     cooldown: 0.1
