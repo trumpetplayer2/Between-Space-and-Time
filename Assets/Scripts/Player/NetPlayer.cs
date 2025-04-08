@@ -44,6 +44,11 @@ namespace tp2
         public SpriteRenderer maskSprite;
         float parentUpdateCooldown = 0.2f;
         float parentUpdateTimer = 0;
+        public ParticleSystem walkParticle;
+        public ParticleSystem jumpParticle;
+        public float particleTimer = 1;
+        public float particleVariance = .25f;
+        float particleCooldown = 0;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -193,6 +198,18 @@ namespace tp2
             if (!IsClient) return;
             if (!IsOwner)
             {
+                if (walking)
+                {
+                    if (particleCooldown <= 0)
+                    {
+                        particleCooldown = particleTimer + Random.Range(-particleVariance, particleVariance);
+                        walkParticle?.Play();
+                    }
+                    else
+                    {
+                        particleCooldown -= Time.fixedDeltaTime;
+                    }
+                }
                 return;
             }
             if (Player == null) return;
@@ -228,6 +245,18 @@ namespace tp2
                     {
                         flipSpriteRpc(true);
                     }
+                }
+                if(particleCooldown <= 0)
+                {
+                    if (!jumping)
+                    {
+                        particleCooldown = particleTimer + Random.Range(-particleVariance, particleVariance);
+                        walkParticle?.Play();
+                    }
+                }
+                else
+                {
+                    particleCooldown -= Time.fixedDeltaTime;
                 }
             }
             else
@@ -292,6 +321,7 @@ namespace tp2
                 if (falling)
                 {
                     updateAnimationRpc(animationState.Fall, false);
+                    jumpParticle.Play();
                 }
             }
             if (!isOnGround)
@@ -305,6 +335,7 @@ namespace tp2
             {
                 jumping = true;
                 sfxRpc(0);
+                jumpParticle?.Play();
             }
             if (Input.GetButton("Jump") && jumping)
             {

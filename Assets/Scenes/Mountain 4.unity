@@ -828,9 +828,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1358483175}
     m_Modifications:
+    - target: {fileID: 2085547979776561505, guid: 5583389a0d2fcd94ab9a135417fbf76b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4726917933849798559, guid: 5583389a0d2fcd94ab9a135417fbf76b, type: 3}
       propertyPath: m_Name
       value: MountainParallax
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726917933849798559, guid: 5583389a0d2fcd94ab9a135417fbf76b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5756374218532075872, guid: 5583389a0d2fcd94ab9a135417fbf76b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -872,7 +880,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7194308409909011483, guid: 5583389a0d2fcd94ab9a135417fbf76b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -890,6 +899,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1358483175}
     m_Modifications:
+    - target: {fileID: 4474037103732118644, guid: d029a0fad8647e64689b915be6da536a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 204b2b111c1c165458054fbae71041c6, type: 3}
     - target: {fileID: 7241893706473130005, guid: d029a0fad8647e64689b915be6da536a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

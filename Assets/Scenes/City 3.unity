@@ -1903,7 +1903,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 0.59375, y: 1.2349014}
+  m_Size: {x: 16, y: 26.821884}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1918,8 +1918,8 @@ Transform:
   m_GameObject: {fileID: 264981299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.5153, y: 8.0044, z: 1}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalPosition: {x: 14.5153, y: 9.0664, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 199224648}
@@ -2237,7 +2237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212550525309021908, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_Size.x
-      value: 2.598907
+      value: 4.773243
       objectReference: {fileID: 0}
     - target: {fileID: 212550525309021908, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_Size.y
@@ -2269,7 +2269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 8.9128
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2313,7 +2313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856119458420547155, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.598907
+      value: 4.773243
       objectReference: {fileID: 0}
     - target: {fileID: 6856119458420547155, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalScale.y
@@ -2321,7 +2321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8191635921242521679, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.598907
+      value: 4.773243
       objectReference: {fileID: 0}
     - target: {fileID: 8191635921242521679, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalScale.y
@@ -2329,7 +2329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8331596854214234042, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 2.598907
+      value: 4.773243
       objectReference: {fileID: 0}
     - target: {fileID: 8331596854214234042, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y

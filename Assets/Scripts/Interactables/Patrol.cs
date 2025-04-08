@@ -20,6 +20,7 @@ namespace tp2
         Vector3 initialPos;
         Transform previousTransform;
         Transform tempTransform = null;
+        public ParticleSystem particleFX;
         
         private void Start()
         {
@@ -114,6 +115,10 @@ namespace tp2
                         if(currentPos < 0)
                         {
                             currentPos = 0;
+                        }
+                        if(particleFX != null)
+                        {
+                            particleFX.Play();
                         }
                         return;
                     case PatrolEndBehavior.Continue:
