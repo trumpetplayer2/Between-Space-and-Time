@@ -3161,6 +3161,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1001 &504812319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4981,6 +4982,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1 &722374404
 GameObject:
   m_ObjectHideFlags: 0
@@ -5930,6 +5932,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1 &940159465
 GameObject:
   m_ObjectHideFlags: 0
@@ -7105,6 +7108,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1 &1206474555
 GameObject:
   m_ObjectHideFlags: 0
@@ -7486,13 +7490,14 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1001 &1269299537
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1358483175}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1789982758687481718, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_Name
@@ -7508,7 +7513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795333894423241133, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1795333894423241133, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7892,6 +7897,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1 &1343920743
 GameObject:
   m_ObjectHideFlags: 0
@@ -8090,7 +8096,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 504812320}
-  - {fileID: 1994309835}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1413533740
@@ -9204,6 +9209,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1 &1588504575
 GameObject:
   m_ObjectHideFlags: 0
@@ -9721,6 +9727,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1001 &1672993545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10326,6 +10333,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1 &1813854477
 GameObject:
   m_ObjectHideFlags: 0
@@ -11969,11 +11977,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3630229712236617551, guid: 050e657bb94ace04ab8bef0f4501200c, type: 3}
   m_PrefabInstance: {fileID: 1989258420}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1994309835 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1795333894423241133, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
-  m_PrefabInstance: {fileID: 1269299537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1998543293
 GameObject:
   m_ObjectHideFlags: 0
@@ -12367,6 +12370,7 @@ MonoBehaviour:
   moving: 0
   inversion: 1
   endBehavior: 1
+  particleFX: {fileID: 0}
 --- !u!1 &2104885162
 GameObject:
   m_ObjectHideFlags: 0
@@ -12821,3 +12825,4 @@ SceneRoots:
   - {fileID: 359150112}
   - {fileID: 261313414}
   - {fileID: 1835794188}
+  - {fileID: 1269299537}

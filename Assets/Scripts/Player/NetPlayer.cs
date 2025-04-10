@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using System;
 
 namespace tp2
 {
@@ -86,7 +87,10 @@ namespace tp2
             switch (e.SceneEventType)
             {
                 case SceneEventType.LoadComplete:
-
+                    foreach(animationState state in Enum.GetValues(typeof(animationState)))
+                    {
+                        updateAnimationRpc(state, false);
+                    }
                     return;
             }
         }
@@ -202,7 +206,7 @@ namespace tp2
                 {
                     if (particleCooldown <= 0)
                     {
-                        particleCooldown = particleTimer + Random.Range(-particleVariance, particleVariance);
+                        particleCooldown = particleTimer + UnityEngine.Random.Range(-particleVariance, particleVariance);
                         walkParticle?.Play();
                     }
                     else
@@ -250,7 +254,7 @@ namespace tp2
                 {
                     if (!jumping)
                     {
-                        particleCooldown = particleTimer + Random.Range(-particleVariance, particleVariance);
+                        particleCooldown = particleTimer + UnityEngine.Random.Range(-particleVariance, particleVariance);
                         walkParticle?.Play();
                     }
                 }
