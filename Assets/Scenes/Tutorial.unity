@@ -2147,7 +2147,7 @@ PrefabInstance:
     - target: {fileID: 3865845986619152642, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_text
       value: There are 3 types of moving platforms. This lever controls all 3 of
-        the platforms in this room. Press 'r' to interact with the lever.
+        the platforms in this room. Press 'e' to interact with the lever.
       objectReference: {fileID: 0}
     - target: {fileID: 3865845986619152642, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_fontSize

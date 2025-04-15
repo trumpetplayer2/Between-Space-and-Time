@@ -1157,10 +1157,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1321669727}
   - {fileID: 1655308314}
   - {fileID: 72582713}
   - {fileID: 1898141676}
-  - {fileID: 1321669727}
   - {fileID: 1704881465}
   - {fileID: 305069463}
   m_Father: {fileID: 0}
@@ -1227,11 +1227,13 @@ MonoBehaviour:
   text:
   - That was a long bus ride...
   - It's already night...
-  - Well, be careful, the mountain is slippery
+  - We have a bit of a climb ahead of us...
+  - Are you ready? If you need a break, let me know!
   image:
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
-  - {fileID: 21300000, guid: de01f0b565632ef49831be7fc9d2ed68, type: 3}
-  - {fileID: 21300000, guid: 551a09bf5e794184789d24052ace64a1, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: c75c94db9e7af29498e4ce5b4e39fabd, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
+  - {fileID: 21300000, guid: 040289d0ff9c89641ab18800041a8672, type: 3}
   complete: 0
   pic: {fileID: 1482577506}
 --- !u!114 &1321669729
@@ -2005,6 +2007,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3707800268235304065, guid: ab537aa15091fc54b8478a3179abc667, type: 3}
   m_PrefabInstance: {fileID: 3940950238918748317}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4495802473273757841
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750224657527777551, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139320628636772653, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7cb1f2de3d089e4c8adf909875f912d, type: 3}
 --- !u!1001 &5229644348164693542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2358,3 +2417,4 @@ SceneRoots:
   - {fileID: 340548063}
   - {fileID: 265555470}
   - {fileID: 781955117}
+  - {fileID: 4495802473273757841}

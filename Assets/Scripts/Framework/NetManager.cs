@@ -18,6 +18,7 @@ namespace tp2
         public static string lobby = "Lobby";
         public static Transform aStart;
         public static Transform cStart;
+        public static float ping;
         public InitializePlayer[] players = new InitializePlayer[2] { null, null };
         public static NetManager instance;
         public float timeout = 10;
@@ -170,7 +171,7 @@ namespace tp2
             wasConnected = true;
             //Check how long its been since last ping in seconds
             lastKnownServerTime = m_NetworkManager.ServerTime;
-            float ping = (m_NetworkManager.LocalTime - lastKnownServerTime).TimeAsFloat;
+            ping = (m_NetworkManager.LocalTime - lastKnownServerTime).TimeAsFloat;
             //log("ping: " + ping);
             //If Ping passes timeout threshold, disconnect
             //if(ping >= timeout)

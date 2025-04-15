@@ -173,7 +173,6 @@ namespace tp2
             {
                 if (transform.parent == null)
                 {
-                    Debug.Log(held.Value + ":" + (transform.parent == null));
                     release("ERROR: Held and Parent dont match");
                     return;
                 }
@@ -181,7 +180,6 @@ namespace tp2
                 {
                     if (transform.parent.tag.ToLower().Equals("player"))
                     {
-                        Debug.Log(held.Value + ":" + (transform.parent == null));
                         release("ERROR: Held and Parent dont match");
                         return;
                     }

@@ -79,7 +79,7 @@ namespace tp2
             {
                 Debug.Log("Could not set " + this.name + "'s Parent to " + netObj.name);
             }
-            parentUpdateTimer = parentUpdateCooldown;
+            parentUpdateTimer = Mathf.Max(parentUpdateCooldown, NetManager.ping);
         }
 
         void SceneEvent(SceneEvent e)

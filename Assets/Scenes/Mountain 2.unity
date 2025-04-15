@@ -2303,7 +2303,7 @@ Transform:
   m_GameObject: {fileID: 276584160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45, y: 9.75, z: 0}
+  m_LocalPosition: {x: 45, y: 10.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2690,7 +2690,7 @@ Transform:
   m_GameObject: {fileID: 322106941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78.5, y: 26, z: 0}
+  m_LocalPosition: {x: 78.5, y: 25.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4593,7 +4593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2987100677523450262, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23
+      value: 23.125
       objectReference: {fileID: 0}
     - target: {fileID: 2987100677523450262, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4626,6 +4626,10 @@ PrefabInstance:
     - target: {fileID: 2987100677523450262, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689623668459745343, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
+      propertyPath: m_Size.y
+      value: 6.25
       objectReference: {fileID: 0}
     - target: {fileID: 4689623668459745343, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_SortingOrder
@@ -7421,7 +7425,7 @@ Transform:
   m_GameObject: {fileID: 1160601962}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67.5, y: 24.25, z: 0}
+  m_LocalPosition: {x: 67.5, y: 24.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8532,7 +8536,7 @@ Transform:
   m_GameObject: {fileID: 1360770054}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.5, y: 4.5, z: 0}
+  m_LocalPosition: {x: 36.5, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8563,7 +8567,7 @@ Transform:
   m_GameObject: {fileID: 1364774998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.5, y: -1, z: 0}
+  m_LocalPosition: {x: 22.5, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9977,12 +9981,12 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Positions:
-  - {x: 22.5, y: 0.5, z: 0}
+  - {x: 22.5, y: -0.5, z: 0}
   - {x: 36.5, y: 6, z: 0}
   - {x: 45, y: 11.25, z: 0}
   - {x: 58.5, y: 19.75, z: 0}
   - {x: 67.5, y: 25.75, z: 0}
-  - {x: 78.5, y: 27.5, z: 0}
+  - {x: 78.5, y: 26.6, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -10583,12 +10587,20 @@ PrefabInstance:
       value: Ski Lift Station (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 81
       objectReference: {fileID: 0}
     - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.5
+      value: 26.49
       objectReference: {fileID: 0}
     - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11979,7 +11991,7 @@ Transform:
   m_GameObject: {fileID: 1877144785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.5, y: 18.25, z: 0}
+  m_LocalPosition: {x: 58.5, y: 18.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13663,13 +13675,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ski Lift Station
       objectReference: {fileID: 0}
+    - target: {fileID: 5868959789547771697, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.5
       objectReference: {fileID: 0}
     - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 7211943030865323717, guid: 078c389516709e4428c2ec9d1e5accfc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13750,11 +13774,11 @@ PrefabInstance:
       objectReference: {fileID: 322106942}
     - target: {fileID: 3305302423000312863, guid: 3e544bcc663b344448a768c536b2d287, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.5
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3305302423000312863, guid: 3e544bcc663b344448a768c536b2d287, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 10.25
       objectReference: {fileID: 0}
     - target: {fileID: 3305302423000312863, guid: 3e544bcc663b344448a768c536b2d287, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13811,7 +13835,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4585589046959111668, guid: 70e8709af4ce23f44bb0d24ba6c844f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.84416
+      value: 47.323
       objectReference: {fileID: 0}
     - target: {fileID: 4585589046959111668, guid: 70e8709af4ce23f44bb0d24ba6c844f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13904,7 +13928,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.048131943, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -13915,7 +13939,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6055069, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &5133047082894202409
 PrefabInstance:
@@ -14203,7 +14227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2987100677523450262, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.5
+      value: 8.625
       objectReference: {fileID: 0}
     - target: {fileID: 2987100677523450262, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14236,6 +14260,10 @@ PrefabInstance:
     - target: {fileID: 2987100677523450262, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689623668459745343, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
+      propertyPath: m_Size.y
+      value: 6.25
       objectReference: {fileID: 0}
     - target: {fileID: 4689623668459745343, guid: 93e7c7271ed10514cbd21bb6c012db83, type: 3}
       propertyPath: m_SortingOrder
