@@ -32,6 +32,54 @@ namespace tp2
                 r.transform.localScale = Vector3.one;
                 r.transform.localScale = new Vector3(scale.x / transform.lossyScale.x, scale.y / transform.lossyScale.y, scale.z / transform.lossyScale.z);
             }
+            Transform check = this.transform;
+            if(transform.parent != null)
+            {
+                check = transform.parent;
+            }
+            Debug.Log(PlayerTypeExtensions.getEnumOf(check.gameObject).ToString());
+            if(PlayerTypeExtensions.getEnumOf(check.gameObject) != PlayerType.None)
+            {
+                //Platform is only one player, make them the owner
+                updateOwnerRpc(PlayerTypeExtensions.getUserId(this.gameObject));
+            }
+            else
+            {
+                //Neither Player is Owner.
+            }
+        }
+
+        [Rpc(SendTo.Server)]
+        public void updateOwnerRpc(ulong UUID)
+        {
+            this.NetworkObject.ChangeOwnership(UUID);
+            Transform parentObject = transform.parent;
+            while(parentObject != null)
+            {
+                if (parentObject.TryGetComponent<NetworkObject>(out NetworkObject parentObj))
+                {
+                    if(parentObj.tag.ToLower() != "player")
+                    {
+                        if (parentObj.gameObject.TryGetComponent<Box>(out Box b))
+                        {
+                            //If Box is not held, change owner
+                            if (!b.held.Value)
+                            {
+                                parentObj.ChangeOwnership(UUID);
+                            }
+                        }
+                        else
+                        {
+                            parentObj.ChangeOwnership(UUID);
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.Log($"Object {parentObject.name} did not have a Network Object!");
+                }
+                parentObject = parentObject.parent;
+            }
         }
 
         private void Update()
@@ -52,6 +100,18 @@ namespace tp2
             if (!collision.TryGetComponent<NetPlayer>(out NetPlayer p)) return;
             //updateParentRpc(new NetworkObjectReference(p.NetworkObject));
             p.updateParentRpc(new NetworkObjectReference(this.NetworkObject));
+            //If only one player is on this platform, make them the owner. This should hopefully reduce problems with delay
+            if(!(PlayerTypeExtensions.AtlasObject.transform.parent == this && PlayerTypeExtensions.ChromaObject.transform.parent == this))
+            {
+                updateOwnerRpc(p.NetworkObject.OwnerClientId);
+            }
+            else
+            {
+                if (!NetworkObject.IsOwnedByServer)
+                {
+                    updateOwnerRpc(NetworkManager.ServerClientId);
+                }
+            }
         }
 
         void playerCheck(Collider2D collision)
@@ -91,7 +151,10 @@ namespace tp2
                 //Only Server is allowed to update net objects. Luckily the server should also run this code so we don't need to worry
                 if (IsServer)
                 {
-                    collision.transform.parent = this.transform;
+                    if (collision.transform.parent == null)
+                    {
+                        collision.transform.parent = this.transform;
+                    }
                 }
             }
 
@@ -156,6 +219,8 @@ namespace tp2
         {
             if (onBlacklist(collision.gameObject)) return;
             if (!onWhitelist(collision)) return;
+            if (!IsOwner) return;
+            //if (collision.tag != "player") return;
             PlayerType temp = PlayerTypeExtensions.getEnumOf(collision.gameObject);
             removeParentRpc(temp);
             if (temp == PlayerType.None) return;
@@ -223,7 +288,7 @@ namespace tp2
         {
             try
             {
-                PlayerTypeExtensions.getObject(type).transform.parent = null;
+                PlayerTypeExtensions.getObject(type).GetComponent<NetPlayer>().removeParentRpc();
                 timer = cooldown;
             }
             catch { }

@@ -59,7 +59,7 @@ namespace tp2
     public class AudioHandler : MonoBehaviour
     {
         public static AudioHandler instance;
-        public float masterVolume = .5f;
+        public static float masterVolume = .5f;
         AudioSource musicTrack;
         AudioSource[] sfxTracks = new AudioSource[16];
         Queue<Clip> audioQueue = new Queue<Clip>();

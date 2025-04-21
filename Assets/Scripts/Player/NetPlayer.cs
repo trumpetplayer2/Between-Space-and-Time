@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using System;
+using Unity.Netcode.Components;
 
 namespace tp2
 {
@@ -17,6 +18,7 @@ namespace tp2
         public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
         public GameObject tracker;
         Rigidbody2D Player = null;
+        ClientNetworkTransform networkTransform;
         public float speed = 10;
         public float jumpforce = 10;
         public Transform groundCheck;
@@ -50,6 +52,7 @@ namespace tp2
         public float particleTimer = 1;
         public float particleVariance = .25f;
         float particleCooldown = 0;
+        public bool isOnGround = false;
         //Initalize when loaded
         //public override void OnNetworkSpawn()
         //{
@@ -81,6 +84,26 @@ namespace tp2
             }
             parentUpdateTimer = Mathf.Max(parentUpdateCooldown, NetManager.ping);
         }
+        [Rpc(SendTo.Owner)]
+        public void removeParentRpc()
+        {
+            StartCoroutine(waitForOnGround());
+        }
+        [Rpc(SendTo.Server)]
+        public void removeParentSRpc()
+        {
+            NetworkObject.TryRemoveParent();
+        }
+        IEnumerator waitForOnGround()
+        {
+            if(jumpTime == 0)
+            {
+                yield return new WaitForSeconds(.1f);
+            }
+            yield return new WaitUntil(() => ((jumpTime <= 0)));
+            removeParentSRpc();
+            yield break;
+        }
 
         void SceneEvent(SceneEvent e)
         {
@@ -93,6 +116,12 @@ namespace tp2
                     }
                     return;
             }
+        }
+
+        public void onPositionUpdate(Vector3 prev, Vector3 current)
+        {
+            if (IsOwner) return;
+            transform.position = current;
         }
 
         void onLoad()
@@ -119,6 +148,13 @@ namespace tp2
             sfx = GetComponent<SfxHandler>();
             updateAnimationRpc(animationState.Box, false);
             NetworkManager.Singleton.SceneManager.OnSceneEvent += SceneEvent;
+            Position.OnValueChanged += onPositionUpdate;
+            
+            if (IsServer)
+            {
+                networkTransform = this.GetComponent<ClientNetworkTransform>();
+                networkTransform.NetworkObject.ChangeOwnership(this.NetworkObject.OwnerClientId);
+            }
         }
 
         [Rpc(SendTo.Owner)]
@@ -161,13 +197,16 @@ namespace tp2
         [Rpc(SendTo.Owner)]
         public void initializeRpc()
         {
-            if (!IsClient) return;
-            Player = gameObject.AddComponent<Rigidbody2D>();
+            //Player = gameObject.AddComponent<Rigidbody2D>();
             if (Player == null)
             {
                 Player = gameObject.GetComponent<Rigidbody2D>();
             }
-            Player.freezeRotation = true;
+            if (IsOwner)
+            {
+                Player.isKinematic = false;
+            }
+            //Player.freezeRotation = true;
             Player.gravityScale = gravityScale;
             CameraFollow.instance.playerTracker = this.tracker.transform;
             if (IsOwner)
@@ -193,7 +232,7 @@ namespace tp2
             //Only update pos once per frame
             transform.position = Pos;
             Position.Value = Pos;
-            UpdateLocationRpc(Pos);
+            //UpdateLocationRpc(Pos);
         }
 
         private void FixedUpdate()
@@ -304,6 +343,7 @@ namespace tp2
             {
                 animator.speed = 1;
             }
+            isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
             //Player movement
             if (!IsOwner)
             {
@@ -318,7 +358,7 @@ namespace tp2
                 pressedR = null;
             }
             if (Player == null) return;
-            bool isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            
             if (isOnGround)
             {
                 lastGroundedY = transform.position.y + 1;
@@ -429,10 +469,10 @@ namespace tp2
             m_paused = paused;
         }
 
-        [Rpc(SendTo.NotOwner)]
-        public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
-        {
-            transform.position = Pos;
-        }
+        //[Rpc(SendTo.NotOwner)]
+        //public void UpdateLocationRpc(Vector3 Pos, RpcParams rpcParams = default)
+        //{
+        //    transform.position = Pos;
+        //}
     }
 }

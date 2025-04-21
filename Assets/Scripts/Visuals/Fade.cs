@@ -11,6 +11,7 @@ namespace tp2
         public float fadeTime = 1f;
         float timer = 0;
         Color c;
+        bool fadeIn = false;
 
         private void Start()
         {
@@ -20,9 +21,23 @@ namespace tp2
         // Update is called once per frame
         void Update()
         {
-            timer += Time.deltaTime;
-            c.a = 1 - (timer / fadeTime);
-            i.color = c;
+            if (fadeIn) {
+                timer += Time.deltaTime;
+                c.a = (timer / fadeTime);
+                i.color = c;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+                c.a = 1 - (timer / fadeTime);
+                i.color = c;
+            }
+        }
+
+        public void toggleFade(bool state)
+        {
+            fadeIn = state;
+            timer = 0;
         }
     }
 }

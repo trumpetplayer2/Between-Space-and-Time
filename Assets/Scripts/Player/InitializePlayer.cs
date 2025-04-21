@@ -91,8 +91,14 @@ namespace tp2
             if (!obj.tag.ToLower().Equals("player")) return PlayerType.None;
             switch (obj.layer)
             {
+                case 8:
+                case 10:
+                case 13:
                 case 6:
                     return PlayerType.Atlas;
+                case 9:
+                case 14:
+                case 11:
                 case 7:
                     return PlayerType.Chroma;
                 default:

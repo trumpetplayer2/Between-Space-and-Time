@@ -2273,7 +2273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.35
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2421,7 +2421,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4787728311586389086, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
 --- !u!4 &369644360 stripped
 Transform:
@@ -2580,6 +2583,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5312404946405927026, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6013906791711893229, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_Name
       value: Sign
@@ -2632,10 +2639,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6638833815373687523, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4787728311586389086, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
 --- !u!4 &424616942 stripped
 Transform:
@@ -2820,11 +2834,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.81
+      value: 21.21
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.35
       objectReference: {fileID: 0}
     - target: {fileID: 2044157366440721097, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8132,7 +8146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212550525309021908, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_SortingOrder
-      value: -2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1179792783574554606, guid: b06c43e5256eef349af797b72776b7da, type: 3}
       propertyPath: m_Layer

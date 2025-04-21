@@ -2177,9 +2177,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2711731284876210464, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3462099180625194591, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805640116320545062, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7525885451019173288, guid: 44a675d7247e76b4db328b28a5fcabb3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3391,7 +3399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 574849620}
   - component: {fileID: 574849619}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Saloon Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5375,6 +5383,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 602671576234490537, guid: 7f516ed29c5415545bd0ae753db19399, type: 3}
   m_PrefabInstance: {fileID: 835024735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &837853229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837853231}
+  - component: {fileID: 837853230}
+  m_Layer: 0
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &837853230
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837853229}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &837853231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837853229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.46, y: 19.92, z: 0}
+  m_LocalScale: {x: 1, y: 0.3978, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &839591801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15923,3 +16008,4 @@ SceneRoots:
   - {fileID: 261313414}
   - {fileID: 2069026009}
   - {fileID: 398556077}
+  - {fileID: 837853231}

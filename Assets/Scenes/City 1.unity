@@ -3807,6 +3807,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Backdrops (City)
       objectReference: {fileID: 0}
+    - target: {fileID: 4624191213449347369, guid: 6ee32b1e0653e6f429d6d11aa6094722, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355995947462321725, guid: 6ee32b1e0653e6f429d6d11aa6094722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6877994990265624621, guid: 6ee32b1e0653e6f429d6d11aa6094722, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

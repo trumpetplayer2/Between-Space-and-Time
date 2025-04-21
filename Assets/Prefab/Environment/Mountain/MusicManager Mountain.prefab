@@ -8,9 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3597174543954957331, guid: 53233cf14eef4b8458cf748ab560d1f4, type: 3}
+      propertyPath: pastMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 85799d87815c82145a36c7a6033df370, type: 3}
+    - target: {fileID: 3597174543954957331, guid: 53233cf14eef4b8458cf748ab560d1f4, type: 3}
+      propertyPath: futureMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c284855493b4114ebdb4754f2415c58, type: 3}
+    - target: {fileID: 3597174543954957331, guid: 53233cf14eef4b8458cf748ab560d1f4, type: 3}
+      propertyPath: presentMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 6af244732af6ab44a9b39d3e8630dd1e, type: 3}
     - target: {fileID: 8802941909980188505, guid: 53233cf14eef4b8458cf748ab560d1f4, type: 3}
       propertyPath: m_Name
-      value: MusicManager Variant
+      value: MusicManager Mountain
       objectReference: {fileID: 0}
     - target: {fileID: 8977061433141448571, guid: 53233cf14eef4b8458cf748ab560d1f4, type: 3}
       propertyPath: m_LocalPosition.x

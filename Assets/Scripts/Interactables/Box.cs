@@ -9,7 +9,7 @@ namespace tp2
     public class Box : NetworkBehaviour
     {
         Rigidbody2D body;
-        NetworkVariable<bool> held = new NetworkVariable<bool>(false);
+        public NetworkVariable<bool> held = new NetworkVariable<bool>(false);
         public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
         public NetworkVariable<int> objLayer = new NetworkVariable<int>();
         //bool curGrabbed = false;
@@ -27,7 +27,6 @@ namespace tp2
         public bool isParadox = false;
         public float miny = -100;
         Transform startLocation;
-        Rigidbody2D parentBody = null;
         public Color heldColor;
         Color baseColor;
         public float speedToSound = 3f;
@@ -232,8 +231,16 @@ namespace tp2
 
         void bodyUpdate()
         {
+            if (IsOwner)
+            {
+                body.isKinematic = false;
+            }
+            else
+            {
+                body.isKinematic = true;
+            }
             if (cooldown > 0 && !localHeld()) return;
-            if (!IsOwner) return;
+            if (!IsOwner) { return; }
             if (body != null)
             {
                 if (transform.parent != null)
@@ -286,7 +293,8 @@ namespace tp2
         bool localHeld()
         {
             if (this.transform.parent == null) return false;
-            return (PlayerTypeExtensions.localPlayer.transform == this.transform.parent);
+            Debug.Log(PlayerTypeExtensions.localPlayer.name);
+            return (NetworkManager.LocalClient.PlayerObject.transform == this.transform.parent);
         }
         
         public void grab(PlayerType type)
@@ -311,6 +319,8 @@ namespace tp2
         public void release(string reason)
         {
             if (!held.Value) return;
+            //Other player cannot force box to be dropped. This should hopefully fix the bug where slight desync causes box to be "Too Far"
+            if (!localHeld()) return;
             try
             {
                 this.gameObject.transform.parent.GetComponent<NetPlayer>().updateAnimationRpc(animationState.Box, false);
@@ -334,7 +344,11 @@ namespace tp2
             updateParent(type);
             this.held.Value = isHeld;
         }
-
+        [Rpc(SendTo.Server)]
+        void updateOwnerRpc(ulong owner)
+        {
+            updateOwner(owner);
+        }
         void updateOwner(ulong owner)
         {
             this.NetworkObject.ChangeOwnership(owner);
@@ -366,23 +380,13 @@ namespace tp2
             if (isHeld)
             {
                 body.mass = heldWeight;
-                //joint = gameObject.AddComponent<TargetJoint2D>();
-                //joint.autoConfigureTarget = false;
-                //joint.frequency = 100;
-                if(transform.parent != null)
-                {
-                    parentBody = transform.parent.GetComponent<Rigidbody2D>();
-                }
             }
             else
             {
-                body.constraints = RigidbodyConstraints2D.FreezeRotation;
                 cooldown = 0.5f;
                 body.mass = weight;
-                //Destroy(joint);
-                //joint = null;
-                parentBody = null;
             }
+            body.velocity = Vector3.zero;
             grabAppearance(isHeld);
         }
 
