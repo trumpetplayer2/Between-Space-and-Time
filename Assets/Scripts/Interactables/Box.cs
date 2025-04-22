@@ -240,6 +240,13 @@ namespace tp2
                 body.isKinematic = true;
             }
             if (cooldown > 0 && !localHeld()) return;
+            if(localHeld() && !IsOwner)
+            {
+                //We have a problem, Despite local player holding box, it is not owner
+                //Log and try updating owner
+                Debug.LogWarning("Box is held Locally, but not authoratively");
+                updateOwnerRpc(NetworkManager.LocalClientId);
+            }
             if (!IsOwner) { return; }
             if (body != null)
             {
@@ -293,7 +300,6 @@ namespace tp2
         bool localHeld()
         {
             if (this.transform.parent == null) return false;
-            Debug.Log(PlayerTypeExtensions.localPlayer.name);
             return (NetworkManager.LocalClient.PlayerObject.transform == this.transform.parent);
         }
         
@@ -360,8 +366,19 @@ namespace tp2
             if(PlayerTypeExtensions.getObject(type) != null)
             {
                 temp = PlayerTypeExtensions.getObject(type).transform;
+                Transform tempParent = temp.parent;
+                while(tempParent != null)
+                {
+                    if(tempParent == this.transform)
+                    {
+                        NetworkObject netObj = temp.GetComponent<NetworkObject>();
+                        netObj.TryRemoveParent();
+                        break;
+                    }
+                    tempParent = tempParent.parent;
+                }
             }
-            this.transform.parent = temp;
+            NetworkObject.TrySetParent(temp);
             if (!isParadox) return;
             if (gameObject.transform.parent != null)
             {

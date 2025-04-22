@@ -4885,7 +4885,7 @@ PrefabInstance:
     - target: {fileID: 3865845986619152642, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_text
       value: These are End Buttons. When you are ready to start, Both Players must
-        stand on the button only they can see here!
+        stand on the button with their color.
       objectReference: {fileID: 0}
     - target: {fileID: 3865845986619152642, guid: 9ad8ea60590a4e0489c47d034361d20f, type: 3}
       propertyPath: m_fontSize

@@ -288,6 +288,14 @@ namespace tp2
         private void setSceneRpc(string scene)
         {
             if (!m_NetworkManager.IsServer) return;
+            foreach(ulong client in NetworkManager.Singleton.ConnectedClientsIds)
+            {
+                NetworkObject obj = NetworkManager.Singleton.ConnectedClients[client].PlayerObject;
+                if(obj.transform.parent != null)
+                {
+                    obj.TryRemoveParent();
+                }
+            }
             for(int i = 0; i < SceneList.Length; i++)
             {
                 if (SceneList[i].ToLower().Equals(scene.ToLower())) currentScene = i; continue;

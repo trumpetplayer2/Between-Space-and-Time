@@ -14,9 +14,7 @@ namespace tp2
         {
             if (lobbyButton == null) return;
             if (PlayerTypeExtensions.getLocalPlayer() == null) return;
-            NetworkObject temp = PlayerTypeExtensions.getLocalPlayer().GetComponent<NetworkObject>();
-            if (temp == null) return;
-            lobbyButton.interactable = temp.IsOwnedByServer;
+            lobbyButton.interactable = NetworkManager.Singleton.IsServer;
         }
 
         // Update is called once per frame

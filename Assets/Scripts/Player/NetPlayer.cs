@@ -96,11 +96,11 @@ namespace tp2
         }
         IEnumerator waitForOnGround()
         {
-            if(jumpTime == 0)
+            if(isOnGround)
             {
                 yield return new WaitForSeconds(.1f);
             }
-            yield return new WaitUntil(() => ((jumpTime <= 0)));
+            yield return new WaitUntil(() => ((isOnGround)));
             removeParentSRpc();
             yield break;
         }
