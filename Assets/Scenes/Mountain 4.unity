@@ -603,15 +603,12 @@ MonoBehaviour:
   cameraPositions:
   - {fileID: 1813854478}
   - {fileID: 1813854478}
-  - {fileID: 446556216}
   timing:
   - 0.1
   - 0
-  - 30
   dialogueBox:
   - {fileID: 0}
   - {fileID: 1321669728}
-  - {fileID: 0}
   redirectScene: 1
   CutsceneEnded:
     m_PersistentCalls:
