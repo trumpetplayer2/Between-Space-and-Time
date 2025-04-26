@@ -53,7 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mountain 4.unity
     guid: 8f5a3c46565d3b74ebbc88332f12ecd6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: e097f9399bd5a254f86cb421dfa7a269
   m_configObjects: {}

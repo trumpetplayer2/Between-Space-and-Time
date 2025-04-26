@@ -253,6 +253,14 @@ namespace tp2
                 if (transform.parent != null)
                 {
                     if (!transform.parent.tag.ToLower().Equals("player")) return;
+                    if(alignPos != Vector3.zero)
+                    {
+                        if (Mathf.Sign(alignPos.x) != Mathf.Sign((transform.position - transform.parent.position).x))
+                        {
+                            //If this is the case, change goal
+                            alignPos = Vector3.zero;
+                        }
+                    }
                     if (alignPos == Vector3.zero && localHeld())
                     {
                         float sign = Mathf.Sign(transform.parent.InverseTransformPoint(transform.position).x);
@@ -262,6 +270,7 @@ namespace tp2
                     }
                     else
                     {
+                        
                         //Apply a velocity to try to get to goal location. If object is in the way this wont move
                         body.velocity = (alignPos - transform.parent.InverseTransformPoint(transform.position)) / 0.1f;
                         if (Mathf.Abs(body.velocity.x) + Mathf.Abs(body.velocity.y) > fastThreshold)
